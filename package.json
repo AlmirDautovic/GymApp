@@ -1,0 +1,23 @@
+{
+  "name": "hellonode",
+  "version": "1.0.0",
+  "description": "Test project for learning Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlmirDautovic/HelloNode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlmirDautovic/HelloNode/issues"
+  },
+  "homepage": "https://github.com/AlmirDautovic/HelloNode#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
