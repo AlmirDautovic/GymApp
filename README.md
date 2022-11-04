@@ -1,2 +1,2 @@
 # HelloNode
-Test project for learning
+Test project for learning Node.js
