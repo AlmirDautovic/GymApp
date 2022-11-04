@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
 
+app.set('view engine', 'ejs');
 
 // app.use((req, res) => {
 //     res.send("TEST, HELLO WORLD!!!!");
 // })
 
 app.get('/', (req, res) => {
-    res.send("Hello World!");
+    res.render('home');
 });
 
 app.get('/home', (req, res) => {
