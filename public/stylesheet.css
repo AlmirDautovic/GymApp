@@ -20,4 +20,5 @@ a.nav-link:active {
 
 img.logo:hover {
     opacity: 0.5;
+    transition: ease-in;
 }
