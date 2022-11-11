@@ -6,6 +6,18 @@ body {
     line-height: 95px;
     font-size: 12px;
     font-weight: 600;
-    font-family: Libre Franklin, sans-serif;
+    font-family: Poppins, sans-serif;
     height: 95.5px;
+}
+
+a.nav-link:hover {
+    color: #19b0b8;
+}
+
+a.nav-link:active {
+    color: #19b0b8;
+}
+
+img.logo:hover {
+    opacity: 0.5;
 }
