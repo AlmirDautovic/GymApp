@@ -1,3 +1,7 @@
+body {
+    background-color: grey;
+}
+
 #navbar {
     line-height: 95px;
     font-size: 12px;
