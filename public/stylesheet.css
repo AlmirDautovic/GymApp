@@ -8,6 +8,13 @@ body {
     font-weight: 600;
     font-family: Poppins, sans-serif;
     height: 95.5px;
+    color: rgba(34, 34, 34, 1);
+}
+
+.picture {
+    min-width: 123px;
+    max-height: 55.5px;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
 
 a.nav-link:hover {
