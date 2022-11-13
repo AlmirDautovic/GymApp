@@ -21,7 +21,7 @@ body {
     background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
 
-a#navbar:hover {
+a.nav-link:hover {
     color: #19b0b8;
 }
 
