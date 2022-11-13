@@ -1,13 +1,17 @@
 body {
     background-color: grey;
+    margin: 0;
 }
 
 #navbar {
+    font-family: Poppins, sans-serif;
+    height: 95.5px;
+}
+
+.navbar-nav a {
     line-height: 95px;
     font-size: 12px;
     font-weight: 600;
-    font-family: Poppins, sans-serif;
-    height: 95.5px;
     color: rgba(34, 34, 34, 1);
 }
 
