@@ -3,6 +3,7 @@ body {
     margin: 0;
 }
 
+/* navbar styles*/
 #navbar {
     font-family: Poppins, sans-serif;
     height: 95.5px;
@@ -15,10 +16,10 @@ body {
     color: rgba(34, 34, 34, 1);
 }
 
-.picture {
+.navbar-brand img {
     min-width: 123px;
     max-height: 55.5px;
-    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
 }
 
 a.nav-link:hover {
