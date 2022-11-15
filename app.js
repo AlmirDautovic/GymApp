@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/GymApp');
+const User = require('./models/user');
+
+mongoose.connect('mongodb://localhost:27017/GymApp', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -29,9 +31,11 @@ app.get('/login', (req, res) => {
     res.send('get request');
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     console.log(req.body);
+    const newUser = new User(req.body);
+    await newUser.save();
     // res.send(`Succesfully Loged In: Your username is: ${username} , and password: ${password}`);
     res.render('login', { username, password });
 });
