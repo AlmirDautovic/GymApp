@@ -1,11 +1,14 @@
 body {
     background-color: grey;
-    margin: 0;
 }
 
 /* navbar styles*/
 #navbar {
     font-family: Poppins, sans-serif;
+    padding: 0;
+}
+
+.navbar .navbar-nav>a {
     height: 95.5px;
 }
 
