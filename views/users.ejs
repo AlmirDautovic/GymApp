@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+    <h1>List of all users: </h1>
+    <div class="container">
+        <ul>
+            <% for(let user of users) {%>
+                <li>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <%=user.username %>
+                                <!-- <a class="btn btn-primary btn-sm" href="#" ">View User Details</a> -->
+                        </div>
+                        <div class="col-sm">
+                            <a role="button" class="btn btn-outline-dark" href="/"
+                                style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">
+                                View User Details
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+    </div>

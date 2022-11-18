@@ -8,12 +8,9 @@ body {
     padding: 0;
 }
 
-.navbar .navbar-nav>a {
-    height: 95.5px;
-}
-
 .navbar-nav a {
     line-height: 95px;
+    height: 95.5px;
     font-size: 12px;
     font-weight: 600;
     color: rgba(34, 34, 34, 1);
@@ -26,10 +23,6 @@ body {
 }
 
 a.nav-link:hover {
-    color: #19b0b8;
-}
-
-a.nav-link:active {
     color: #19b0b8;
 }
 
