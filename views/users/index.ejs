@@ -5,14 +5,14 @@
             <% for(let user of users) {%>
                 <li>
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 text-md">
                             <%=user.username %>
                                 <!-- <a class="btn btn-primary btn-sm" href="#" ">View User Details</a> -->
                         </div>
                         <div class="col-sm">
-                            <a role="button" class="btn btn-outline-dark" href="/"
+                            <a role="button" class="btn btn-outline-dark" href="/users/<%=user._id %> "
                                 style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">
-                                View User Details
+                                Show More
                             </a>
                         </div>
                     </div>

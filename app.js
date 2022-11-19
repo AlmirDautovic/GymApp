@@ -29,16 +29,22 @@ app.get('/', (req, res) => {
 
 app.get('/users', async (req, res) => {
     const users = await User.find({});
-    res.render('users', { users });
+    res.render('users/index', { users });
 });
 
-app.post('/users', async (req, res) => {
+app.post('/users/index', async (req, res) => {
     const { username, password } = req.body;
     console.log(req.body);
     const newUser = new User(req.body);
     await newUser.save();
     // res.send(`Succesfully Loged In: Your username is: ${username} , and password: ${password}`);
     res.redirect('/');
+});
+
+app.get('/users/:id', async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    res.render('users/show', { user });
 });
 
 app.listen(3000, () => {
