@@ -30,3 +30,23 @@ img.logo:hover {
     opacity: 0.5;
     transition: ease-in;
 }
+
+/* footer styles*/
+#footer {
+    background-color: rgba(17, 17, 17, 1);
+}
+
+.underline {
+    color: rgba(136, 136, 136, 1);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.float-end a {
+    color: #fff;
+    height: 26px;
+    width: 26px;
+    line-height: 26px;
+    transition: background-color .5s, color .5s, opacity .5s !important;
+    padding: 0 4px;
+}
