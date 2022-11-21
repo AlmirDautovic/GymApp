@@ -50,3 +50,15 @@ img.logo:hover {
     transition: background-color .5s, color .5s, opacity .5s !important;
     padding: 0 4px;
 }
+
+.float-end a:nth-of-type(1):hover {
+    color: #4A73C9;
+}
+
+.float-end a:nth-of-type(2):hover {
+    color: #3F729B;
+}
+
+.float-end a:nth-of-type(3):hover {
+    color: #0E76A8;
+}
