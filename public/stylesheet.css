@@ -40,6 +40,7 @@ img.logo:hover {
     color: rgba(136, 136, 136, 1);
     text-decoration: none;
     font-size: 12px;
+    line-height: 26px;
 }
 
 .float-end a {
@@ -61,4 +62,11 @@ img.logo:hover {
 
 .float-end a:nth-of-type(3):hover {
     color: #0E76A8;
+}
+
+.col-sm a:hover {
+    color: rgba(255,255,255,1);
+    text-decoration: underline;
+    transition: background-color .5s,color .5s;
+    transition: ease-in-out;
 }
