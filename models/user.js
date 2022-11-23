@@ -12,7 +12,7 @@ const userSchema = new Schema({
     },
     isLogedIn: {
         type: Boolean,
-        default: false,
+        enum: [true, false],
         required: true
     }
 });
