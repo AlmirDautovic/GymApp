@@ -1,23 +1,30 @@
 <% layout('layouts/boilerplate') %>
-    <h1><%=user.username %></h1>
+    <h1>
+        <%=user.username %>
+    </h1>
     <ul>
-        <li>Username: <%=user.username %></li>
-        <li>Password: <%=user.password %></li>
+        <li>Username: <%=user.username %>
+        </li>
+        <li>Password: <%=user.password %>
+        </li>
         <li>Status:
             <% if(user.isLogedIn) {%>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                     <label class="form-check-label" for="flexCheckChecked">
-                      Active
+                        Active
                     </label>
                 </div>
-            <% } else { %> 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Active
-                    </label>
-                </div>   
-            <% } %>        
+                <% } else { %>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Active
+                        </label>
+                    </div>
+                    <% } %>
         </li>
+        <div class="col-sm">
+            <a class="btn btn-outline-dark" href="/users/<%=user._id%>/edit" role="button">Edit User Informations</a>
+        </div>
     </ul>

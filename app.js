@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 var routes = require('./routes/index');
+const methodOverride = require('method-override');
 
 mongoose.connect('mongodb://localhost:27017/GymApp', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -15,6 +16,7 @@ db.once("open", () => {
 app.use('/public', express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
