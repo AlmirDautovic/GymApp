@@ -65,8 +65,22 @@ img.logo:hover {
 }
 
 .col-sm a:hover {
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
     text-decoration: underline;
-    transition: background-color .5s,color .5s;
+    transition: background-color .5s, color .5s;
     transition: ease-in-out;
+}
+
+/* body section part */
+.col-md h2 {
+    color: #19b0b8;
+    margin-bottom: 75px;
+}
+
+.col-6 p {
+    margin-bottom: 55px;
+}
+
+col-md p {
+    margin-bottom: 30px;
 }

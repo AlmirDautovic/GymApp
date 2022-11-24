@@ -17,7 +17,6 @@ router.get('/users/new', (req, res) => {
 
 router.post('/users/index', async (req, res) => {
     const { username, password } = req.body;
-    console.log(req.body);
     const newUser = new User(req.body);
     await newUser.save();
     res.redirect(`/users/${newUser._id}`);
