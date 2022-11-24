@@ -1,11 +1,12 @@
 body {
-    background-color: grey;
+    background-color: white;
 }
 
 /* navbar styles*/
 #navbar {
     font-family: Poppins, sans-serif;
     padding: 0;
+    border-bottom: solid rgb(190, 183, 183) 0.5px;
 }
 
 .navbar-nav a {
