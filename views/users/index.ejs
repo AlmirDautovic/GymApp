@@ -1,39 +1,54 @@
 <% layout('layouts/boilerplate') %>
-    <h1>List of all users: </h1>
     <div class="container">
-        <ul>
-            <% for(let user of users) {%>
-                <li>
-                    <div class="row">
-                        <div class="col-md-2 text-md">
-                            <%=user.username %>
-                                <!-- <a class="btn btn-primary btn-sm" href="#" ">View User Details</a> -->
-                        </div>
-                        <div class="col-sm-2">
-                            <% if(user.isLogedIn) {%>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                      Active
-                                    </label>
-                                </div>
-                            <% } else { %> 
+        <div class="row align-middle">
+            <div class=" col-sm col-md-6">
+                <h1>List of all users: </h1>
+            </div>
+            <div class="col-sm col-md-5 ms-auto">
+                <label for="isLogedIn">Chose users by their activity status:</label>
+                <select name="isLogedIn" id="isLogedIn">
+                    <option value="-">-</option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <ul>
+                <% for(let user of users) {%>
+                    <li>
+                        <div class="row">
+                            <div class="col-md-3 text-md">
+                                <%=user.username %>
+                                    <!-- <a class="btn btn-primary btn-sm" href="#" ">View User Details</a> -->
+                            </div>
+                            <div class="col-sm-2">
+                                <% if(user.isLogedIn) {%>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Active
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                            checked>
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Active
                                         </label>
-                                    </div>   
-                            <% } %>        
+                                    </div>
+                                    <% } else { %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Active
+                                            </label>
+                                        </div>
+                                        <% } %>
+                            </div>
+                            <div class="col-md">
+                                <a role="button" class="btn btn-outline-dark" href="/users/<%=user._id %> "
+                                    style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">
+                                    Show More
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-md">
-                            <a role="button" class="btn btn-outline-dark" href="/users/<%=user._id %> "
-                                style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">
-                                Show More
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <% } %>
-        </ul>
-    </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
