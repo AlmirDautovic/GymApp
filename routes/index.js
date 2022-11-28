@@ -7,8 +7,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/users', async (req, res) => {
-    const users = await User.find({});
-    res.render('users/index', { users });
+    const { isLogedIn } = req.query;
+    console.log(req.query)
+    if (isLogedIn == 'true') {
+        const users = await User.find({ isLogedIn });
+        res.render('users/index', { users });
+    } else if (isLogedIn == "false") {
+        const users = await User.find({ isLogedIn });
+        res.render('users/index', { users });
+    }
+    else {
+        const users = await User.find({});
+        res.render('users/index', { users });
+    }
 });
 
 router.get('/users/new', (req, res) => {

@@ -15,8 +15,13 @@
             <div class="mb-3 col-md-4">
                 <label for="isLogedIn">Status</label>
                 <select name="isLogedIn" id="isLogedIn">
-                    <option value="true">Active</option>
-                    <option value="false">Inactive</option>
+                    <% if(user.isLogedIn===true) {%>
+                        <option value="true" selected>Active</option>
+                        <option value="false">Inactive</option>
+                        <% } else {%>
+                            <option value="true">Active</option>
+                            <option value="false" selected>Inactive</option>
+                            <% } %>
                 </select>
             </div>
             <button class="btn btn-success">Submit</button>

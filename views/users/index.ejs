@@ -5,12 +5,15 @@
                 <h1>List of all users: </h1>
             </div>
             <div class="col-sm col-md-5 ms-auto">
-                <label for="isLogedIn">Chose users by their activity status:</label>
-                <select name="isLogedIn" id="isLogedIn">
-                    <option value="-">-</option>
-                    <option value="true">Active</option>
-                    <option value="false">Inactive</option>
-                </select>
+                <form action="/users" method="get">
+                    <label for="isLogedIn">Select users by their activity status:</label>
+                    <select name="isLogedIn" id="isLogedIn">
+                        <option value=""></option>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                    <input type="submit">
+                </form>
             </div>
         </div>
         <div class="container">
