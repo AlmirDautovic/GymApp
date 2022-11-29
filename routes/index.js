@@ -13,7 +13,7 @@ router.get('/users', async (req, res) => {
         const users = await User.find({ isLogedIn });
         res.render('users/index', { users });
     } else if (isLogedIn == "false") {
-        const users = await User.find({ isLogedIn });
+        const users = await User.find({ isLogedIn: { $ne: true } });
         res.render('users/index', { users });
     }
     else {
