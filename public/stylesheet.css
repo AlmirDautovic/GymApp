@@ -97,7 +97,7 @@ img.logo:hover {
 
 .ttinfo {
     width: 460px;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .list1 {
@@ -107,26 +107,26 @@ img.logo:hover {
 
 .list2 {
     padding: 0;
+    margin-right: 10px;
+
 }
 
 .ttreq p {
     margin: 16px 0;
+    color: #7A7A7A;
 }
 
 .list1 ul,
 .list2 ul {
-    line-height: 2;
     margin-top: 10px;
+    padding-left: 10px;
 }
 
-.list1 ul,
-.list2 ul,
-.ttinfo p,
-.ttreq p {
+.team-training-container {
     font-size: 16px;
     color: #7A7A7A;
     font-weight: normal;
-    padding: 10px;
+    line-height: 1.7;
 }
 
 #hr {
