@@ -10,6 +10,6 @@ btn1.addEventListener('click', function onClick(event) {
 
 btn2.addEventListener('click', function onClick(event) {
     document.body.style.backgroundColor = "white";
-    document.body.style.color = 'black';
+    document.body.style.color = '#7A7A7A';
     event.target.classList.add('btn-light');
 });

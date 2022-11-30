@@ -10,7 +10,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    isLogedIn: {
+    status: {
         type: Boolean,
         enum: [true, false],
         required: true

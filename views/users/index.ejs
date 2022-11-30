@@ -6,8 +6,8 @@
             </div>
             <div class="col-sm col-md-5 ms-auto">
                 <form action="/users" method="get">
-                    <label for="isLogedIn">Select users by their activity status:</label>
-                    <select name="isLogedIn" id="isLogedIn">
+                    <label for="status">Select users by their activity status:</label>
+                    <select name="status" id="status">
                         <option value=""></option>
                         <option value="true">Active</option>
                         <option value="false">Inactive</option>
@@ -26,7 +26,7 @@
                                     <!-- <a class="btn btn-primary btn-sm" href="#" ">View User Details</a> -->
                             </div>
                             <div class="col-sm-2">
-                                <% if(user.isLogedIn) {%>
+                                <% if(user.status) {%>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
                                             checked>

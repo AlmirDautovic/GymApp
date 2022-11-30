@@ -7,12 +7,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/users', async (req, res) => {
-    const { isLogedIn } = req.query;
+    const { status } = req.query;
     var users;
-    if (isLogedIn == 'true') {
-        users = await User.find({ isLogedIn });
-    } else if (isLogedIn == "false") {
-        users = await User.find({ isLogedIn: { $ne: true } });
+    if (status == 'true') {
+        users = await User.find({ status });
+    } else if (status == "false") {
+        users = await User.find({ status: { $ne: true } });
     }
     else {
         users = await User.find({});

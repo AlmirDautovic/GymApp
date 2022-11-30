@@ -1,6 +1,7 @@
 body {
     background-color: white;
     width: 100%;
+    color: #7A7A7A;
 }
 
 /* navbar styles*/
@@ -113,7 +114,6 @@ img.logo:hover {
 
 .ttreq p {
     margin: 16px 0;
-    color: #7A7A7A;
 }
 
 .list1 ul,
@@ -124,7 +124,6 @@ img.logo:hover {
 
 .team-training-container {
     font-size: 16px;
-    color: #7A7A7A;
     font-weight: normal;
     line-height: 1.7;
 }
