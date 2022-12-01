@@ -37,6 +37,7 @@ img.logo:hover {
 /* footer styles*/
 #footer {
     background-color: rgba(17, 17, 17, 1);
+    margin-top: 3px;
 }
 
 .underline {
@@ -113,7 +114,7 @@ img.logo:hover {
 }
 
 .ttreq p {
-    margin: 16px 0;
+    margin-bottom: 20px;
 }
 
 .list1 ul,
@@ -148,8 +149,10 @@ img.logo:hover {
 }
 
 
-#homeForm input {
+#homeForm input,
+select {
     color: #7A7A7A;
+    min-height: 59px;
 }
 
 #textarea {
@@ -162,6 +165,36 @@ img.logo:hover {
     border-color: #dddddd;
     border-width: 1px 1px 1px 1px;
     border-radius: 0px 0px 0px 0px;
+    max-width: 790px;
+}
+
+#homeForm form input,
+option,
+#textarea,
+.planType {
+    border-radius: 0px 0px 0px 0px;
+}
+
+#homeForm .col {
+    padding: 0;
+    margin: 0;
+}
+
+#homeForm .row .form-group {
+    padding-left: 0px;
+    padding-right: 5px;
+    width: 385px;
+    height: 59px;
+    margin-bottom: 10px;
+}
+
+#homeForm .row .form-group:nth-of-type(2) {
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+.form-group {
+    width: 385px;
 }
 
 #btnStart {
@@ -177,6 +210,7 @@ img.logo:hover {
     font-size: 18px;
     min-height: 59px;
     font-weight: var(--e-global-typography-accent-font-weight);
+    margin-bottom: 10px;
 }
 
 #btnStart:hover {
