@@ -132,4 +132,12 @@ img.logo:hover {
     width: 100%;
     background-color: #19b0b8;
     height: 41px;
+    margin-bottom: 45px;
+}
+
+#planType {
+    width: 100%;
+    color: #7A7A7A;
+    border: none;
+    outline: none;
 }
