@@ -148,15 +148,13 @@ img.logo:hover {
     height: 422px;
 }
 
-
-#homeForm input,
-select {
+#homeForm input {
     color: #7A7A7A;
     min-height: 59px;
 }
 
-#textarea {
-    color: #7A7A7A;
+.placeholder-text::placeholder {
+    color: #818a91;
 }
 
 #homeForm form *:focus {
@@ -173,6 +171,7 @@ option,
 #textarea,
 .planType {
     border-radius: 0px 0px 0px 0px;
+    border-color: #dddddd;
 }
 
 #homeForm .col {
