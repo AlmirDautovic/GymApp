@@ -31,6 +31,10 @@ router.post('/users/index', async (req, res) => {
     res.redirect(`/users/${newUser._id}`);
 });
 
+router.get('/users/json', async (req, res) => {
+    const users = await User.find({});
+    res.send(users);
+})
 router.get('/users/:id', async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
@@ -48,6 +52,7 @@ router.put('/users/:id', async (req, res) => {
     const user = await User.findByIdAndUpdate(id, req.body, { runValidators: true });
     res.redirect(`/users/${user._id}`);
 });
+
 
 
 module.exports = router;
