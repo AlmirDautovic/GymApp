@@ -26,3 +26,4 @@ switcher.addEventListener('change', function onChange(event) {
         document.body.style.color = 'white';
     }
 })
+

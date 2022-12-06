@@ -33,7 +33,7 @@ router.post('/users/index', async (req, res) => {
 
 router.get('/users/json', async (req, res) => {
     const users = await User.find({});
-    res.send(users);
+    res.json(users);
 })
 router.get('/users/:id', async (req, res) => {
     const { id } = req.params;
