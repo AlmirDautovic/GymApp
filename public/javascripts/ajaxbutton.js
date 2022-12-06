@@ -34,10 +34,10 @@ $(document).ready(function () {
     $('#show').click(function () {
 
         $.getJSON('http://localhost:3000/users/json', function (users, textStatus, jqXHR) {
+            const list = document.getElementById('list');
             users.forEach(user => {
                 const li = document.createElement('li');
-                $(li).append(user.username);
-                const list = document.getElementById('list');
+                (li).append(user.username);
                 list.appendChild(li);
             });
         });
