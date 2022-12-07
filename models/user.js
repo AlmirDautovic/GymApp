@@ -14,6 +14,10 @@ const userSchema = new Schema({
         type: Boolean,
         enum: [true, false],
         required: true
+    },
+    profile_image: {
+        type: String,
+        default: 'np_profile_img.jpg'
     }
 });
 
