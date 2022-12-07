@@ -32,8 +32,8 @@ router.post('/users/index', async (req, res) => {
 });
 
 router.get('/users/json', async (req, res) => {
-    const users = await User.find({});
-    res.json(users);
+    const users = await User.find({}, { password: 0, _id: 0, __v: 0 });
+    res.send(users);
 })
 router.get('/users/:id', async (req, res) => {
     const { id } = req.params;
