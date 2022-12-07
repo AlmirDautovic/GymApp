@@ -32,8 +32,10 @@ router.post('/users/index', async (req, res) => {
 });
 
 router.get('/users/json', async (req, res) => {
-    const users = await User.find({}, { password: 0, _id: 0, __v: 0 });
-    res.send(users);
+    const { id } = req.params
+    console.log(id);
+    const users = await User.findById({ id }, { password: 0, __v: 0 });
+    res.json(users);
 })
 router.get('/users/:id', async (req, res) => {
     const { id } = req.params;
