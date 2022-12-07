@@ -32,14 +32,14 @@
 $(document).ready(function () {
 
     $('#show').click(function () {
-
+        var list = document.getElementById('list');
         $.getJSON('http://localhost:3000/users/json', function (users, textStatus, jqXHR) {
-            const list = document.getElementById('list');
             users.forEach(user => {
                 const li = document.createElement('li');
                 (li).append(user.username);
                 list.appendChild(li);
             });
         });
+        $(list).empty()
     });
 });
