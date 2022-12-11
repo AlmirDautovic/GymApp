@@ -105,7 +105,7 @@ img.logo:hover {
     display: flex;
 }
 
-.options .row .col-sm {
+.options .row .col-sm-12 {
     padding: 0;
     box-shadow: 0px 0px 29px 0px rgb(2 2 2 / 22%);
     border-radius: 0px 0px 5px 5px;
@@ -113,7 +113,7 @@ img.logo:hover {
     text-align: center;
 }
 
-.options .row .col-sm:nth-last-of-type(2) {
+.options .row .col-sm-12:nth-last-of-type(2) {
     margin: -60px 0 60px 0;
 }
 
@@ -153,6 +153,7 @@ img.logo:hover {
     padding: 40px 0;
     text-align: center;
     font-size: 100px;
+    line-height: 1.7;
 }
 
 .priceTag .curency {
@@ -160,9 +161,10 @@ img.logo:hover {
     height: 30px;
     margin-right: 3px;
     color: #000000;
-    line-height: 1;
+    line-height: 0;
     font-size: .3em;
     font-weight: 700;
+    margin-bottom: 40px;
 }
 
 .priceTag .amount {
@@ -172,10 +174,11 @@ img.logo:hover {
     line-height: .8;
     font-family: "Josefin Sans", Sans-serif;
     font-size: 100px;
+    font-weight: 700;
 }
 
 .priceTag .month {
-    width: 380px;
+    width: 100%;
     height: 19px;
     color: #19b0b8;
     font-family: "Josefin Sans", Sans-serif;
@@ -183,6 +186,53 @@ img.logo:hover {
     font-weight: 500;
     text-align: center;
 }
+
+.privateTraining ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    color: rgb(137, 137, 137);
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    /* padding-inline-start: 40px; */
+    height: 463px;
+    width: 100%;
+    margin-top: 0;
+}
+
+.privateTraining ul li {
+    font-family: "Josefin Sans", Sans-serif;
+    font-size: 15px;
+    line-height: 2.2em;
+    display: list-item;
+    height: 33px;
+    width: 100%;
+}
+
+li+li {
+    margin-top: 10px;
+    /*takes into considerstion space at the begining */
+}
+
+.privateTraining ul li .listItem {
+    margin-left: calc((100% - 68%)/2);
+    margin-right: calc((100% - 68%)/2);
+    font-weight: 400;
+}
+
+.listItem i {
+    width: 16.02px;
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+
+
 
 
 
