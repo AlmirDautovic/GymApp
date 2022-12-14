@@ -2,7 +2,10 @@ body {
     background-color: white;
     width: 100%;
     color: #7A7A7A;
-    display: flex;
+}
+
+body.container {
+    width: 100%;
 }
 
 /* navbar styles*/
@@ -80,7 +83,7 @@ img.logo:hover {
 
 #membershipOptions {
     max-width: 1190px;
-    height: 892px;
+    min-height: 892px;
     margin-top: 250px;
     margin-bottom: 150px;
     padding: 40px 0px 0px 0px;
@@ -91,7 +94,7 @@ img.logo:hover {
 #membershipOptions .options {
     background-color: white;
     max-width: 1140px;
-    height: 852px;
+    min-height: 852px;
     display: flex;
     margin-right: auto;
     margin-left: auto;
@@ -101,31 +104,30 @@ img.logo:hover {
     width: 100%;
     margin: 0;
     color: #7f7f7f;
-    display: flex;
+
 }
 
-.options .row .col-sm-12 {
+.options .row .privateTraining {
     padding: 0;
     box-shadow: 0px 0px 29px 0px rgb(2 2 2 / 22%);
     border-radius: 0px 0px 5px 5px;
     line-height: 1.7;
     text-align: center;
     transition: .3s !important;
-    z-index: 1 !important;
-    width: 33.3333%;
+    /* z-index: 1 !important;
+    width: 33.3333%; */
 }
 
-.options .row .col-sm-12:hover {
+.options .row .privateTraining:hover {
     transform: scale(1.03);
-    overflow: hidden;
 }
 
-.options .row .col-sm-12:nth-of-type(2) {
+.options .row .privateTraining:nth-of-type(2) {
     margin: -30px 0 30px 0;
     box-shadow: 0px 0px 29px 0px rgb(2 2 2 / 22%);
     clip-path: inset(-29px 0px -29px 0px);
-    transition: .3s !important;
-    z-index: 100 !important;
+    /* transition: .3s !important; */
+    /* z-index: 100 !important; */
 }
 
 .topPart {
@@ -331,7 +333,7 @@ li+li {
 #hr {
     width: 100%;
     background-color: #19b0b8;
-    height: 41px;
+    min-height: 41px;
     margin-bottom: 45px;
 }
 
@@ -346,7 +348,7 @@ li+li {
 
 #homeForm {
     max-width: 790px;
-    height: 422px;
+    min-height: 422px;
     margin-bottom: 150px;
 }
 
