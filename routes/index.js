@@ -33,7 +33,7 @@ router.post('/users/index', async (req, res) => {
 
 router.get('/users/json', async (req, res) => {
     const { id } = req.query;
-    const users = await User.find({ _id: { $ne: id } }, { password: 0, __v: 0, _id: 0, profile_image: 0 });
+    const users = await User.find({ _id: { $ne: id } }, { username: 1, status: 1, _id: 0 });
     res.json(users);
 })
 router.get('/users/:id', async (req, res) => {
