@@ -79,6 +79,91 @@ img.logo:hover {
     transition: ease-in-out;
 }
 
+/* TOP SECTION*/
+
+#start {
+    display: flex;
+    width: 1583px;
+    height: 830px;
+    position: relative;
+    background-color: #161616;
+    background-image: url('./images/backgroundpic.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+@media (min-width: 1025px) {
+    #start {
+        background-attachment: fixed;
+        min-height: 830px;
+    }
+}
+
+@media (max-width: 1025px) {
+    #start {
+        width: 100%;
+        height: 414px;
+    }
+}
+
+@media (max-width: 768px) {
+    #start {
+        width: 100%;
+        height: 356px;
+    }
+}
+
+.startOverlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: transparent;
+    background-image: linear-gradient(180deg, #000000 4%, rgba(255, 255, 255, 0.16) 100%);
+    opacity: 1;
+    mix-blend-mode: darken;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+.shape {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border: 0px;
+}
+
+.shape-bottom {
+    bottom: -1px;
+}
+
+.shape-bottom.path {
+    fill: #fff
+}
+
+.shape[data-negative="false"].shape-bottom {
+    transform: rotate(180deg);
+}
+
+.shape-bottom svg {
+    width: calc(150% + 1.3px);
+    height: 70px;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.shape .borderFill {
+    fill: white;
+    transform: rotateY(180deg);
+    transform-origin: center;
+}
+
+
 /* private training section */
 
 #membershipOptions {
