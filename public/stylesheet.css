@@ -149,6 +149,7 @@ img.logo:hover {
 }
 
 .shape-bottom svg {
+    display: block;
     width: calc(150% + 1.3px);
     height: 70px;
     display: block;
@@ -163,6 +164,72 @@ img.logo:hover {
     transform-origin: center;
 }
 
+.wrapper {
+    position: relative;
+    display: flex;
+    min-height: 830px;
+    max-width: 1140px;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrap-row {
+    display: flex;
+    width: 100%;
+    height: 388.422px;
+}
+
+.wrap-col {
+    display: flex;
+    position: relative;
+    min-height: 1px;
+}
+
+@media (min-width: 768px) {
+    .wrap-col {
+        width: 100%;
+    }
+}
+
+.col-wrap {
+    margin: 0px 0px 50px 0px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.all-col-wrap {
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.col-wrap1 {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.expert-wrap {
+    margin: 0px 0px 40px 0px;
+    transition: background .3s, border .3s, border-radius .3s, box-shadow .3s, -webkit-box-shadow .3s;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.expert-wrap h2 {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 10px;
+    line-height: 1.1;
+    width: 100%;
+}
 
 /* private training section */
 
