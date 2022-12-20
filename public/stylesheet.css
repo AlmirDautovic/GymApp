@@ -337,6 +337,13 @@ img.logo:hover {
     text-decoration: none;
 }
 
+.viewOptionBtn:hover {
+    background-color: #00388c;
+    text-decoration: underline;
+    color: #ffffff;
+    transition: background-color .5s, color .5s;
+}
+
 /* private training section */
 
 #membershipOptions {
