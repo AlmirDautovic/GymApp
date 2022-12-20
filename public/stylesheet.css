@@ -83,7 +83,7 @@ img.logo:hover {
 
 #start {
     display: flex;
-    width: 1583px;
+    max-width: 1583px;
     height: 830px;
     position: relative;
     background-color: #161616;
@@ -148,6 +148,11 @@ img.logo:hover {
     transform: rotate(180deg);
 }
 
+.shape[data-negative="true"].shape-bottom {
+    height: 90px;
+    margin-bottom: -5px;
+}
+
 .shape-bottom svg {
     display: block;
     width: calc(150% + 1.3px);
@@ -176,8 +181,7 @@ img.logo:hover {
 
 .wrap-row {
     display: flex;
-    width: 100%;
-    height: 388.422px;
+    max-height: 388.422px;
 }
 
 .wrap-col {
@@ -192,6 +196,12 @@ img.logo:hover {
     }
 }
 
+@media (max-width: 1025px) {
+    .wrap-row {
+        margin-bottom: 500px;
+    }
+}
+
 .col-wrap {
     margin: 0px 0px 50px 0px;
     width: 100%;
@@ -200,25 +210,34 @@ img.logo:hover {
 }
 
 .all-col-wrap {
+    display: flex;
     padding: 10px;
     position: relative;
     width: 100%;
     flex-wrap: wrap;
-    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 .col-wrap1 {
     text-align: center;
-    margin-bottom: 20px;
     position: relative;
     width: 100%;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    height: 55.391px;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+}
+
+.col-wrap1:nth-of-type(2) {
+    height: 80.84px;
 }
 
 .expert-wrap {
     margin: 0px 0px 40px 0px;
     transition: background .3s, border .3s, border-radius .3s, box-shadow .3s, -webkit-box-shadow .3s;
     text-align: center;
-    line-height: 1.7;
 }
 
 .expert-wrap h2 {
@@ -229,6 +248,67 @@ img.logo:hover {
     letter-spacing: 10px;
     line-height: 1.1;
     width: 100%;
+    margin: 0;
+}
+
+.membership-wrap h1 {
+    color: #ffffff;
+    font-size: 77px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    text-shadow: 0px 0px 10px rgb(0 0 0 / 65%);
+    font-family: "Josefin Sans", sans-serif;
+    line-height: 1.05;
+    padding: 0;
+    margin: 0;
+}
+
+.membership-wrap {
+    margin: 0;
+    transition: background .3s, border .3s, border-radius .3s, box-shadow .3s, -webkit-box-shadow .3s;
+    text-align: center;
+}
+
+.sectionwrap {
+    position: relative;
+    width: 100%;
+    margin-top: -25px;
+    margin-bottom: 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.sectionwrap-first {
+    max-width: 500px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.sectionwrap-first>.all-col-wrap {
+    padding: 0px 0px 0px 0px;
+}
+
+.sectionwrap-top {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    width: 100;
+}
+
+.section-text p {
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    display: block;
 }
 
 /* private training section */
