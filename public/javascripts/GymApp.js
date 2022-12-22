@@ -27,20 +27,22 @@ function loadJson(path, succes, error) {
     xhr.open('GET', path, true);
     xhr.send();
 };
-document.getElementById('show').addEventListener('click', function () {
-    var list = document.getElementById('list');
-    list.innerHTML = ''
-    var listTitle = document.getElementById('listTitle').innerHTML = "Other users:"
-    var userId = document.getElementById('userId').value;
-    loadJson('http://localhost:3000/users/json?=' + userId, function (users) {
-        for (let user of users) {
-            var li = document.createElement('li');
-            li.append(user.username);
-            list.appendChild(li);
-        }
+var show = document.getElementById('show');
+if (show != null) {
+    show.addEventListener('click', function () {
+        var list = document.getElementById('list');
+        list.innerHTML = ''
+        var listTitle = document.getElementById('listTitle').innerHTML = "Other users:"
+        var userId = document.getElementById('userId').value;
+        loadJson('http://localhost:3000/users/json?=' + userId, function (users) {
+            for (let user of users) {
+                var li = document.createElement('li');
+                li.append(user.username);
+                list.appendChild(li);
+            }
+        });
     });
-});
-
+}
 
 
 // $(document).ready(function () {
