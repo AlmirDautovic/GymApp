@@ -61,3 +61,33 @@ if (show != null) {
 //     });
 // });
 
+var deleteBtn = document.getElementById('deleteUser');
+
+const deleteUser = async () => {
+    try {
+        var currentId = deleteBtn.value;
+        var ul = document.getElementById('userList');
+        ul.innerHTML = ''
+        const res = await fetch('http://localhost:3000/users/delete?id=' + currentId);
+        const status = res.status;
+        console.log(status)
+        if (status == 200) {
+            const res2 = await fetch('http://localhost:3000/users/json')
+            const users = await res2.json();
+            for (let user of users) {
+                var li = document.createElement('li');
+                li.append(user.username)
+                ul.appendChild(li);
+            }
+        }
+    } catch (error) {
+        console.log('error!!', error)
+    }
+}
+
+if (deleteBtn != null) {
+    deleteBtn.addEventListener('click', deleteUser)
+}
+
+
+

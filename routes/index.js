@@ -35,7 +35,14 @@ router.get('/users/json', async (req, res) => {
     const { id } = req.query;
     const users = await User.find({ _id: { $ne: id } }, { username: 1, status: 1, _id: 0 });
     res.json(users);
+});
+
+router.get('/users/delete', async (req, res) => {
+    const { id } = req.query;
+    const deletedUser = await User.findByIdAndDelete(id);
+    res.json({ deletedUser });
 })
+
 router.get('/users/:id', async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
