@@ -3,7 +3,7 @@
         <div class="col">
             <div class="row align-middle">
                 <div class=" col-sm col-md-8">
-                    <h1>List of all users: </h1>
+                    <h1 id="allusers">List of all users: </h1>
                     <div class="col">
                         <ul id="userList">
                             <% for(let user of users) {%>
@@ -40,8 +40,7 @@
                                         </div>
                                         <div class="col-md-2 col-sm-12">
                                             <button type="button" class="btn btn-sm btn-danger" id="deleteUser"
-                                                value="<%=user._id%>" name="deleteBtn">Delete
-                                                user</button>
+                                                value="<%=user._id%>" name="deleteBtn">Deleteuser</button>
                                         </div>
                                     </div>
                                 </li>

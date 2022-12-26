@@ -61,33 +61,64 @@ if (show != null) {
 //     });
 // });
 
-var deleteBtn = document.getElementById('deleteUser');
-
-const deleteUser = async () => {
+var deleteBtn = document.getElementsByClassName('btn btn-sm btn-danger');
+// console.log(deleteBtn)
+const deleteBtnArr = [...deleteBtn]
+// console.log(deleteBtnArr)
+// console.log(deleteBtn[1].attributes.value.value)
+var id;
+const deleteUser = async (id) => {
     try {
-        var currentId = deleteBtn.value;
+        var h1 = document.getElementById('allusers');
+        // var currentId = deleteBtn.value;
         var ul = document.getElementById('userList');
-        ul.innerHTML = ''
-        const res = await fetch('http://localhost:3000/users/delete?id=' + currentId);
+        const res = await fetch('http://localhost:3000/users/delete?id=' + id);
         const status = res.status;
-        console.log(status)
         if (status == 200) {
             const res2 = await fetch('http://localhost:3000/users/json')
             const users = await res2.json();
+            ul.innerHTML = '';
+            h1.innerText = "List of all users:"
             for (let user of users) {
-                var li = document.createElement('li');
-                li.append(user.username)
-                ul.appendChild(li);
+                let active = '';
+                if (user.status) {
+                    active = 'checked';
+                }
+                ul.innerHTML +=
+                    '<li>' +
+                    '<div class="row">' + '<br/>' +
+                    '<div class="col-md-5 col-sm text-md">' + user.username + '</div>' +
+                    '<div class="col-md-2 col-sm-12">' +
+                    '<div class="form-check">' +
+                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
+                    '<label class="form-check-label" for="flexCheckDefault">Active</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-2 col-sm-12">' +
+                    '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
+                    '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
+                    'Show More' +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="col-md-2 col-sm-12">' +
+                    '<button type="button" class="btn btn-sm btn-danger" id="deleteUser" value="' + user._id + '"' +
+                    'name="deleteBtn">Delete user</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>';
             }
+
         }
+
     } catch (error) {
         console.log('error!!', error)
     }
 }
 
-if (deleteBtn != null) {
-    deleteBtn.addEventListener('click', deleteUser)
-}
-
-
-
+deleteBtnArr.forEach((btn) => {
+    var id = btn.attributes.value.value;
+    btn.addEventListener("click", function () {
+        console.log(id)
+        deleteUser(id);
+    })
+})
