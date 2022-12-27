@@ -117,8 +117,8 @@ const deleteUser = async (id) => {
 deleteBtnArr.forEach((btn) => {
     var id = btn.attributes.value.value;
     btn.addEventListener("click", function (e) {
-        console.log(id)
-        // deleteUser(id);
+        console.log(e.targer, id)
+        deleteUser(id);
 
     });
 })
