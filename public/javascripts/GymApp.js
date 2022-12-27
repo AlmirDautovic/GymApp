@@ -66,7 +66,6 @@ var deleteBtn = document.getElementsByClassName('btn btn-sm btn-danger');
 const deleteBtnArr = [...deleteBtn]
 // console.log(deleteBtnArr)
 // console.log(deleteBtn[1].attributes.value.value)
-var id;
 const deleteUser = async (id) => {
     try {
         var h1 = document.getElementById('allusers');
@@ -117,8 +116,9 @@ const deleteUser = async (id) => {
 
 deleteBtnArr.forEach((btn) => {
     var id = btn.attributes.value.value;
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (e) {
         console.log(id)
-        deleteUser(id);
-    })
+        // deleteUser(id);
+
+    });
 })
