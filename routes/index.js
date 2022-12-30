@@ -37,11 +37,11 @@ router.get('/users/json', async (req, res) => {
     res.json(users);
 });
 
-router.get('/users/delete', async (req, res) => {
+router.delete('/users/delete', async (req, res) => {
     const { id } = req.query;
     const deletedUser = await User.findByIdAndDelete(id);
     // throw 'exception';
-    res.json({ deletedUser });
+    res.json({});
 })
 
 router.get('/users/:id', async (req, res) => {
