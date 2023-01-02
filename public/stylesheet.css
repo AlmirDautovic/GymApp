@@ -136,21 +136,29 @@ img.logo:hover {
     border: 0px;
 }
 
+.shape1 {
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    border: 0px;
+    margin-top: -115px;
+}
+
 .shape-bottom {
     bottom: -1px;
 }
 
+
 .shape-bottom.path {
-    fill: #fff
+    fill: #f9f9f9;
+}
+
+.shape-side.path {
+    fill: #f9f9f9;
 }
 
 .shape[data-negative="false"].shape-bottom {
     transform: rotate(180deg);
-}
-
-.shape[data-negative="true"].shape-bottom {
-    height: 90px;
-    margin-bottom: -5px;
 }
 
 .shape-bottom svg {
@@ -163,10 +171,35 @@ img.logo:hover {
     transform: translateX(-50%);
 }
 
+.shape-side svg {
+    height: 100px;
+    width: calc(150% + 1.3px);
+    height: 100px;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .shape .borderFill {
-    fill: white;
+    fill: #f9f9f9;
     transform: rotateY(180deg);
     transform-origin: center;
+}
+
+.shape1 .borderFill {
+    fill: #f9f9f9;
+    transform: rotateY(180deg);
+    transform-origin: center;
+}
+
+#shape {
+    width: 100%;
+    left: -271.5px;
+    background-color: #f9f9f9;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 0px 0px 0px 0px;
+    height: 1px;
 }
 
 .wrapper {
