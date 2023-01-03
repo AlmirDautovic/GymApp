@@ -175,7 +175,24 @@ function createContent() {
     xhr.send()
 }
 
-
 function getUser(element) {
     deleteUser(element.value)
+}
+
+function removeOneUser(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", 'http://localhost:3000/users?id=' + id, true);
+    xhr.onload = function () {
+        if (xhr.readyState == 4 && xhr.status == '200') {
+            console.log("SUCCESS!");
+        }
+        else {
+            console.log('ERROR!', error)
+        }
+    }
+    xhr.send()
+}
+
+function deleteOne(element) {
+    removeOneUser(element.value)
 }
