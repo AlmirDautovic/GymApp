@@ -181,18 +181,40 @@ function getUser(element) {
 
 function removeOneUser(id) {
     var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", 'http://localhost:3000/users?id=' + id, true);
+    xhr.open("DELETE", 'http://localhost:3000/users/delete?id=' + id, true);
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == '200') {
-            console.log("SUCCESS!");
+            redirectAfterDelete();
         }
         else {
-            console.log('ERROR!', error)
+            console.error(error)
         }
     }
-    xhr.send()
+    xhr.send(null)
 }
 
+function redirectAfterDelete() {
+    var url = "http://localhost:3000/";
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.onload = function () {
+        if (xhr.readyState == 4 && xhr.status == "200") {
+            redirectPage()
+        } else {
+            console.error(users);
+        }
+    }
+    xhr.send(null);
+}
+
+// function redirectPage() {
+//     let baseUrl = window.location.origin
+//     console.log(baseUrl)
+//     window.location.replace(baseUrl + '/users'); // because it is impossible to redirect page with ajax req i used this 2 lines
+//     //of code to redirect with client side
+// }
+
 function deleteOne(element) {
+    console.log(element.value)
     removeOneUser(element.value)
 }

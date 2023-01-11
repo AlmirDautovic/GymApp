@@ -34,9 +34,11 @@
                             Informations</a>
                     </div>
                     <div class="col-sm-3 mt-1">
-                        <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+                        <!-- <form action="/users/?_method=DELETE" method="POST">
                             <button class="btn btn-outline-danger">Delete User</button>
-                        </form>
+                        </form> -->
+                        <button class="btn btn-outline-danger" value="<%=user._id%>" onclick="deleteOne(this)">Delete
+                            User</button>
                     </div>
                 </ul>
             </div>
