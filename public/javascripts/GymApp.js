@@ -207,12 +207,12 @@ function redirectAfterDelete() {
     xhr.send(null);
 }
 
-// function redirectPage() {
-//     let baseUrl = window.location.origin
-//     console.log(baseUrl)
-//     window.location.replace(baseUrl + '/users'); // because it is impossible to redirect page with ajax req i used this 2 lines
-//     //of code to redirect with client side
-// }
+function redirectPage() {
+    let baseUrl = window.location.origin
+    console.log(baseUrl)
+    window.location.replace(baseUrl + '/users'); // because it is impossible to redirect page with ajax req i used this 2 lines
+    //of code to redirect with client side
+}
 
 function deleteOne(element) {
     console.log(element.value)
