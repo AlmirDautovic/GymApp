@@ -66,6 +66,10 @@ router.delete('/users/:id', async (req, res) => {
     const { id } = req.params;
     const deletedUser = await User.findByIdAndDelete(id);
     res.redirect('/users');
-})
+});
+
+router.get('/contact', (req, res) => {
+    res.render('contact');
+});
 
 module.exports = router;
