@@ -812,30 +812,44 @@ option,
     font-size: 22.75px;
     line-height: 1.15;
     color: rgba(50, 50, 50, 1);
-    font-family: Poppins, sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 700;
     margin: 22.75px 0;
 }
 
-.first-row {
-    width: calc(25%);
-    display: inline-block;
+.get-started p {
+    text-align: center;
 }
 
-.form-control {
+.first-row {
+    width: calc(25%);
+    display: flex;
+    padding-right: calc(10px/2);
+    padding-left: calc(10px/2);
+    justify-content: center;
+    align-items: center
+}
+
+.first-row input {
+    width: 100%;
+}
+
+.form-controler {
+    position: relative;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: flex-end;
     border: 0;
     padding: 0 calc(10px/2);
     background-color: #f5f5f5;
     margin-bottom: 10px;
+    color: rgb(122, 122, 122);
+    font-weight: 400;
 }
 
 .second-row {
     width: calc(33.3333%);
-    display: inline-block;
 }
 
 #contact-form .third-row input {
@@ -844,4 +858,33 @@ option,
 
 #contact-form .third-row textarea {
     width: 100%;
+}
+
+#contact-form input[type=text],
+textarea {
+    background-color: #ffffff;
+    border: 1px solid #818a91;
+    border-color: #dddddd;
+    border-width: 1px 1px 1px 1px;
+    font-family: "Josefin Sans", Sans-serif;
+    font-size: 16px;
+    border-radius: 0px 0px 0px 0px;
+    color: rgb(122, 122, 122);
+    min-height: 33px;
+    padding: 4px 12px;
+}
+
+#contact-form ::placeholder {
+    color: rgb(122, 122, 122);
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+#check input {
+    margin-left: 4px;
+}
+
+#check label {
+    font-family: "Josefin Sans", Sans-serif;
+    font-size: 16px;
 }
