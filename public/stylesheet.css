@@ -775,9 +775,6 @@ option,
 .form-container {
     position: relative;
     padding: 20px 20px 20px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
     max-height: 1145.450px;
     margin-bottom: 20px;
     width: 100%;
@@ -817,4 +814,34 @@ option,
     color: rgba(50, 50, 50, 1);
     font-family: Poppins, sans-serif;
     font-weight: 700;
+    margin: 22.75px 0;
+}
+
+.first-row {
+    width: calc(25%);
+    display: inline-block;
+}
+
+.form-control {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    border: 0;
+    padding: 0 calc(10px/2);
+    background-color: #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.second-row {
+    width: calc(33.3333%);
+    display: inline-block;
+}
+
+#contact-form .third-row input {
+    width: 100%;
+}
+
+#contact-form .third-row textarea {
+    width: 100%;
 }
