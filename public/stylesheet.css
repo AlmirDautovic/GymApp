@@ -819,6 +819,10 @@ option,
 
 .get-started p {
     text-align: center;
+    margin: 14px 0;
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 14px;
+    color: rgb(122, 122, 122);
 }
 
 .first-row {
@@ -841,7 +845,7 @@ option,
     flex-wrap: wrap;
     align-content: flex-end;
     border: 0;
-    padding: 0 calc(10px/2);
+    /* padding: 0 calc(10px/2); */
     background-color: #f5f5f5;
     margin-bottom: 10px;
     color: rgb(122, 122, 122);
@@ -850,14 +854,29 @@ option,
 
 .second-row {
     width: calc(33.3333%);
+    display: flex;
+    padding-right: calc(10px/2);
+    padding-left: calc(10px/2);
+    justify-content: center;
+    align-items: center;
+}
+
+.second-row input {
+    width: 100%;
 }
 
 #contact-form .third-row input {
     width: 100%;
+    max-height: 40px;
 }
 
 #contact-form .third-row textarea {
     width: 100%;
+    max-height: 126px;
+}
+
+.third-row {
+    display: flex;
 }
 
 #contact-form input[type=text],
@@ -881,10 +900,20 @@ textarea {
 }
 
 #check input {
-    margin-left: 4px;
+    margin-left: 5px;
 }
 
 #check label {
     font-family: "Josefin Sans", Sans-serif;
     font-size: 16px;
+    color: rgb(122, 122, 122);
+}
+
+.start-button {
+    display: flex;
+}
+
+.start-button button {
+    margin-left: auto;
+    margin-right: auto;
 }
