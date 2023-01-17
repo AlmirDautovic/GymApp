@@ -752,7 +752,7 @@ option,
     width: 100%;
     /* left: -271.5px; */
     transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-    padding: 70px 0px 70px 0px;
+    /* padding: 70px 0px 70px 0px; */
     line-height: 1.7;
     font-size: 14px;
     color: rgba(85, 85, 85, 1);
@@ -872,6 +872,10 @@ option,
     height: 40px;
 }
 
+#contact-form {
+    margin-bottom: 20px;
+}
+
 #contact-form .third-row textarea {
     width: 100%;
     max-height: 126px;
@@ -938,4 +942,93 @@ textarea:focus {
 .horizontal-line p {
     background-color: #19b0b8;
     height: 2px;
+}
+
+.location-details {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 166.2px;
+}
+
+.location {
+    width: calc(50%);
+    display: flex;
+    height: 166.2px;
+}
+
+.location-wrapper {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.location-top {
+    text-align: right;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.location-header {
+    margin: 0px 0px 20px 0px;
+    width: 100%;
+}
+
+.location-header h2 {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-family: "Josefin Sans", Sans-serif;
+    text-align: right;
+}
+
+.location-top .location-header1 h2 {
+    text-align: left;
+}
+
+.location-details .location1 {
+    border-left: 2px solid #19b0b8;
+}
+
+.location-bottom {
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+    color: rgb(122, 122, 122);
+    font-weight: 400;
+    font-family: "Libre Franklin", sans-serif;
+    max-height: 54.4px;
+}
+
+.bottom-wraper {
+    height: 54.4px;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+}
+
+.bottom-wraper p {
+    font-size: 16px;
+    margin: 0;
+    height: 17px;
+}
+
+.bottom-wraper p:first-of-type {
+    margin-bottom: 15px;
+}
+
+.location1 .location-bottom {
+    text-align: left;
+}
+
+.location-bottom .bottom-wraper1 p a {
+    color: #19b0b8;
+    text-decoration: none;
+}
+
+.location-bottom .bottom-wraper1 p:hover {
+    text-decoration: none;
+    letter-spacing: .02em;
 }
