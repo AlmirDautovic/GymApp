@@ -1,3 +1,4 @@
+
 var switcher = document.getElementById('switch');
 if (switcher != null) {
     switcher.addEventListener('change', function onChange(event) {
@@ -149,27 +150,23 @@ function deleteOne(element) {
     removeOneUser(element.value)
 }
 
-// var form = document.getElementById('selectUser"');
-// if (form != null) {
-//     form.addEventListener("change", function (event) {
-//         eve
-//         usersOnChange();
-//     })
-// }
 
-function submitFunction(e) {
-    usersOnChange()
-}
-function usersOnChange() {
+function usersOnChange(value) {
     var url = "http://localhost:3000/users";
     var xhr = new XMLHttpRequest()
-    xhr.open('GET', url, true)
+    xhr.open('GET', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
-            console.log("success")
+            console.log("success!")
         } else {
             console.error(users);
         }
     }
-    xhr.send(null);
+    xhr.send(JSON.stringify(value));
+}
+
+function getStatusValue(selectValue) {
+    var value = selectValue.value;
+    usersOnChange(value)
 }

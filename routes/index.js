@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
 
 router.get('/users', async (req, res) => {
     const { status } = req.query;
+    console.log(req.query)
     var users;
     if (status == 'true') {
         users = await User.find({ status });

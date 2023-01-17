@@ -49,9 +49,9 @@
                     </div>
                 </div>
                 <div class="col-sm col-md-4 ms-auto">
-                    <form onchange="submitFunction(this)" id="selectUser">
+                    <form id="selectUser">
                         <label for="status">Select users by their activity status:</label>
-                        <select name="status" id="status">
+                        <select onchange="getStatusValue(this)" name="status" id="status">
                             <option value=""></option>
                             <option value="true">Active</option>
                             <option value="false">Inactive</option>
