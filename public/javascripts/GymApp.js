@@ -146,6 +146,30 @@ function redirectPage() {
 }
 
 function deleteOne(element) {
-    console.log(element.value)
     removeOneUser(element.value)
+}
+
+// var form = document.getElementById('selectUser"');
+// if (form != null) {
+//     form.addEventListener("change", function (event) {
+//         eve
+//         usersOnChange();
+//     })
+// }
+
+function submitFunction(e) {
+    usersOnChange()
+}
+function usersOnChange() {
+    var url = "http://localhost:3000/users";
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.onload = function () {
+        if (xhr.readyState == 4 && xhr.status == "200") {
+            console.log("success")
+        } else {
+            console.error(users);
+        }
+    }
+    xhr.send(null);
 }

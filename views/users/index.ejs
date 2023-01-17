@@ -49,14 +49,14 @@
                     </div>
                 </div>
                 <div class="col-sm col-md-4 ms-auto">
-                    <form action="/users" method="get">
+                    <form onchange="submitFunction(this)" id="selectUser">
                         <label for="status">Select users by their activity status:</label>
                         <select name="status" id="status">
                             <option value=""></option>
                             <option value="true">Active</option>
                             <option value="false">Inactive</option>
                         </select>
-                        <input type="submit">
+                        <!-- <input type="submit"> -->
                     </form>
                 </div>
             </div>
