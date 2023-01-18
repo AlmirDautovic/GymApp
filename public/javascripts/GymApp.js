@@ -154,11 +154,11 @@ function deleteOne(element) {
 function usersOnChange(value) {
     var url = "http://localhost:3000/users";
     var xhr = new XMLHttpRequest()
-    xhr.open('GET', url, true);
+    xhr.open('GET', url + "?status=" + value, true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
-            console.log("success!")
+            console.log("SUCCESS!!");
         } else {
             console.error(users);
         }
@@ -166,7 +166,13 @@ function usersOnChange(value) {
     xhr.send(JSON.stringify(value));
 }
 
+// var form = document.getElementById('selectUser');
+// form.addEventListener('submit', function (e) {
+//     e.preventDefault()
+// })
+
 function getStatusValue(selectValue) {
     var value = selectValue.value;
+    console.log(value)
     usersOnChange(value)
 }
