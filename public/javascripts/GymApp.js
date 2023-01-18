@@ -152,18 +152,50 @@ function deleteOne(element) {
 
 
 function usersOnChange(value) {
-    var url = "http://localhost:3000/users";
+    var url = "http://localhost:3000/users/change";
     var xhr = new XMLHttpRequest()
     xhr.open('GET', url + "?status=" + value, true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.onload = function () {
+        var users = JSON.parse(xhr.responseText);
+        var h1 = document.getElementById('allusers');
+        var ul = document.getElementById('userList');
         if (xhr.readyState == 4 && xhr.status == "200") {
-            console.log("SUCCESS!!");
+            ul.innerHTML = '';
+            h1.innerText = "List of all users:"
+            for (let user of users) {
+                let active = '';
+                if (user.status) {
+                    active = 'checked';
+                }
+                ul.innerHTML +=
+                    '<li>' +
+                    '<div class="row">' + '<br/>' +
+                    '<div class="col-md-5 col-sm text-md">' + user.username + '</div>' +
+                    '<div class="col-md-2 col-sm-12">' +
+                    '<div class="form-check">' +
+                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
+                    '<label class="form-check-label" for="flexCheckDefault">Active</label>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-2 col-sm-12">' +
+                    '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
+                    '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
+                    'Show More' +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="col-md-2 col-sm-12">' +
+                    '<button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)" value="' + user._id + '"' +
+                    'name="deleteBtn">Delete user</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>';
+            }
         } else {
             console.error(users);
         }
     }
-    xhr.send(JSON.stringify(value));
+    xhr.send();
 }
 
 // var form = document.getElementById('selectUser');

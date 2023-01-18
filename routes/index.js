@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
 
 router.get('/users', async (req, res) => {
     const { status } = req.query;
-    console.log(status)
     var users;
     if (status == 'true') {
         users = await User.find({ status });
@@ -23,7 +22,6 @@ router.get('/users', async (req, res) => {
 
 router.get('/users/change', async (req, res) => {
     const { status } = req.query;
-    console.log(status)
     var users;
     if (status == 'true') {
         users = await User.find({ status });
@@ -33,7 +31,7 @@ router.get('/users/change', async (req, res) => {
     else {
         users = await User.find({});
     }
-    res.send("!!!")
+    res.json(users)
 });
 
 router.get('/users/new', (req, res) => {
