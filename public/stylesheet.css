@@ -888,7 +888,7 @@ option,
 #contact-form input[type=text],
 textarea {
     background-color: #ffffff;
-    border: 1px solid #818a91;
+    border: 1px solid;
     border-color: #dddddd;
     border-width: 1px 1px 1px 1px;
     font-family: "Josefin Sans", Sans-serif;
@@ -928,6 +928,8 @@ textarea {
 #contact-form input:focus,
 textarea:focus {
     outline: none;
+    /* border: 1px solid #dddddd; */
+    border-color: #cec5c5;
 }
 
 .divider {
