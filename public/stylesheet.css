@@ -573,68 +573,6 @@ li+li {
 }
 
 
-
-/* body section part - team training section*/
-.team-training-container {
-    max-width: 1040px;
-    margin-left: 115px;
-    margin-right: 0;
-}
-
-.team {
-    color: #19b0b8;
-    margin-bottom: 55px;
-    font-size: 52px;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 1.1em;
-    letter-spacing: -2px;
-}
-
-.ttinfo p {
-    margin-bottom: 45px;
-    margin-top: 15px;
-}
-
-.ttinfo {
-    width: 460px;
-    margin-left: 40px;
-}
-
-.list1 {
-    padding: 0;
-    margin-left: 10px;
-}
-
-.list2 {
-    padding: 0;
-    margin-right: 10px;
-
-}
-
-.ttreq p {
-    margin-bottom: 20px;
-}
-
-.list1 ul,
-.list2 ul {
-    margin-top: 10px;
-    padding-left: 10px;
-}
-
-.team-training-container {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.7;
-}
-
-#hr {
-    width: 100%;
-    background-color: #19b0b8;
-    min-height: 41px;
-    margin-bottom: 45px;
-}
-
 /* register form section */
 #planType {
     width: 100%;
@@ -1033,4 +971,105 @@ textarea:focus {
 .location-bottom .bottom-wraper1 p:hover {
     text-decoration: none;
     letter-spacing: .02em;
+}
+
+/* TEAM TRAINING PART*/
+
+.team {
+    color: #19b0b8;
+    margin-bottom: 55px;
+    font-size: 52px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    letter-spacing: -2px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.teamTrainingContainer {
+    max-width: 1040px;
+    position: relative;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    height: 242.3px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.info-paragraph {
+    width: calc(46.115%);
+    display: flex;
+    position: relative;
+    height: 222.3px;
+}
+
+.info-wrapper {
+    /* width: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-content: flex-start;
+    padding: 10px;
+    height: 190.3px;
+    line-height: 1.7;
+}
+
+.info-wrapper p {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    color: #7A7A7A;
+    line-height: 1.7;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 16px 0;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.info-ul {
+    width: calc(25.971%);
+    display: flex;
+    position: relative;
+    height: 222.3px;
+}
+
+.ul-wrapper {
+    height: 134px;
+}
+
+.info-wrapper ul {
+    display: block;
+    margin: 18px 1.5em 0.5em 1.5em;
+    padding: 0;
+    height: 134px;
+    line-height: 1;
+    font-size: 16px;
+    font-weight: 350;
+    font-family: 'Libre Franklin', sans-serif;
+    color: rgb(122, 122, 122);
+}
+
+.info-wrapper ul li {
+    padding: 0.2em 0;
+    font-size: 16px;
+}
+
+#hr {
+    width: 100%;
+    background-color: #19b0b8;
+    min-height: 41px;
+    margin-bottom: 45px;
+}
+
+.ttreq p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.ttreq {
+    margin-bottom: 15px;
 }
