@@ -86,4 +86,8 @@ router.get('/contact', (req, res) => {
     res.render('contact');
 });
 
+router.get('/gymequipment', (req, res) => {
+    res.send("GYM PAGE!")
+})
+
 module.exports = router;
