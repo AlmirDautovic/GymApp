@@ -49,7 +49,6 @@ if (show != null) {
 function deleteUser(id) {
     var xhr = new XMLHttpRequest();
     xhr.open('DELETE', 'http://localhost:3000/users/delete?id=' + id, true);
-
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == '200') {
             createContent();
@@ -197,11 +196,6 @@ function usersOnChange(value) {
     }
     xhr.send();
 }
-
-// var form = document.getElementById('selectUser');
-// form.addEventListener('submit', function (e) {
-//     e.preventDefault()
-// })
 
 function getStatusValue(selectValue) {
     var value = selectValue.value;

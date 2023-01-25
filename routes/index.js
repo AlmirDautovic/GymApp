@@ -39,7 +39,6 @@ router.get('/users/new', (req, res) => {
 })
 
 router.post('/users/index', async (req, res) => {
-    const { username, password } = req.body;
     const newUser = new User(req.body);
     await newUser.save();
     res.redirect(`/users/${newUser._id}`);
@@ -87,7 +86,7 @@ router.get('/contact', (req, res) => {
 });
 
 router.get('/gymequipment', (req, res) => {
-    res.send("GYM PAGE!")
+    res.render('gymequipment');
 })
 
 module.exports = router;

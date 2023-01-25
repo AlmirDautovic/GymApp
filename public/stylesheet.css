@@ -1074,3 +1074,10 @@ textarea:focus {
 .ttreq {
     margin-bottom: 15px;
 }
+
+/* GYM EQUIPMENT PAGE*/
+
+#equipmentItem {
+    margin-left: 30px;
+    margin-top: -5px;
+}
