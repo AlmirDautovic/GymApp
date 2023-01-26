@@ -171,16 +171,15 @@ function usersOnChange(value) {
             h1.innerText = "List of all users:"
             for (let user of users) {
                 let active = '';
-                let profile_picture = '/public/images/profile/np_profile_img.jpg';
+                let profile_picture_path = '/public/images/profile/';
                 if (user.status) {
                     active = 'checked';
                 }
-
                 ul.innerHTML +=
                     '<li>' +
                     '<div class="row">' +
                     '<div class="col-md-1 col-sm">' +
-                    '<img src="' + profile_picture + '" width="50px" height="50px" class="img-fluid"' + '>' +
+                    '<img src="' + profile_picture_path + user.profile_image + '" width="50px" height="50px" class="img-fluid"' + '>' +
                     '</div>' +
                     '<div class="col-md-2 col-sm text-md">' + user.username + '</div>' +
                     '<div class="col-md-2 col-sm-12">' +

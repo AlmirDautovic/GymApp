@@ -17,7 +17,7 @@ const userSchema = new Schema({
     },
     profile_image: {
         type: String,
-        default: '/public/images/profile/np_profile_img.jpg"'
+        default: 'np_profile_img.jpg'
     }
 });
 
