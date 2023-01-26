@@ -3,13 +3,13 @@
         <h1>Create Gym Item</h1>
         <form action="/gymequipment" method="POST">
             <div class="mb-3 col-md-3">
-                <label for="gymItem" class="form-label">Gym Item</label>
-                <input type="text" class="form-control" id="gymItem" name="gymItem" required>
+                <label for="item_name" class="form-label">Gym Item</label>
+                <input type="text" class="form-control" id="item_name" name="item_name" required>
             </div>
             <div class="mb-3 col-md-3">
                 <label for="image_url" class="form-label">Image URL</label>
-                <input type="url" class="form-control" id="image_url" name="image_url" value="no_url"
-                    placeholder="no_url" required>
+                <input type="text" class="form-control" id="image_url" name="image_url" value="no_url"
+                    placeholder="no_url">
             </div>
             <button class="btn btn-success">INSERT</button>
         </form>

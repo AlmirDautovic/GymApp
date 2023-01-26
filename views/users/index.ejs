@@ -2,14 +2,18 @@
     <div class="container">
         <div class="col">
             <div class="row align-middle">
-                <div class=" col-sm col-md-8">
+                <div class=" col-sm col-md-10">
                     <h1 id="allusers">List of all users: </h1>
                     <div class="col">
                         <ul id="userList">
                             <% for(let user of users) {%>
                                 <li>
                                     <div class="row">
-                                        <div class="col-md-5 col-sm text-md">
+                                        <div class="col-md-2 col-sm">
+                                            <img src="/public/images/profile/np_profile_img.jpg" width="100px"
+                                                height="100px" class="img-fluid" alt="...">
+                                        </div>
+                                        <div class="col-md-2 col-sm text-md">
                                             <%=user.username %>
                                                 <!-- <a class="btn btn-primary btn-sm" href="#" ">View User Details</a> -->
                                         </div>
@@ -48,11 +52,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm col-md-4 ms-auto">
+                <div class="col-sm col-md-2 ms-auto">
                     <form id="selectUser">
-                        <label for="status">Select users by their activity status:</label>
+                        <label for="status">Select users:</label>
                         <select onchange="getStatusValue(this)" name="status" id="status">
-                            <option value=""></option>
+                            <option value="">All Users</option>
                             <option value="true">Active</option>
                             <option value="false">Inactive</option>
                         </select>

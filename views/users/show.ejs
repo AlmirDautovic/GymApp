@@ -3,43 +3,53 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>
-                    Details of User: <%=user.username %>
+                    Details of User:
                 </h1>
-                <ul>
-                    <li>Username: <%=user.username %>
-                    </li>
-                    <li>Password: <%=user.password %>
-                    </li>
-                    <li>Status:
-                        <% if(user.status) {%>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked
-                                    disabled>
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Active
-                                </label>
-                            </div>
-                            <% } else { %>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                        disabled>
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Active
-                                    </label>
-                                </div>
-                                <% } %>
-                    </li>
-                    <div class="col-sm mt-3">
-                        <a class="btn btn-outline-dark" href="/users/<%=user._id%>/edit" role="button">Edit User
-                            Informations</a>
+                <div class="card" style="width: 18rem;">
+                    <img src="/public/images/profile/np_profile_img.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Name: <%=user.username %>
+                        </h5>
+                        <ul>
+                            <li>Username: <%=user.username %>
+                            </li>
+                            <li>Password: <%=user.password %>
+                            </li>
+                            <li>Status:
+                                <% if(user.status) {%>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                            checked disabled>
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Active
+                                        </label>
+                                    </div>
+                                    <% } else { %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault" disabled>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Active
+                                            </label>
+                                        </div>
+                                        <% } %>
+                            </li>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
-                    <div class="col-sm-3 mt-1">
-                        <!-- <form action="/users/?_method=DELETE" method="POST">
+                </div>
+
+                <div class="col-sm mt-3">
+                    <a class="btn btn-outline-dark" href="/users/<%=user._id%>/edit" role="button">Edit User
+                        Informations</a>
+                </div>
+                <div class="col-sm-3 mt-1">
+                    <!-- <form action="/users/?_method=DELETE" method="POST">
                             <button class="btn btn-outline-danger">Delete User</button>
                         </form> -->
-                        <button class="btn btn-outline-danger" value="<%=user._id%>" onclick="deleteOne(this)">Delete
-                            User</button>
-                    </div>
+                    <button class="btn btn-outline-danger" value="<%=user._id%>" onclick="deleteOne(this)">Delete
+                        User</button>
+                </div>
                 </ul>
             </div>
             <div class="col-md-6 mb-5">

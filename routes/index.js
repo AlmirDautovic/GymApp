@@ -1,4 +1,5 @@
 const express = require("express");
+const Item = require("../models/item");
 const User = require('../models/user');
 const router = express.Router();
 
@@ -81,12 +82,18 @@ router.delete('/users/:id', async (req, res) => {
     res.redirect('/users');
 });
 
-router.get('/contact', (req, res) => {
+router.get('/contact', async (req, res) => {
     res.render('contact');
 });
 
-router.get('/gymequipment', (req, res) => {
+router.get('/gymequipment', async (req, res) => {
     res.render('gymequipment');
+});
+
+router.post('/gymequipment', async (req, res) => {
+    const newItem = new Item(req.body);
+    await newItem.save();
+    res.render('gymequipment')
 })
 
 module.exports = router;
