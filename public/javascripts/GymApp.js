@@ -1,3 +1,4 @@
+// part of code for changing to dark or white background on home page:
 
 var switcher = document.getElementById('switch');
 if (switcher != null) {
@@ -12,6 +13,9 @@ if (switcher != null) {
         }
     })
 };
+
+
+// Function that is used on single user page (view user details) to show other users:
 
 function loadJson(path, succes, error) {
     var xhr = new XMLHttpRequest();
@@ -45,6 +49,8 @@ if (show != null) {
     });
 }
 
+
+// Function for dinamically display content on user page, without refreshing after deleting user
 
 function deleteUser(id) {
     var xhr = new XMLHttpRequest();
@@ -149,6 +155,7 @@ function deleteOne(element) {
     removeOneUser(element.value)
 }
 
+// Function for dimanically display content on user page after selecting user to: all, active or inactive
 
 function usersOnChange(value) {
     var url = "http://localhost:3000/users/change";
@@ -164,13 +171,18 @@ function usersOnChange(value) {
             h1.innerText = "List of all users:"
             for (let user of users) {
                 let active = '';
+                let profile_picture = '/public/images/profile/np_profile_img.jpg';
                 if (user.status) {
                     active = 'checked';
                 }
+
                 ul.innerHTML +=
                     '<li>' +
-                    '<div class="row">' + '<br/>' +
-                    '<div class="col-md-5 col-sm text-md">' + user.username + '</div>' +
+                    '<div class="row">' +
+                    '<div class="col-md-1 col-sm">' +
+                    '<img src="' + profile_picture + '" width="50px" height="50px" class="img-fluid"' + '>' +
+                    '</div>' +
+                    '<div class="col-md-2 col-sm text-md">' + user.username + '</div>' +
                     '<div class="col-md-2 col-sm-12">' +
                     '<div class="form-check">' +
                     '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
