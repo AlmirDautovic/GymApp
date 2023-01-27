@@ -37,7 +37,7 @@ if (show != null) {
     show.addEventListener('click', function () {
         var list = document.getElementById('list');
         list.innerHTML = ''
-        var listTitle = document.getElementById('listTitle').innerHTML = "Other users:"
+        var listTitle = document.getElementById('listTitle').innerHTML = "Other registered users:"
         var userId = document.getElementById('userId').value;
         loadJson('http://localhost:3000/users/json?=' + userId, function (users) {
             for (let user of users) {
@@ -77,34 +77,7 @@ function createContent() {
         if (xhr.readyState == 4 && xhr.status == '200') {
             ul.innerHTML = '';
             h1.innerText = "List of all users:"
-            for (let user of users) {
-                let active = '';
-                if (user.status) {
-                    active = 'checked';
-                }
-                ul.innerHTML +=
-                    '<li>' +
-                    '<div class="row">' + '<br/>' +
-                    '<div class="col-md-5 col-sm text-md">' + user.username + '</div>' +
-                    '<div class="col-md-2 col-sm-12">' +
-                    '<div class="form-check">' +
-                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
-                    '<label class="form-check-label" for="flexCheckDefault">Active</label>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="col-md-2 col-sm-12">' +
-                    '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
-                    '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
-                    'Show More' +
-                    '</a>' +
-                    '</div>' +
-                    '<div class="col-md-2 col-sm-12">' +
-                    '<button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)" value="' + user._id + '"' +
-                    'name="deleteBtn">Delete user</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</li>';
-            }
+            ul.innerHTML = getHtmlForListOfUsers(users)
         } else {
             console.error(users)
         }
@@ -169,43 +142,50 @@ function usersOnChange(value) {
         if (xhr.readyState == 4 && xhr.status == "200") {
             ul.innerHTML = '';
             h1.innerText = "List of all users:"
-            for (let user of users) {
-                let active = '';
-                let profile_picture_path = '/public/images/profile/';
-                if (user.status) {
-                    active = 'checked';
-                }
-                ul.innerHTML +=
-                    '<li>' +
-                    '<div class="row">' +
-                    '<div class="col-md-1 col-sm">' +
-                    '<img src="' + profile_picture_path + user.profile_image + '" width="50px" height="50px" class="img-fluid"' + '>' +
-                    '</div>' +
-                    '<div class="col-md-2 col-sm text-md">' + user.username + '</div>' +
-                    '<div class="col-md-2 col-sm-12">' +
-                    '<div class="form-check">' +
-                    '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
-                    '<label class="form-check-label" for="flexCheckDefault">Active</label>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="col-md-2 col-sm-12">' +
-                    '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
-                    '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
-                    'Show More' +
-                    '</a>' +
-                    '</div>' +
-                    '<div class="col-md-2 col-sm-12">' +
-                    '<button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)" value="' + user._id + '"' +
-                    'name="deleteBtn">Delete user</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</li>';
-            }
+            ul.innerHTML = getHtmlForListOfUsers(users);
         } else {
             console.error(users);
         }
     }
     xhr.send();
+}
+
+//Function for dinamically creat content after deleting user on users page, or selecting users by their status on users page
+function getHtmlForListOfUsers(users) {
+    var content = '';
+    for (let user of users) {
+        let active = '';
+        let profile_picture_path = '/public/images/profile/';
+        if (user.status) {
+            active = 'checked';
+        }
+        content +=
+            '<li>' +
+            '<div class="row">' +
+            '<div class="col-md-1 col-sm">' +
+            '<img src="' + profile_picture_path + user.profile_image + '" width="50px" height="50px" class="img-fluid"' + '>' +
+            '</div>' +
+            '<div class="col-md-2 col-sm text-md">' + user.username + '</div>' +
+            '<div class="col-md-2 col-sm-12">' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
+            '<label class="form-check-label" for="flexCheckDefault">Active</label>' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-md-2 col-sm-12">' +
+            '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
+            '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
+            'Show More' +
+            '</a>' +
+            '</div>' +
+            '<div class="col-md-2 col-sm-12">' +
+            '<button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)" value="' + user._id + '"' +
+            'name="deleteBtn">Delete user</button>' +
+            '</div>' +
+            '</div>' +
+            '</li>';
+    }
+    return content;
 }
 
 function getStatusValue(selectValue) {

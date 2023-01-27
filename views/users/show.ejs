@@ -6,7 +6,7 @@
                     Details of User:
                 </h1>
                 <div class="card" style="width: 18rem;">
-                    <img src="/public/images/profile/np_profile_img.jpg" class="card-img-top" alt="...">
+                    <img src="/public/images/profile/<%=user.profile_image %>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">
                             Name: <%=user.username %>
@@ -52,7 +52,7 @@
                 </div>
                 </ul>
             </div>
-            <div class="col-md-6 mb-5">
+            <div class="col-md-6 mb-5 ms-auto  text-center">
                 <button type="button" class="btn btn-info" id="show">Show other users</button>
                 <input type="text" name="id" id="userId" hidden value="<%=user._id%>">
                 <div class="container text-left">

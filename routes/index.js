@@ -47,7 +47,7 @@ router.post('/users/index', async (req, res) => {
 
 router.get('/users/json', async (req, res) => {
     const { id } = req.query;
-    const users = await User.find({ _id: { $ne: id } }, { username: 1, status: 1 });
+    const users = await User.find({ _id: { $ne: id } }, { username: 1, status: 1, profile_image: 1 });
     res.json(users);
 });
 
