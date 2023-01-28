@@ -161,7 +161,7 @@ function getHtmlForListOfUsers(users) {
         }
         content +=
             '<li>' +
-            '<div class="row">' +
+            '<div class="row align-items-center">' +
             '<div class="col-md-1 col-sm">' +
             '<img src="' + profile_picture_path + user.profile_image + '" width="50px" height="50px" class="img-fluid"' + '>' +
             '</div>' +
@@ -193,3 +193,6 @@ function getStatusValue(selectValue) {
     console.log(value)
     usersOnChange(value)
 }
+
+// gym equipment page
+

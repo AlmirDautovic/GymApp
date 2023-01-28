@@ -54,7 +54,6 @@ router.get('/users/json', async (req, res) => {
 router.delete('/users/delete', async (req, res) => {
     const { id } = req.query;
     const deletedUser = await User.findByIdAndDelete(id);
-    // throw 'exception';
     res.json({});
 })
 
@@ -87,13 +86,15 @@ router.get('/contact', async (req, res) => {
 });
 
 router.get('/gymequipment', async (req, res) => {
+    const item = await Item.find({});
+    console.log(item)
     res.render('gymequipment');
 });
 
 router.post('/gymequipment', async (req, res) => {
-    const newItem = new Item(req.body);
-    await newItem.save();
-    res.render('gymequipment')
+    const item = new Item(req.body);
+    await item.save();
+    console.log(item.item_name)
 })
 
 module.exports = router;
