@@ -200,22 +200,53 @@ function postGymItem() {
     var url = "http://localhost:3000/gymequipment";
     var item = {};
     item.item_name = document.getElementById('item_name').value;
-    item.image_url = document.getElementById('image_url').value;
+    // item.image_url = document.getElementById('image_url').value;
     var json = JSON.stringify(item);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
+    xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
         var items = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "201") {
-            console.log(items);
+            getGymItems();
         } else {
             console.error(items);
         }
     }
     xhr.send(json);
+};
+
+function getGymItems() {
+    var url = "http://localhost:3000/gymitem";
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onload = function () {
+        var items = JSON.parse(xhr.responseText);
+        var ol = document.getElementById('orderedList');
+        if (xhr.readyState == 4 && xhr.status == '200') {
+            ol.innerHTML = createListOfItems(items)
+        } else {
+            console.error(items);
+        }
+    }
+    xhr.send();
 }
 
+
+function createListOfItems(items) {
+    var content = '';
+    console.log(items)
+    for (let item of items) {
+        content +=
+            '<li>' +
+            '<div class="row align-items-center">' +
+            '<div class="col-md-2 col-sm text-md">' + item.item_name + '</div>' +
+            '</div>' +
+            '</li>'
+    };
+    return content;
+}
 function displayItems() {
-    postGymItem()
+    postGymItem();
+    document.getElementById('item_name').value = ''
 }
