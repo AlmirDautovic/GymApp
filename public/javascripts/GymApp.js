@@ -196,3 +196,26 @@ function getStatusValue(selectValue) {
 
 // gym equipment page
 
+function postGymItem() {
+    var url = "http://localhost:3000/gymequipment";
+    var item = {};
+    item.item_name = document.getElementById('item_name').value;
+    item.image_url = document.getElementById('image_url').value;
+    var json = JSON.stringify(item);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function () {
+        var items = JSON.parse(xhr.responseText);
+        if (xhr.readyState == 4 && xhr.status == "201") {
+            console.log(items);
+        } else {
+            console.error(items);
+        }
+    }
+    xhr.send(json);
+}
+
+function displayItems() {
+    postGymItem()
+}

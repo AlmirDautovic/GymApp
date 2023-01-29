@@ -86,8 +86,6 @@ router.get('/contact', async (req, res) => {
 });
 
 router.get('/gymequipment', async (req, res) => {
-    const item = await Item.find({});
-    console.log(item)
     res.render('gymequipment');
 });
 
@@ -95,6 +93,11 @@ router.post('/gymequipment', async (req, res) => {
     const item = new Item(req.body);
     await item.save();
     console.log(item.item_name)
+})
+
+router.get('/gymitem', async (req, res) => {
+    const item = await Item.find({});
+    res.json(item)
 })
 
 module.exports = router;

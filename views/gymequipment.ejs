@@ -2,7 +2,7 @@
     <div class="row">
         <div id="equipmentItem" class="col-md-3">
             <h1>Create Gym Item</h1>
-            <form action="/gymequipment" method="POST">
+            <form action="">
                 <div class="mb-3 col-md">
                     <label for="item_name" class="form-label">Gym Item</label>
                     <input type="text" class="form-control" id="item_name" name="item_name" required>
@@ -12,7 +12,7 @@
                     <input type="text" class="form-control" id="image_url" name="image_url" value="no_url"
                         placeholder="no_url">
                 </div>
-                <button class="btn btn-success">INSERT</button>
+                <button class="btn btn-success" onclick="displayItems(this)">INSERT</button>
             </form>
         </div>
         <div class="col-md-2"></div>
