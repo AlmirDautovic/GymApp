@@ -1081,3 +1081,10 @@ textarea:focus {
     margin-left: 30px;
     margin-top: -5px;
 }
+
+/* styling uls on users, and gymequioment page*/
+
+#userList,
+#list li {
+    list-style-type: none;
+}
