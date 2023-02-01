@@ -18,7 +18,15 @@
         <div class="col-md-6">
             <h1>List of Gym Items</h1>
             <ol id="orderedList">
-
+                <% for(let item of items) {%>
+                    <li>
+                        <div class="row align-items-center">
+                            <div class="col-md-2 col-sm text-md">
+                                <%= item.item_name%>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
             </ol>
         </div>
     </div>

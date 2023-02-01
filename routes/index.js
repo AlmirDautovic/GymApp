@@ -86,7 +86,8 @@ router.get('/contact', async (req, res) => {
 });
 
 router.get('/gymequipment', async (req, res) => {
-    res.render('gymequipment');
+    const items = await Item.find({});
+    res.render('gymequipment', { items });
 });
 
 router.post('/gymequipment', async (req, res) => {
