@@ -3,6 +3,7 @@ body {
     width: 100%;
     color: #7A7A7A;
     left: -271.5px;
+    font-family: "Libre Franklin", sans-serif;
 }
 
 body.container {
@@ -1164,4 +1165,58 @@ textarea:focus {
     width: 420px;
     float: left;
     position: relative;
+}
+
+.imagePost a {
+    position: relative;
+    height: 100%;
+}
+
+.imagePost img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+    width: auto;
+}
+
+.blogTextFixer {
+    margin-left: 420px;
+    padding: 40px;
+}
+
+.blogDate {
+    font-size: .778em;
+    color: #A7A7A7;
+    line-height: 1.7;
+    font-family: "Libre Franklin", sans-serif;
+}
+
+.blogDate+h2.blogPostTitle {
+    padding-top: 0.5em;
+}
+
+h2.blogPostTitle {
+    color: #222;
+    font-size: 1.57em;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+h2 a {
+    color: rgba(50, 50, 50, 1);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+h2 a:hover {
+    color: rgba(100, 100, 100, 1);
+    transition: "background-color" .5s, color .5s;
+    text-decoration: underline;
+}
+
+.blogTextFixer>h2 {
+    padding: 1.5em 0 0.5em;
+    margin: 0;
 }
