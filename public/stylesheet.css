@@ -1096,3 +1096,72 @@ textarea:focus {
 #orderedList {
     padding-left: 16px;
 }
+
+/* Blog Page */
+
+.blogHeader {
+    height: 235px;
+    width: 100%;
+    margin-top: -30px;
+}
+
+.blogHeaderContainer {
+    padding: 40px 150px;
+}
+
+.blogTitleWrapper {
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.blogTitleWrapper h1 {
+    color: rgba(51, 51, 51, 1);
+    font-size: 60px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+#blogcontent {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.blogLimiter {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.blogWrapper {
+    /* max-width: 1920px; */
+    float: none;
+    position: static;
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.containAll {
+    position: relative;
+    height: 2589.05px;
+    margin-right: -35px;
+    font-size: 14px;
+    color: rgba(85, 85, 85, 1);
+}
+
+.blogPostContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: calc(100% - 35px);
+    background-color: rgba(255, 255, 255, 1);
+    float: left;
+}
+
+.imagePost {
+    width: 420px;
+    float: left;
+    position: relative;
+}

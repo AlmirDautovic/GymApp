@@ -93,13 +93,17 @@ router.get('/gymequipment', async (req, res) => {
 router.post('/gymequipment', async (req, res) => {
     const item = new Item(req.body);
     await item.save();
-    console.log(item.item_name);
     res.status(201).send(item);
-})
+});
 
 router.get('/gymitem', async (req, res) => {
     const items = await Item.find({});
     res.json(items)
-})
+});
+
+router.get('/blog', async (req, res) => {
+    res.render('blog');
+});
+
 
 module.exports = router;
