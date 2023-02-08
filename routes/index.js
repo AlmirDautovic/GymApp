@@ -40,9 +40,13 @@ router.get('/users/new', (req, res) => {
 })
 
 router.post('/users/index', async (req, res) => {
-    const newUser = new User(req.body);
-    await newUser.save();
-    res.redirect(`/users/${newUser._id}`);
+    const { profile_image } = req.files;
+    if (!profile_image) return res.sendStatus(400);
+
+    // const newUser = new User(req.body);
+    // await newUser.save();
+    // res.redirect(`/users/${newUser._id}`);
+    res.sendStatus(200);
 });
 
 router.get('/users/json', async (req, res) => {

@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
     <div class="container">
         <h1>Create Account</h1>
-        <form action="/users/index" method="POST">
+        <form action="/users/index" method="POST" enctype="multipart/form-data">
             <div class="mb-3 col-md-4">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -18,8 +18,8 @@
                 </select>
             </div>
             <div class="mb-3 col-md-4">
-                <label for="formFile" class="form-label">Upload Image</label>
-                <input class="form-control" type="file" id="formFile">
+                <label for="profile_image" class="form-label">Upload Image</label>
+                <input class="form-control" type="file" id="profile_image" name="profile_image">
             </div>
             <button class="btn btn-success">Register</button>
         </form>

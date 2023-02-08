@@ -2,9 +2,10 @@ const express = require("express");
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 const path = require('path');
-const app = express();
+const fileUpload = require('express-fileupload');
 var routes = require('./routes/index');
 const methodOverride = require('method-override');
+const app = express();
 
 mongoose.connect('mongodb://127.0.0.1/GymApp', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use(fileUpload());
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
