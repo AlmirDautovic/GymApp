@@ -42,7 +42,8 @@ router.get('/users/new', (req, res) => {
 router.post('/users/index', async (req, res) => {
     const { profile_image } = req.files;
     if (!profile_image) return res.sendStatus(400);
-
+    profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
+    console.log(profile_image, req.body)
     // const newUser = new User(req.body);
     // await newUser.save();
     // res.redirect(`/users/${newUser._id}`);
