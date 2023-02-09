@@ -1,5 +1,3 @@
-bsCustomFileInput.init() //for custom bootstrap file input
-
 // part of code for changing to dark or white background on home page:
 
 var switcher = document.getElementById('switch');

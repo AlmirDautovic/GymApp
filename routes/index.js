@@ -40,15 +40,19 @@ router.get('/users/new', (req, res) => {
 })
 
 router.post('/users/index', async (req, res) => {
-    const { profile_image } = req.files;
-    if (!profile_image) return res.sendStatus(400);
-    profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
-    const newUser = new User(req.body);
-    console.log(profile_image.name, req.body)
-    newUser.profile_image = profile_image.name
+    // if (!profile_image) return res.sendStatus(400);
+    var newUser;
+    if (req.files == null) {
+        newUser = new User({ "username": req.body.username, "password": req.body.password, "status": req.body.status, "profile_image": "np_profile_img.jpg" });
+    } else {
+        const { profile_image } = req.files;
+        profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
+        newUser = new User(req.body);
+        newUser.profile_image = profile_image.name
+    }
     await newUser.save();
-    // res.redirect(`/users/${newUser._id}`);
-    res.sendStatus(200);
+    res.redirect(`/users/${newUser._id}`);
+    // res.sendStatus(200);
 });
 
 router.get('/users/json', async (req, res) => {
