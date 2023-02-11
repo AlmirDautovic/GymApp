@@ -112,8 +112,16 @@ router.get('/gymitem', async (req, res) => {
 });
 
 router.get('/blog', async (req, res) => {
-    res.render('blog');
+    res.render('blog/blogPage');
 });
+
+router.get('/newpost', async (req, res) => {
+    res.render('blog/blogForm')
+});
+
+router.post('/blog', async (req, res) => {
+    res.send('Posted')
+})
 
 
 module.exports = router;

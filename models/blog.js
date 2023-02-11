@@ -13,6 +13,10 @@ const blogSchema = new Schema({
     post: {
         type: String,
         required: true
+    },
+    post_title: {
+        type: String,
+        regured: true
     }
 });
 
