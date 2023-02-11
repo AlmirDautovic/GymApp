@@ -10,214 +10,35 @@
         <div class="blogLimiter">
             <div class="blogWrapper">
                 <div class="containAll">
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog1.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>June 10, 2020</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">REVIEW OF BT MEN CORE FIT SS SHIRT BLACK, MOMENTUM TRACKSUIT JOGGER
-                                    BLACK,
-                                    AND
-                                    CORE FIT TANK STONE
+                    <% for(let blog of blogs) {%>
+                        <div class="blogPostContainer">
+                            <div class="imagePost">
+                                <a href="#">
+                                    <img width="420" src="/public/images/blog/<%=blog.blog_image%>" alt="">
                                 </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>For https://www.saultfitness.com I was glad to recieve Born Tough Men T-Shirt
-                                    tank
-                                    top
-                                    and tracksuit jogger pants and today we're going to review these. I already
-                                    am...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
+                            </div>
+                            <div class="blogTextFixer">
+                                <div class="blogDate">
+                                    <time>
+                                        <%=blog.blog_date%>
+                                    </time>
+                                </div>
+                                <h2 class="blogPostTitle">
+                                    <a href="#">
+                                        <%=blog.post_title%>
+                                    </a>
+                                </h2>
+                                <div class="blogPostBody">
+                                    <p>
+                                        <%=blog.post%>...
+                                    </p>
+                                    <p>
+                                        <a href="#">Read more</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog2.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>April 19, 2019</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">SAFE STRETCHING: 5 TIPS TO IMPROVE FLEXIBILITY
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>Streching is an often neglected, but seriously important aspect of your exercize
-                                    routine.
-                                    Increased flexibility improves balance, decreases injury risk, and improves joint
-                                    range of motion. This...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>February 27, 2019</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">IS IT EVER TOO LATE TO START EXERCIZING? HEALTHY LIFESTYLE TRANSITIONS FOR
-                                    OLDER ADULTS
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>Despite the fact that the Department of Health and Human Services recommends all
-                                    adults
-                                    get at least 150 minutes of moderate aerobic exercize per week, more than...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog4.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>january 17, 2019</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">EXERCIZES TO STRENGTHEN YOUR LOWER BACK AND CORE AT HOME
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>Did you know that spinal-strengthening exercizes can help prevent back injuries AND
-                                    reduce back pain that you already have? Your "core" muscles
-                                    (the muscles in your abdomen...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog5.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>October 29, 2018</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">FROM, STUFFED TO SATISFIED: 8 SIMPLE TRICKS TO STOP OVEREATING
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>If you are struggling to lose weight, it's very likely that you are overeating. Your
-                                    stomach holds about 4 liters of volume, but it doesn't necesarrily need...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog6.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>August 13, 2018</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">IS CHRONIC INFLAMMATION STOPPING YOU FROM LOSING WEIGHT?
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>Inflammation is the body's response to injury or sickness; it protects the body and
-                                    stimulates the healing process. However, many people experience chronic
-                                    inflammation, which can...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog7.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>June 20, 2018</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">HOW TO EXCERCISE WHEN YOU HAVE JOINT PAIN (OR) HOW TO RELIEVE MUSCLE
-                                    TIGHTNESS & JOINT PAIN
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>Many people, especially older adults, are relucant to start exercising because they
-                                    have
-                                    joint pains and are afraid of injuring themselves. Countless times I've heared
-                                    "I'd love...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blogPostContainer">
-                        <div class="imagePost">
-                            <a href="#">
-                                <img width="420" src="/public/images/blog/blog8.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blogTextFixer">
-                            <div class="blogDate">
-                                <time>April 29, 2018</time>
-                            </div>
-                            <h2 class="blogPostTitle">
-                                <a href="#">LIFTING WEIGHT TO LOSE WEIGHT? - WHY HEAVY LIFTING WON'T MAKE YOU BULKY
-                                </a>
-                            </h2>
-                            <div class="blogPostBody">
-                                <p>Many of our weightloss focused clients, especially women, express the concern that
-                                    lifting heavy
-                                    weights will make them look "bulky". They bekieve that lifting heavy weights will...
-                                </p>
-                                <p>
-                                    <a href="#">Read more</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        <% } %>
 
                 </div>
             </div>

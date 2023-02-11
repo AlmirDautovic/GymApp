@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const blogSchema = new Schema({
-    blogImage: {
+    blog_image: {
         type: String,
-        default: blog_photo
+        default: 'blog_image.jpg'
     },
     date: {
         type: String,

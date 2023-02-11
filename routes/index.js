@@ -1,6 +1,7 @@
 const express = require("express");
 const Item = require("../models/item");
 const User = require('../models/user');
+const Blog = require('../models/blog')
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -112,16 +113,20 @@ router.get('/gymitem', async (req, res) => {
 });
 
 router.get('/blog', async (req, res) => {
-    res.render('blog/blogPage');
+    const blogs = await Blog.find({});
+    res.render('blog/blogPage', { blogs });
+    // console.log(blogs.date)
 });
 
 router.get('/newpost', async (req, res) => {
-    res.render('blog/blogForm')
+    res.render('blog/blogForm');
 });
 
 router.post('/blog', async (req, res) => {
-    res.send('Posted')
-})
+    const post = new Blog(req.body);
+    await post.save();
+    res.redirect('/blog');
+});
 
 
 module.exports = router;
