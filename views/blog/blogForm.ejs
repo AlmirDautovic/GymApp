@@ -1,19 +1,23 @@
 <% layout('layouts/boilerplate') %>
-    <div class="container">
-        <h1>Create Blog Post</h1>
-        <form action="/blog" method="POST">
-            <div class="mb-3 col-md-4">
-                <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            <div class="mb-3 col-md-4">
-                <label for="post_title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="post_title" name="post_title" required>
-            </div>
-            <div class="mb-3 col-md-4">
-                <label for="post" class="form-label">Add your Text</label>
-                <textarea rows="5" class="form-control" id="post" name="post" required></textarea>
-            </div>
-            <button class="btn btn-success">Post</button>
-        </form>
+    <div class="container justify-content-center">
+        <div class="row">
+            <h1 class="text-center mb-3">Create Blog Post</h1>
+            <form class="col-sm-12 col-md" action="/blog" method="POST">
+                <div class="mb-3 col-md-4 mx-auto">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="mb-3 col-md-4 mx-auto">
+                    <label for="post_title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="post_title" name="post_title" required>
+                </div>
+                <div class="mb-3 col-md-4 mx-auto">
+                    <label for="post" class="form-label">Add your Text</label>
+                    <textarea rows="5" class="form-control" id="post" name="post" required></textarea>
+                </div>
+                <div class="col-md-4 mx-auto text-end">
+                    <button class="btn btn-success">Post</button>
+                </div>
+            </form>
+        </div>
     </div>
