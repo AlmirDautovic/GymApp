@@ -1,4 +1,4 @@
-// part of code for changing to dark or white background on home page:
+//code for changing to dark or white background on home page:
 
 var switcher = document.getElementById('switch');
 if (switcher != null) {
@@ -63,7 +63,7 @@ function deleteUser(id) {
             console.log('ERROR!', error)
         }
     }
-    xhr.send()
+    xhr.send();
 };
 
 function createContent() {
@@ -79,14 +79,14 @@ function createContent() {
             h1.innerText = "List of all users:"
             ul.innerHTML = getHtmlForListOfUsers(users)
         } else {
-            console.error(users)
+            console.error(users);
         }
     }
-    xhr.send()
+    xhr.send();
 }
 
 function getUser(element) {
-    deleteUser(element.value)
+    deleteUser(element.value);
 }
 
 function removeOneUser(id) {
@@ -97,19 +97,19 @@ function removeOneUser(id) {
             redirectAfterDelete();
         }
         else {
-            console.error(error)
+            console.error(error);
         }
     }
-    xhr.send(null)
+    xhr.send(null);
 }
 
 function redirectAfterDelete() {
     var url = "http://localhost:3000/";
-    var xhr = new XMLHttpRequest()
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true)
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
-            redirectPage()
+            redirectPage();
         } else {
             console.error(users);
         }
@@ -118,21 +118,21 @@ function redirectAfterDelete() {
 }
 
 function redirectPage() {
-    let baseUrl = window.location.origin
-    console.log(baseUrl)
+    let baseUrl = window.location.origin;
+    // console.log(baseUrl)
     window.location.replace(baseUrl + '/users'); // because it is impossible to redirect page with ajax req i used this 2 lines
     //of code to redirect with client side
 }
 
 function deleteOne(element) {
-    removeOneUser(element.value)
+    removeOneUser(element.value);
 }
 
 // Function for dimanically display content on user page after selecting user to: all, active or inactive
 
 function usersOnChange(value) {
     var url = "http://localhost:3000/users/change";
-    var xhr = new XMLHttpRequest()
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', url + "?status=" + value, true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.onload = function () {
@@ -190,8 +190,7 @@ function getHtmlForListOfUsers(users) {
 
 function getStatusValue(selectValue) {
     var value = selectValue.value;
-    console.log(value)
-    usersOnChange(value)
+    usersOnChange(value);
 }
 
 // gym equipment page
@@ -224,7 +223,7 @@ function getGymItems() {
         var items = JSON.parse(xhr.responseText);
         var ol = document.getElementById('orderedList');
         if (xhr.readyState == 4 && xhr.status == '200') {
-            ol.innerHTML = createListOfItems(items)
+            ol.innerHTML = createListOfItems(items);
         } else {
             console.error(items);
         }
@@ -232,10 +231,8 @@ function getGymItems() {
     xhr.send();
 }
 
-
 function createListOfItems(items) {
     var content = '';
-    console.log(items)
     for (let item of items) {
         content +=
             '<li>' +
@@ -246,6 +243,7 @@ function createListOfItems(items) {
     };
     return content;
 }
+
 function displayItems() {
     postGymItem();
     document.getElementById('item_name').value = ''
