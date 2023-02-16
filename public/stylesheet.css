@@ -1269,7 +1269,7 @@ h2 a:hover {
     padding: 0.85em 0;
     line-height: 1.7;
     font-family: "Libre Franklin", sans-serif;
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 14px;
     color: rgba(85, 85, 85, 1);
 }
@@ -1282,7 +1282,7 @@ p a {
     font-weight: 800;
     color: #565656;
     font-weight: 700;
-    font-family: "Libre Franklin", sans-serif;
+    font-family: sans-serif;
 }
 
 p a:hover {

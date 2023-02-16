@@ -118,13 +118,15 @@ router.get('/blog', async (req, res) => {
     // console.log(blogs.date)
 });
 
-router.get('/newpost', async (req, res) => {
+router.get('/blog/new', async (req, res) => {
     res.render('blog/blogForm');
 });
 
 router.post('/blog', async (req, res) => {
-    const post = new Blog(req.body);
-    await post.save();
+    const content = new Blog(req.body);
+    console.log(content)
+    content.blog_content = content.blog_content.slice(0, 135);
+    await content.save();
     res.redirect('/blog');
 });
 

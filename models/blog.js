@@ -10,11 +10,11 @@ const blogSchema = new Schema({
         type: String,
         reqired: true
     },
-    post: {
+    blog_content: {
         type: String,
         required: true
     },
-    post_title: {
+    blog_title: {
         type: String,
         regured: true
     }
