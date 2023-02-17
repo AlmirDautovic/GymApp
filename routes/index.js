@@ -41,7 +41,6 @@ router.get('/users/new', (req, res) => {
 })
 
 router.post('/users/index', async (req, res) => {
-    // if (!profile_image) return res.sendStatus(400);
     var newUser;
     if (req.files == null) {
         newUser = new User({ "username": req.body.username, "password": req.body.password, "status": req.body.status, "profile_image": "np_profile_img.jpg" });
@@ -53,7 +52,6 @@ router.post('/users/index', async (req, res) => {
     }
     await newUser.save();
     res.redirect(`/users/${newUser._id}`);
-    // res.sendStatus(200);
 });
 
 router.get('/users/json', async (req, res) => {
@@ -112,20 +110,22 @@ router.get('/gymitem', async (req, res) => {
     res.json(items)
 });
 
-router.get('/blog', async (req, res) => {
+router.get('/blogs', async (req, res) => {
     const blogs = await Blog.find({});
+
+    for (let blog of blogs) {
+        blog.blog_content = blog.blog_content.slice(0, 160);
+    }
     res.render('blog/blogPage', { blogs });
-    // console.log(blogs.date)
+
 });
 
-router.get('/blog/new', async (req, res) => {
+router.get('/blogs/new', async (req, res) => {
     res.render('blog/blogForm');
 });
 
-router.post('/blog', async (req, res) => {
+router.post('/blogs', async (req, res) => {
     const content = new Blog(req.body);
-    console.log(content)
-    content.blog_content = content.blog_content.slice(0, 135);
     await content.save();
     res.redirect('/blog');
 });
