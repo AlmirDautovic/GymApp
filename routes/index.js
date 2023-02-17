@@ -3,6 +3,8 @@ const Item = require("../models/item");
 const User = require('../models/user');
 const Blog = require('../models/blog')
 const router = express.Router();
+const path = require('path');
+
 
 router.get('/', (req, res) => {
     res.render('home');
@@ -43,7 +45,10 @@ router.get('/users/new', (req, res) => {
 router.post('/users/index', async (req, res) => {
     var newUser;
     if (req.files == null) {
-        newUser = new User({ "username": req.body.username, "password": req.body.password, "status": req.body.status, "profile_image": "np_profile_img.jpg" });
+        newUser = new User({
+            "username": req.body.username, "password": req.body.password,
+            "status": req.body.status, "profile_image": "np_profile_img.jpg"
+        });
     } else {
         const { profile_image } = req.files;
         profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
@@ -112,7 +117,6 @@ router.get('/gymitem', async (req, res) => {
 
 router.get('/blogs', async (req, res) => {
     const blogs = await Blog.find({});
-
     for (let blog of blogs) {
         blog.blog_content = blog.blog_content.slice(0, 160);
     }
@@ -125,10 +129,21 @@ router.get('/blogs/new', async (req, res) => {
 });
 
 router.post('/blogs', async (req, res) => {
-    const content = new Blog(req.body);
-    await content.save();
-    res.redirect('/blog');
-});
+    var newBlog;
+    var blog_image = 'blog_image.jpg';
+    if (req.files != null) {
+        var { blog_image } = req.files;
+        const blog_imagePath = path.join('public', 'images', 'blog', `${blog_image.name}`);
+        blog_image.mv(blog_imagePath, err => {
+            if (err) return res.status(500).send(err);
+        })
+        blog_image = blog_image.name
+    }
+    newBlog = new Blog(req.body);
+    newBlog.blog_image = blog_image;
 
+    await newBlog.save();
+    res.redirect('/blogs');
+});
 
 module.exports = router;

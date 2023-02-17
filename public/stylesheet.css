@@ -1147,7 +1147,8 @@ textarea:focus {
 
 .containAll {
     position: relative;
-    height: 2589.05px;
+    overflow-y: hidden;
+    height: auto;
     margin-right: -35px;
     font-size: 14px;
     color: rgba(85, 85, 85, 1);
