@@ -3,6 +3,7 @@ const Item = require("../models/item");
 const User = require('../models/user');
 const Blog = require('../models/blog')
 const router = express.Router();
+const users = require('../controllers/users');
 const path = require('path');
 
 
@@ -10,19 +11,7 @@ router.get('/', (req, res) => {
     res.render('home');
 });
 
-router.get('/users', async (req, res) => {
-    const { status } = req.query;
-    var users;
-    if (status == 'true') {
-        users = await User.find({ status });
-    } else if (status == "false") {
-        users = await User.find({ status: { $ne: true } });
-    }
-    else {
-        users = await User.find({});
-    }
-    res.render('users/index', { users });
-});
+router.get('/users', users.displayAllUsers);
 
 router.get('/users/change', async (req, res) => {
     const { status } = req.query;
