@@ -1,108 +1,42 @@
 const express = require("express");
-const Item = require("../models/item");
-const User = require('../models/user');
 const Blog = require('../models/blog')
 const router = express.Router();
 const users = require('../controllers/users');
+const gymItem = require('../controllers/gymEquipment');
 const path = require('path');
 
 
-router.get('/', (req, res) => {
-    res.render('home');
-});
+router.get('/', users.renderHomePage);
 
 router.get('/users', users.displayAllUsers);
 
-router.get('/users/change', async (req, res) => {
-    const { status } = req.query;
-    var users;
-    if (status == 'true') {
-        users = await User.find({ status });
-    } else if (status == "false") {
-        users = await User.find({ status: { $ne: true } });
-    }
-    else {
-        users = await User.find({});
-    }
-    res.json(users)
-});
+router.get('/users/change', users.getSelectedUsers);
 
-router.get('/users/new', (req, res) => {
-    res.render('users/new')
-})
+router.get('/users/new', users.renderNewForm);
 
-router.post('/users/index', async (req, res) => {
-    var newUser;
-    if (req.files == null) {
-        newUser = new User({
-            "username": req.body.username, "password": req.body.password,
-            "status": req.body.status, "profile_image": "np_profile_img.jpg"
-        });
-    } else {
-        const { profile_image } = req.files;
-        profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
-        newUser = new User(req.body);
-        newUser.profile_image = profile_image.name
-    }
-    await newUser.save();
-    res.redirect(`/users/${newUser._id}`);
-});
+router.post('/users/index', users.createNewUser);
 
-router.get('/users/json', async (req, res) => {
-    const { id } = req.query;
-    const users = await User.find({ _id: { $ne: id } }, { username: 1, status: 1, profile_image: 1 });
-    res.json(users);
-});
+router.get('/users/json', users.ajaxUsers);
 
-router.delete('/users/delete', async (req, res) => {
-    const { id } = req.query;
-    const deletedUser = await User.findByIdAndDelete(id);
-    res.json({});
-})
+router.get('/users/:id', users.getSelectedUser);
 
-router.get('/users/:id', async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    res.render('users/show', { user });
-});
+router.get('/users/:id/edit', users.renderEditForm);
 
-router.get('/users/:id/edit', async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    res.render('users/edit', { user })
-});
+router.put('/users/:id', users.editUser);
 
-router.put('/users/:id', async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, req.body, { runValidators: true });
-    res.redirect(`/users/${user._id}`);
-});
+router.delete('/users/delete', users.deleteUserAjax);
 
-router.delete('/users/:id', async (req, res) => {
-    const { id } = req.params;
-    const deletedUser = await User.findByIdAndDelete(id);
-    res.redirect('/users');
-});
+router.delete('/users/:id', users.deleteUser);
 
 router.get('/contact', async (req, res) => {
     res.render('contact');
 });
 
-router.get('/gymequipment', async (req, res) => {
-    const items = await Item.find({});
-    res.render('gymequipment', { items });
-});
+router.get('/gymequipment', gymItem.renderGymItemPage);
 
-router.post('/gymequipment', async (req, res) => {
-    const item = new Item(req.body);
-    await item.save();
-    res.status(201).send(item);
-});
+router.post('/gymequipment', gymItem.createItem);
 
-router.get('/gymitem', async (req, res) => {
-    const items = await Item.find({});
-    res.json(items)
-});
+router.get('/gymitem', gymItem.displayItem);
 
 router.get('/blogs', async (req, res) => {
     const blogs = await Blog.find({});
