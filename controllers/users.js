@@ -4,6 +4,10 @@ module.exports.renderHomePage = (req, res) => {
     res.render('home');
 };
 
+module.exports.renderContactForm = async (req, res) => {
+    res.render('contact');
+};
+
 module.exports.displayAllUsers = async (req, res) => {
     const { status } = req.query;
     var users;

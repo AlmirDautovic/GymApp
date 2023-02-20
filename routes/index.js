@@ -27,9 +27,7 @@ router.delete('/users/delete', users.deleteUserAjax);
 
 router.delete('/users/:id', users.deleteUser);
 
-router.get('/contact', async (req, res) => {
-    res.render('contact');
-});
+router.get('/contact', users.renderContactForm);
 
 router.get('/gymequipment', gymItem.renderGymItemPage);
 

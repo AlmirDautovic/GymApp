@@ -7,7 +7,6 @@ module.exports.renderBlogPage = async (req, res) => {
         blog.blog_content = blog.blog_content.slice(0, 160);
     }
     res.render('blog/blogPage', { blogs });
-
 };
 
 module.exports.renderBlogForm = async (req, res) => {
