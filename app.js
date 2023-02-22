@@ -1,6 +1,7 @@
 const express = require("express");
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const path = require('path');
 const fileUpload = require('express-fileupload');
 var routes = require('./routes/index');
@@ -21,6 +22,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(fileUpload());
+
+const sessionConfig = {
+    secret: 'omladinka',
+    resave: false,
+    saveUninitialized: true
+};
+app.use(session(sessionConfig));
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
