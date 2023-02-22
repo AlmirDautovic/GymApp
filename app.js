@@ -26,7 +26,12 @@ app.use(fileUpload());
 const sessionConfig = {
     secret: 'omladinka',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
 };
 app.use(session(sessionConfig));
 
