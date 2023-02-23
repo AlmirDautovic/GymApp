@@ -262,4 +262,19 @@ if (document.getElementById("date") != null) {
 
     var today = year + "-" + month + "-" + day;
     document.getElementById("date").value = today;
+};
+
+// search user option:
+
+async function getUser() {
+    try {
+        const response = await axios.get('http://localhost:3000/users/search');
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 }
+
+axios.get('http://localhost:3000/users/search')
+    .then(data => console.log(data))
+    .catch(err => console.log(err))

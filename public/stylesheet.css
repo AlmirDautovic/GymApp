@@ -1217,7 +1217,7 @@ textarea:focus {
 }
 
 .imagePost img {
-    height: auto;
+    max-height: 236px;
     margin: 0 auto;
     max-width: 100%;
     width: auto;
@@ -1289,4 +1289,15 @@ p a {
 p a:hover {
     text-decoration: underline;
     color: #565656;
+}
+
+/* ul on users page*/
+
+#userList {
+    padding-left: 0;
+}
+
+.search_input input:focus {
+    border-color: #ced4da;
+    box-shadow: none;
 }

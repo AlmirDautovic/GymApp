@@ -13,6 +13,8 @@ router.get('/users/change', users.getSelectedUsers);
 
 router.get('/users/new', users.renderNewForm);
 
+router.get('/users/search', users.searchUsers);
+
 router.post('/users/index', users.createNewUser);
 
 router.get('/users/json', users.ajaxUsers);

@@ -4,7 +4,7 @@ module.exports.renderHomePage = (req, res) => {
     res.render('home');
 };
 
-module.exports.renderContactForm = async (req, res) => {
+module.exports.renderContactForm = (req, res) => {
     res.render('contact');
 };
 
@@ -35,6 +35,11 @@ module.exports.getSelectedUsers = async (req, res) => {
     }
     res.json(users)
 };
+
+module.exports.searchUsers = async (req, res) => {
+    const users = await User.find({})
+    res.json(users)
+}
 
 module.exports.renderNewForm = (req, res) => {
     res.render('users/new')

@@ -4,6 +4,13 @@
             <div class="row ">
                 <div class=" col-sm col-md-10">
                     <h1 id="allusers">List of all users: </h1>
+                    <div class="col-sm col-md-8 mt-3 mb-5">
+                        <div class="input-group mb-3 search_input">
+                            <input type="text" class="form-control" placeholder="Enter username"
+                                aria-label="Enter usernam" aria-describedby="searchButton">
+                            <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+                        </div>
+                    </div>
                     <div class="col">
                         <ul id="userList">
                             <% for(let user of users) {%>
