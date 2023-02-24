@@ -266,15 +266,18 @@ if (document.getElementById("date") != null) {
 
 // search user option:
 
-async function getUser() {
-    try {
-        const response = await axios.get('http://localhost:3000/users/search');
-        console.log(response);
-    } catch (error) {
-        console.error(error);
+
+function getSearchResults() {
+    const searchedName = document.getElementById('search_input').value;
+    console.log(searchedName)
+    if (searchedName != '') {
+        document.getElementById('search_allert').hidden = true;
+        axios.get('http://localhost:3000/users/search')
+            .then(res => console.log(res),
+                console.log(searchedName)
+            )
+            .catch(err => console.log(err))
+    } else {
+        document.getElementById('search_allert').removeAttribute('hidden')
     }
 }
-
-axios.get('http://localhost:3000/users/search')
-    .then(data => console.log(data))
-    .catch(err => console.log(err))

@@ -6,9 +6,15 @@
                     <h1 id="allusers">List of all users: </h1>
                     <div class="col-sm col-md-8 mt-3 mb-5">
                         <div class="input-group mb-3 search_input">
-                            <input type="text" class="form-control" placeholder="Enter username"
-                                aria-label="Enter usernam" aria-describedby="searchButton">
-                            <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+                            <input type="text" id="search_input" class="form-control" placeholder="Enter username"
+                                aria-label="Enter username" aria-describedby="searchButton">
+                            <button class="btn btn-outline-secondary" type="button" id="searchButton"
+                                onclick="getSearchResults()">Search</button>
+                        </div>
+                        <div class="col-sm col-md mt-3">
+                            <div class="alert alert-danger" role="alert" id="search_allert" hidden>
+                                Invalid action! Please insert valid user name, ex. "John Smith"
+                            </div>
                         </div>
                     </div>
                     <div class="col">
