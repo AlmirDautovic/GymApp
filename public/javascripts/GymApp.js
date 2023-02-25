@@ -1,5 +1,6 @@
 //code for changing to dark or white background on home page:
 
+
 var switcher = document.getElementById('switch');
 if (switcher != null) {
     switcher.addEventListener('change', function onChange(event) {
@@ -154,6 +155,7 @@ function usersOnChange(value) {
 function getHtmlForListOfUsers(users) {
     var content = '';
     for (let user of users) {
+        document.getElementById('search_input').value = '';
         let active = '';
         let profile_picture_path = '/public/images/profile/';
         if (user.status) {
@@ -268,14 +270,21 @@ if (document.getElementById("date") != null) {
 
 
 function getSearchResults() {
-    const searchedName = document.getElementById('search_input').value;
-    console.log(searchedName)
+    var searchedName = document.getElementById('search_input').value;
+    var ul = document.getElementById('userList');
+    ul.innerHTML = '';
     if (searchedName != '') {
         document.getElementById('search_allert').hidden = true;
-        axios.get('http://localhost:3000/users/search')
-            .then(res => console.log(res),
-                console.log(searchedName)
-            )
+        axios.get('http://localhost:3000/users/search', { params: { username: searchedName } })
+            .then(res => {
+                ul.innerHTML = getHtmlForListOfUsers(res.data);
+                document.getElementById('searchElement').hidden = true;
+                if (res.data.length != 0) {
+                    document.getElementById('allusers').innerHTML = "User found";
+                } else {
+                    document.getElementById('allusers').innerHTML = "No match"
+                }
+            })
             .catch(err => console.log(err))
     } else {
         document.getElementById('search_allert').removeAttribute('hidden')

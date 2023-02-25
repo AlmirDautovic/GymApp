@@ -37,9 +37,10 @@ module.exports.getSelectedUsers = async (req, res) => {
 };
 
 module.exports.searchUsers = async (req, res) => {
-    const users = await User.find({})
-    console.log(req.body)
-    console.log(req.params)
+    const { username } = req.query;
+    const users = await User.find({ username: { $eq: username } })
+    // console.log(username)
+    // console.log(users)
     res.json(users)
 }
 
