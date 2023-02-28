@@ -280,7 +280,7 @@ function getSearchResults() {
                 ul.innerHTML = getHtmlForListOfUsers(res.data);
                 document.getElementById('searchElement').hidden = true;
                 if (res.data.length != 0) {
-                    document.getElementById('allusers').innerHTML = "User found";
+                    document.getElementById('allusers').innerHTML = "Match found";
                 } else {
                     document.getElementById('allusers').innerHTML = "No match"
                 }

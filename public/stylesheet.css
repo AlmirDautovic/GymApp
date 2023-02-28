@@ -1220,7 +1220,6 @@ textarea:focus {
     max-height: 236px;
     margin: 0 auto;
     max-width: 100%;
-    width: auto;
 }
 
 .blogTextFixer {
