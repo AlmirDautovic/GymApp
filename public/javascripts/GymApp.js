@@ -271,19 +271,19 @@ if (document.getElementById("date") != null) {
 
 function getSearchResults() {
     var searchedName = document.getElementById('search_input').value;
-    var ul = document.getElementById('userList');
-    ul.innerHTML = '';
+    var userListElement = document.getElementById('userList');
+    userListElement.innerHTML = '';
     if (searchedName != '') {
         document.getElementById('search_allert').hidden = true;
         axios.get('http://localhost:3000/users/search', { params: { username: searchedName } })
             .then(res => {
-                ul.innerHTML = getHtmlForListOfUsers(res.data);
-                document.getElementById('searchElement').hidden = true;
-                if (res.data.length != 0) {
-                    document.getElementById('allusers').innerHTML = "Match found";
-                } else {
-                    document.getElementById('allusers').innerHTML = "No match"
-                }
+                userListElement.innerHTML = getHtmlForListOfUsers(res.data);
+                // document.getElementById('searchElement').hidden = true;
+                // if (res.data.length != 0) {
+                //     document.getElementById('allusers').innerHTML = "Match found";
+                // } else {
+                //     document.getElementById('allusers').innerHTML = "No match"
+                // }
             })
             .catch(err => console.log(err))
     } else {
