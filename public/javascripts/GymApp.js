@@ -266,8 +266,8 @@ if (document.getElementById("date") != null) {
     document.getElementById("date").value = today;
 };
 
-// search user option:
 
+// search user option:
 
 function getSearchResults() {
     var searchedName = document.getElementById('search_input').value;

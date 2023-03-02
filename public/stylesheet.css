@@ -1300,3 +1300,8 @@ p a:hover {
     border-color: #ced4da;
     box-shadow: none;
 }
+
+/* pagination */
+.pagination li:first-of-type {
+    margin-top: 10px;
+}
