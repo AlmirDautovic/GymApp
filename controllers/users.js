@@ -10,6 +10,11 @@ module.exports.renderContactForm = (req, res) => {
 
 module.exports.displayAllUsers = async (req, res) => {
     const { status } = req.query;
+    const page = 2;
+    const limit = 5;
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
     var users;
     if (status == 'true') {
         users = await User.find({ status });
@@ -19,7 +24,10 @@ module.exports.displayAllUsers = async (req, res) => {
     else {
         users = await User.find({});
     }
+    users = users.slice(startIndex, endIndex)
+    console.log(users)
     res.render('users/index', { users });
+    // res.json(users)
 };
 
 module.exports.getSelectedUsers = async (req, res) => {
