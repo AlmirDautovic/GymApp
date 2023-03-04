@@ -3,11 +3,12 @@ const router = express.Router();
 const users = require('../controllers/users');
 const gymItem = require('../controllers/gymEquipment');
 const blogs = require('../controllers/blogs');
+const User = require('../models/user')
 
 
 router.get('/', users.renderHomePage);
 
-router.get('/users', users.displayAllUsers);
+router.get('/users', paginatedResults(User), users.displayAllUsers);
 
 router.get('/users/change', users.getSelectedUsers);
 
@@ -42,5 +43,40 @@ router.get('/blogs', blogs.renderBlogPage);
 router.get('/blogs/new', blogs.renderBlogForm);
 
 router.post('/blogs', blogs.createNewBlogPost);
+
+function paginatedResults(model) {
+    return async (req, res, next) => {
+        const page = req.query.page ? parseInt(req.query.page) : 1;
+        const limit = 3;
+
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+
+        const results = {};
+
+        if (endIndex < await model.countDocuments().exec()) {
+            results.next = {
+                page: page + 1,
+                limit: limit
+            }
+            results.currentPage = page
+        };
+        if (startIndex > 0) {
+            results.previous = {
+                page: page - 1,
+                limit: limit
+            }
+            results.currentPage = page
+        }
+        try {
+            results.results = await model.find().limit(limit).skip(startIndex).exec();
+            results.pageNumber = Math.ceil(await model.countDocuments().exec() / limit)
+            res.paginatedResults = results
+            next()
+        } catch (e) {
+            res.status(500).json({ message: e.message })
+        }
+    }
+}
 
 module.exports = router;
