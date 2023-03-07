@@ -290,3 +290,26 @@ function getSearchResults() {
         document.getElementById('search_allert').removeAttribute('hidden')
     }
 }
+
+
+// Pagination :
+
+let buttons = document.querySelectorAll('.page-item');
+
+for (let button of buttons) {
+    button.addEventListener('click', function () {
+        let pageNumber = button.value;
+        var userListElement = document.getElementById('userList');
+        userListElement.innerHTML = '';
+        axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
+            .then(res => {
+                var users = res.data.results
+                console.log(users)
+                userListElement.innerHTML = getHtmlForListOfUsers(res.data.results)
+            })
+            .catch(err => console.log(err))
+    })
+}
+
+
+

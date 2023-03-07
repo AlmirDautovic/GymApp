@@ -83,18 +83,14 @@
                                                     </li>
                                                     <% } %>
                                                         <% if(!users.next) {%>
-                                                            <li class="page-item">
-                                                                <a class="page-link" href="#">Next</a>
+                                                            <li class="page-item disabled">
+                                                                <a class=" page-link" href="#">Next</a>
                                                             </li>
                                                             <% } else { %>
-                                                                <li class="page-item" value="<%=users.previous.page%>">
-                                                                    <a class="page-link" href="#"
-                                                                        tabindex="-1">Previous</a>
+                                                                <li class="page-item" value="<%=users.next.page%>">
+                                                                    <a class="page-link" href="#">Next</a>
                                                                 </li>
                                                                 <% } %>
-                                                                    <li class="page-item">
-                                                                        <a class="page-link" href="#">Next</a>
-                                                                    </li>
                                 </ul>
                             </nav>
                         </div>
