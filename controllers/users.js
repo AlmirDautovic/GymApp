@@ -22,14 +22,10 @@ module.exports.test = async (req, res) => {
     }
     // users = users.slice(startIndex, endIndex)
     users = res.paginatedResults
-    // for (let user of users.results) {
-    //     console.log(user.username)
-    // }
 
     var myIndex = users.pageNumber;
-    // res.render('users/index', { users, myIndex });
+
     console.log(users)
-    // console.log(users.results[1].username)
     res.json(users)
 };
 
@@ -44,13 +40,10 @@ module.exports.displayAllUsers = async (req, res) => {
     else {
         users = await User.find({});
     }
-    // users = users.slice(startIndex, endIndex)
     users = res.paginatedResults
 
     var myIndex = users.pageNumber;
     res.render('users/index', { users, myIndex });
-
-    // res.json(users)
 };
 
 module.exports.getSelectedUsers = async (req, res) => {
