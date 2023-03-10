@@ -151,7 +151,7 @@ function usersOnChange(value) {
     xhr.send();
 }
 
-//Function for dinamically creat content after deleting user on users page, or selecting users by their status on users page
+//Function for dinamically create content after deleting user on users page, or selecting users by their status on users page
 function getHtmlForListOfUsers(users) {
     var content = '';
     for (let user of users) {
@@ -223,9 +223,9 @@ function getGymItems() {
     xhr.open('GET', url, true);
     xhr.onload = function () {
         var items = JSON.parse(xhr.responseText);
-        var ol = document.getElementById('orderedList');
+        var itemList = document.getElementById('orderedList');
         if (xhr.readyState == 4 && xhr.status == '200') {
-            ol.innerHTML = createListOfItems(items);
+            itemList.innerHTML = createListOfItems(items);
         } else {
             console.error(items);
         }
@@ -278,12 +278,6 @@ function getSearchResults() {
         axios.get('http://localhost:3000/users/search', { params: { username: searchedName } })
             .then(res => {
                 userListElement.innerHTML = getHtmlForListOfUsers(res.data);
-                // document.getElementById('searchElement').hidden = true;
-                // if (res.data.length != 0) {
-                //     document.getElementById('allusers').innerHTML = "Match found";
-                // } else {
-                //     document.getElementById('allusers').innerHTML = "No match"
-                // }
             })
             .catch(err => console.log(err))
     } else {
@@ -296,20 +290,39 @@ function getSearchResults() {
 
 let buttons = document.querySelectorAll('.page-item');
 
-for (let button of buttons) {
-    button.addEventListener('click', function () {
-        let pageNumber = button.value;
-        var userListElement = document.getElementById('userList');
-        userListElement.innerHTML = '';
-        axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
-            .then(res => {
-                var users = res.data.results
-                console.log(users)
-                userListElement.innerHTML = getHtmlForListOfUsers(res.data.results)
-            })
-            .catch(err => console.log(err))
-    })
+// for (let button of buttons) {
+//     button.addEventListener('click', function () {
+//         let pageNumber = button.value;
+//         var userListElement = document.getElementById('userList');
+//         userListElement.innerHTML = '';
+//     axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
+//         .then(res => {
+//             var users = res.data.results
+//             console.log(res.data)
+//             userListElement.innerHTML = getHtmlForListOfUsers(res.data.results)
+//         })
+//         .catch(err => console.log(err))
+// })
+// }
+
+
+function pagination(element) {
+    let pageNumber = element.value;
+    console.log(pageNumber);
+    var userListElement = document.getElementById('userList');
+    userListElement.innerHTML = '';
+    axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
+        .then(res => {
+            var users = res.data.results
+            console.log(res.data)
+            userListElement.innerHTML = getHtmlForListOfUsers(users);
+        })
+        .catch(err => console.log(err))
 }
 
+function createButtons() {
+    var content = ''
+
+}
 
 
