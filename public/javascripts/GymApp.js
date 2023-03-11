@@ -288,41 +288,90 @@ function getSearchResults() {
 
 // Pagination :
 
-let buttons = document.querySelectorAll('.page-item');
-
-// for (let button of buttons) {
-//     button.addEventListener('click', function () {
-//         let pageNumber = button.value;
-//         var userListElement = document.getElementById('userList');
-//         userListElement.innerHTML = '';
-//     axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
-//         .then(res => {
-//             var users = res.data.results
-//             console.log(res.data)
-//             userListElement.innerHTML = getHtmlForListOfUsers(res.data.results)
-//         })
-//         .catch(err => console.log(err))
-// })
+// let buttons = document.getElementsByClassName('page-link');
+// function addActiveClass (res) {
+//     for (let button of buttons){
+//        let page = button.innerHTML ;
+//         if(page == res.data.currentPage) {
+//             button.classList.add('active')
+//         }
+//     }
 // }
-
 
 function pagination(element) {
     let pageNumber = element.value;
     console.log(pageNumber);
     var userListElement = document.getElementById('userList');
+    var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
+    displayNumbers.innerHTML = '';
     axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
         .then(res => {
             var users = res.data.results
             console.log(res.data)
             userListElement.innerHTML = getHtmlForListOfUsers(users);
+            displayNumbers.innerHTML = createButtons(res)
+            addActiveClass(res)
         })
         .catch(err => console.log(err))
 }
 
-function createButtons() {
-    var content = ''
-
+function createButtons(res) {
+    var content = '';
+    var previousDisable = '';
+    var nextDisable = '';
+    if(res.data.next == undefined){
+         nextDisable = 'disabled'
+    }
+    if( res.data.previous == undefined){
+         previousDisable = 'disabled'
+    }
+    content += 
+    `
+    <li class="page-item ${previousDisable}">
+    <button class="page-link" value=${res.data.currentPage - 1} onclick="pagination(this)" ${previousDisable}>Previous</button>
+    </li>
+    `
+    for(i = 1; i <= res.data.totalPageNumber; i++) {
+        content += 
+        `
+        <li class="page-item">
+        <button class="page-link" value=${i} onclick="pagination(this)">${i}</button>
+        </li>
+        `
+    }
+    content += 
+    `
+    <li class="page-item ${nextDisable}">
+    <button class="page-link" value=${res.data.currentPage + 1} onclick="pagination(this)" ${nextDisable}>Next</button>
+    </li>
+    `
+    return content;
 }
+
+
+                                    
+//  <li class="page-item">
+//   <button class="page-link" value="1" onclick="pagination(this)">Previous</button>
+//   </li> 
+/* <li class="page-item">
+ <button class="page-link" value="1" onclick="pagination(this)">1
+</button>
+</li> */
+ 
+// <li class="page-item">
+//    <button class="page-link" value="2" onclick="pagination(this)">
+//   2
+//  </button>
+//  </li>
+ 
+//    <li class="page-item">
+//   <button class="page-link" value="3" onclick="pagination(this)">
+//   3
+//  </button>
+//  </li>
+//   <li class="page-item">
+//  <button class="page-link" onclick="pagination(this)" value="3">Next</button>
+//  </li>
 
 

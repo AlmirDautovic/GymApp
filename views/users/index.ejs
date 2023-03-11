@@ -65,10 +65,10 @@
                                 <% } %>
                         </ul>
                         <div class="col-md-4 mt-5">
-                            <nav aria-label="Page navigation example">
+                            <nav>
                                 <ul class="pagination" id="pagination">
                                     <% if(!users.previous) {%>
-                                        <li class="page-item disabled" onclick="pagination(this)">
+                                        <li class="page-item disabled">
                                             <button class="page-link">Previous</button>
                                         </li>
                                         <% } else { %>
@@ -79,28 +79,30 @@
                                             <% } %>
                                                 <% for(let j=1; j<=myIndex ;j++ ) {%>
                                                     <li class="page-item">
-                                                        <button class="page-link" value="<%=j%>"
-                                                            onclick="pagination(this)">
-                                                            <%=j %>
-                                                        </button>
+                                                        <% if(j==1) {%>
+                                                            <button class="page-link active" value="<%=j%>"
+                                                                onclick="pagination(this)">
+                                                                <%=j %>
+                                                            </button>
+                                                            <% } else {%>
+                                                                <button class="page-link" value="<%=j%>"
+                                                                    onclick="pagination(this)">
+                                                                    <%=j %>
+                                                                </button>
+                                                                <% } %>
                                                     </li>
                                                     <% } %>
-                                                        <% if(!users.next) {%>
-                                                            <li class="page-item disabled">
-                                                                <button class="page-link">Next</button>
-                                                            </li>
-                                                            <% } else { %>
-                                                                <li class="page-item">
-                                                                    <button class="page-link" onclick="pagination(this)"
-                                                                        value="<%=users.next.page%>">Next</button>
-                                                                </li>
-                                                                <% } %>
+
+                                                        <li class="page-item">
+                                                            <button class="page-link" onclick="pagination(this)"
+                                                                value="2">Next</button>
+                                                        </li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm col-md-2 ms-auto">
+                <div class=" col-sm col-md-2 ms-auto">
                     <form id="selectUser">
                         <label for="status">Select users:</label>
                         <select onchange="getStatusValue(this)" name="status" id="status">

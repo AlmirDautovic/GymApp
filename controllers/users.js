@@ -23,7 +23,7 @@ module.exports.test = async (req, res) => {
     // users = users.slice(startIndex, endIndex)
     users = res.paginatedResults
 
-    var myIndex = users.pageNumber;
+    var myIndex = users.totalPageNumber;
 
     console.log(users)
     res.json(users)
@@ -42,7 +42,7 @@ module.exports.displayAllUsers = async (req, res) => {
     }
     users = res.paginatedResults
 
-    var myIndex = users.pageNumber;
+    var myIndex = users.totalPageNumber;
     res.render('users/index', { users, myIndex });
 };
 
