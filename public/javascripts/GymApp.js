@@ -288,15 +288,15 @@ function getSearchResults() {
 
 // Pagination :
 
-// let buttons = document.getElementsByClassName('page-link');
-// function addActiveClass (res) {
-//     for (let button of buttons){
-//        let page = button.innerHTML ;
-//         if(page == res.data.currentPage) {
-//             button.classList.add('active')
-//         }
-//     }
-// }
+let buttons = document.getElementsByClassName('page-link');
+function addActiveClass (res) {
+    for (let button of buttons){
+       let page = button.innerHTML ;
+        if(page == res.data.currentPage) {
+            button.classList.add('active')
+        }
+    }
+}
 
 function pagination(element) {
     let pageNumber = element.value;
