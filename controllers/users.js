@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 module.exports.renderHomePage = (req, res) => {
     res.render('home');
@@ -7,7 +8,6 @@ module.exports.renderHomePage = (req, res) => {
 module.exports.renderContactForm = (req, res) => {
     res.render('contact');
 };
-
 
 module.exports.test = async (req, res) => {
     const { status } = req.query;
@@ -21,11 +21,8 @@ module.exports.test = async (req, res) => {
         users = await User.find({});
     }
     // users = users.slice(startIndex, endIndex)
-    users = res.paginatedResults
-
+    users = res.paginatedResults;
     var myIndex = users.totalPageNumber;
-
-    console.log(users)
     res.json(users)
 };
 
@@ -71,21 +68,42 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createNewUser = async (req, res) => {
+    const { password, username, status } = req.body;
+    const hash = await bcrypt.hash(password, 12)
     var newUser;
     if (req.files == null) {
         newUser = new User({
-            "username": req.body.username, "password": req.body.password,
+            "username": req.body.username, "password": hash,
             "status": req.body.status, "profile_image": "np_profile_img.jpg"
         });
     } else {
         const { profile_image } = req.files;
         profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
-        newUser = new User(req.body);
+        newUser = new User({
+            username,
+            password: hash,
+            status
+        });
         newUser.profile_image = profile_image.name
     }
     await newUser.save();
     res.redirect(`/users/${newUser._id}`);
 };
+
+module.exports.renderLoginForm = (req, res) => {
+    res.render('users/login');
+};
+
+module.exports.userLogin = async (req, res) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    const validatedPassword = await bcrypt.compare(password, user.password);
+    if (validatedPassword) {
+        res.send("You are loged in!")
+    } else {
+        res.send("Incorrect username or password")
+    }
+}
 
 module.exports.ajaxUsers = async (req, res) => {
     const { id } = req.query;

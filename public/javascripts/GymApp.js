@@ -289,10 +289,10 @@ function getSearchResults() {
 // Pagination :
 
 let buttons = document.getElementsByClassName('page-link');
-function addActiveClass (res) {
-    for (let button of buttons){
-       let page = button.innerHTML ;
-        if(page == res.data.currentPage) {
+function addActiveClass(res) {
+    for (let button of buttons) {
+        let page = button.innerHTML;
+        if (page == res.data.currentPage) {
             button.classList.add('active')
         }
     }
@@ -307,11 +307,10 @@ function pagination(element) {
     displayNumbers.innerHTML = '';
     axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
         .then(res => {
-            var users = res.data.results
-            console.log(res.data)
+            var users = res.data.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users);
-            displayNumbers.innerHTML = createButtons(res)
-            addActiveClass(res)
+            displayNumbers.innerHTML = createButtons(res);
+            addActiveClass(res);
         })
         .catch(err => console.log(err))
 }
@@ -320,58 +319,33 @@ function createButtons(res) {
     var content = '';
     var previousDisable = '';
     var nextDisable = '';
-    if(res.data.next == undefined){
-         nextDisable = 'disabled'
+    if (res.data.next == undefined) {
+        nextDisable = 'disabled'
     }
-    if( res.data.previous == undefined){
-         previousDisable = 'disabled'
+    if (res.data.previous == undefined) {
+        previousDisable = 'disabled'
     }
-    content += 
-    `
+    content +=
+        `
     <li class="page-item ${previousDisable}">
     <button class="page-link" value=${res.data.currentPage - 1} onclick="pagination(this)" ${previousDisable}>Previous</button>
     </li>
     `
-    for(i = 1; i <= res.data.totalPageNumber; i++) {
-        content += 
-        `
+    for (i = 1; i <= res.data.totalPageNumber; i++) {
+        content +=
+            `
         <li class="page-item">
         <button class="page-link" value=${i} onclick="pagination(this)">${i}</button>
         </li>
         `
     }
-    content += 
-    `
+    content +=
+        `
     <li class="page-item ${nextDisable}">
     <button class="page-link" value=${res.data.currentPage + 1} onclick="pagination(this)" ${nextDisable}>Next</button>
     </li>
     `
     return content;
 }
-
-
-                                    
-//  <li class="page-item">
-//   <button class="page-link" value="1" onclick="pagination(this)">Previous</button>
-//   </li> 
-/* <li class="page-item">
- <button class="page-link" value="1" onclick="pagination(this)">1
-</button>
-</li> */
- 
-// <li class="page-item">
-//    <button class="page-link" value="2" onclick="pagination(this)">
-//   2
-//  </button>
-//  </li>
- 
-//    <li class="page-item">
-//   <button class="page-link" value="3" onclick="pagination(this)">
-//   3
-//  </button>
-//  </li>
-//   <li class="page-item">
-//  <button class="page-link" onclick="pagination(this)" value="3">Next</button>
-//  </li>
 
 

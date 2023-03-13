@@ -9,6 +9,10 @@ const User = require('../models/user')
 
 router.get('/', users.renderHomePage);
 
+router.get('/login', users.renderLoginForm);
+
+router.post('/login', users.userLogin);
+
 router.get('/users', paginatedResults(User), users.displayAllUsers);
 
 router.get('/users/change', users.getSelectedUsers);
