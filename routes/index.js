@@ -13,6 +13,10 @@ router.get('/login', users.renderLoginForm);
 
 router.post('/login', users.userLogin);
 
+router.get('/secret', users.secretTest);
+
+router.post('/logout', users.logout)
+
 router.get('/users', paginatedResults(User), users.displayAllUsers);
 
 router.get('/users/change', users.getSelectedUsers);

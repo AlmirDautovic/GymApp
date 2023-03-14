@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 module.exports.renderHomePage = (req, res) => {
     res.render('home');
@@ -87,6 +88,7 @@ module.exports.createNewUser = async (req, res) => {
         newUser.profile_image = profile_image.name
     }
     await newUser.save();
+    req.session.user_id = newUser._id;
     res.redirect(`/users/${newUser._id}`);
 };
 
@@ -99,10 +101,24 @@ module.exports.userLogin = async (req, res) => {
     const user = await User.findOne({ username });
     const validatedPassword = await bcrypt.compare(password, user.password);
     if (validatedPassword) {
+        req.session.user_id = user._id
         res.send("You are loged in!")
     } else {
-        res.send("Incorrect username or password")
+        res.redirect('/login')
     }
+}
+
+module.exports.secretTest = (req, res) => {
+    if (!req.session.user_id) {
+        res.redirect('login');
+    } else {
+        res.render('users/secret')
+    }
+}
+
+module.exports.logout = (req, res) => {
+    req.session._id = null;
+    res.redirect('/login');
 }
 
 module.exports.ajaxUsers = async (req, res) => {
