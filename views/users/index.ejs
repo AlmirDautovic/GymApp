@@ -1,6 +1,13 @@
 <% layout('layouts/boilerplate') %>
     <div class="container">
         <div class="col">
+            <div class="row">
+                <div class="col-md-12 text-right mb-2">
+                    <form action="/logout" method="POST">
+                        <button class="btn btn-success float-end">Logout <i class="fa fa-sign-out"></i></button>
+                    </form>
+                </div>
+            </div>
             <div class="row ">
                 <div class=" col-sm col-md-10">
                     <h1 id="allusers">List of all users: </h1>

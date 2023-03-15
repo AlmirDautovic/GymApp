@@ -102,22 +102,20 @@ module.exports.userLogin = async (req, res) => {
     const validatedPassword = await bcrypt.compare(password, user.password);
     if (validatedPassword) {
         req.session.user_id = user._id
-        res.send("You are loged in!")
+        res.redirect('/users')
     } else {
         res.redirect('/login')
     }
 }
 
 module.exports.secretTest = (req, res) => {
-    if (!req.session.user_id) {
-        res.redirect('login');
-    } else {
-        res.render('users/secret')
-    }
+    res.render('users/secret')
+
 }
 
 module.exports.logout = (req, res) => {
-    req.session._id = null;
+    req.session.user_id = null;
+    // req.session.destroy();
     res.redirect('/login');
 }
 

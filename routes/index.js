@@ -4,6 +4,7 @@ const users = require('../controllers/users');
 const gymItem = require('../controllers/gymEquipment');
 const blogs = require('../controllers/blogs');
 const paginatedResults = require('../utils/pagination')
+const isLogedIn = require('../utils/requireLogin');
 const User = require('../models/user')
 
 
@@ -13,11 +14,11 @@ router.get('/login', users.renderLoginForm);
 
 router.post('/login', users.userLogin);
 
-router.get('/secret', users.secretTest);
+router.get('/secret', isLogedIn, users.secretTest);
 
 router.post('/logout', users.logout)
 
-router.get('/users', paginatedResults(User), users.displayAllUsers);
+router.get('/users', isLogedIn, paginatedResults(User), users.displayAllUsers);
 
 router.get('/users/change', users.getSelectedUsers);
 
