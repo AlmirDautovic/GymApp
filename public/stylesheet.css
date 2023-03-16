@@ -414,8 +414,6 @@ img.logo:hover {
     line-height: 1.7;
     text-align: center;
     transition: .3s !important;
-    /* z-index: 1 !important;
-    width: 33.3333%; */
 }
 
 .options .row .privateTraining:hover {
@@ -426,8 +424,6 @@ img.logo:hover {
     margin: -30px 0 30px 0;
     box-shadow: 0px 0px 29px 0px rgb(2 2 2 / 22%);
     clip-path: inset(-29px 0px -29px 0px);
-    /* transition: .3s !important; */
-    /* z-index: 100 !important; */
 }
 
 .topPart {
@@ -872,7 +868,6 @@ textarea {
 #contact-form input:focus,
 textarea:focus {
     outline: none;
-    /* border: 1px solid #dddddd; */
     border-color: #cec5c5;
 }
 
@@ -1011,7 +1006,6 @@ textarea:focus {
 }
 
 .info-wrapper {
-    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -1087,7 +1081,7 @@ textarea:focus {
     margin-top: -5px;
 }
 
-/* styling uls on users, and gymequioment page*/
+/* styling uls on users, and gymequipment page*/
 
 #userList,
 #list li {
@@ -1137,7 +1131,6 @@ textarea:focus {
 }
 
 .blogWrapper {
-    /* max-width: 1920px; */
     float: none;
     position: static;
     width: auto;
@@ -1269,7 +1262,6 @@ h2 a:hover {
     padding: 0.85em 0;
     line-height: 1.7;
     font-family: "Libre Franklin", sans-serif;
-    /* font-weight: 700; */
     font-size: 14px;
     color: rgba(85, 85, 85, 1);
 }
@@ -1290,10 +1282,15 @@ p a:hover {
     color: #565656;
 }
 
-/* ul on users page*/
+/* unordered list on users page*/
 
 #userList {
     padding-left: 0;
+}
+
+.displayImage li {
+    width: 50px;
+    height: 50px;
 }
 
 .search_input input:focus {

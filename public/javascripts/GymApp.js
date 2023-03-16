@@ -162,19 +162,19 @@ function getHtmlForListOfUsers(users) {
             active = 'checked';
         }
         content +=
-            '<li>' +
+            '<li style="height: 50px;">' +
             '<div class="row align-items-center">' +
             '<div class="col-md-1 col-sm">' +
             '<img src="' + profile_picture_path + user.profile_image + '" width="50px" height="50px" class="img-fluid"' + '>' +
             '</div>' +
             '<div class="col-md-2 col-sm text-md">' + user.username + '</div>' +
-            '<div class="col-md-2 col-sm-12">' +
+            '<div class="col-md-1 col-sm-12">' +
             '<div class="form-check">' +
             '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
             '<label class="form-check-label" for="flexCheckDefault">Active</label>' +
             '</div>' +
             '</div>' +
-            '<div class="col-md-2 col-sm-12">' +
+            '<div class="col-md-2 col-sm-12"> style="width:100px;"' +
             '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
             '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
             'Show More' +
