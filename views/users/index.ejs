@@ -8,10 +8,10 @@
                     </form>
                 </div>
             </div>
-            <div class="row ">
+            <div class="row displayAllUsers">
                 <div class=" col-sm col-md-10">
                     <h1 id="allusers">List of all users: </h1>
-                    <div class="col-sm col-md-8 mt-3 mb-5">
+                    <div class="col-sm col-md-6 mt-3 mb-5">
                         <div id="searchElement" class="input-group mb-3 search_input">
                             <input type="text" id="search_input" class="form-control" placeholder="Enter username"
                                 aria-label="Enter username" aria-describedby="searchButton">
@@ -29,10 +29,10 @@
                         <ul id="userList">
                             <% for(let user of users.results) {%>
                                 <li>
-                                    <div class="row align-items-center">
+                                    <div class="row align-items-center align-middle">
                                         <div class="col-md-1 col-sm displayImage">
-                                            <img src="/public/images/profile/<%=user.profile_image %>" width="50px"
-                                                height="50px" class="img-fluid" alt="...">
+                                            <img src="/public/images/profile/<%=user.profile_image %>"
+                                                style="height: 50px; width: 50px;" class="img-fluid" alt="...">
                                         </div>
                                         <div class="col-md-2 col-sm text-md">
                                             <%=user.username %>
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-md-2 col-sm-12" style="width: 100px;">
                                             <a role="button" class="btn btn-outline-dark" href="/users/<%=user._id%>"
-                                                style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">
+                                                style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .70rem;">
                                                 Show More
                                             </a>
                                         </div>
@@ -71,7 +71,7 @@
                                 </li>
                                 <% } %>
                         </ul>
-                        <div class="col-md-4 mt-5">
+                        <div class="col-md-4 mt-5 " id="paginationWrapper">
                             <nav>
                                 <ul class="pagination" id="pagination">
                                     <% if(!users.previous) {%>

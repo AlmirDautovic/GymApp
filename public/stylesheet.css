@@ -4,6 +4,7 @@ body {
     color: #7A7A7A;
     left: -271.5px;
     font-family: "Libre Franklin", sans-serif;
+    overflow: scroll;
 }
 
 body.container {
@@ -1291,6 +1292,12 @@ p a:hover {
 .displayImage li {
     width: 50px;
     height: 50px;
+}
+
+#userList ul>li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .search_input input:focus {
