@@ -50,9 +50,9 @@ router.get('/gymitem', gymItem.displayItem);
 
 router.get('/blogs', blogs.renderBlogPage);
 
-router.get('/blogs/new', blogs.renderBlogForm);
+router.get('/blogs/new', isLogedIn, blogs.renderBlogForm);
 
-router.post('/blogs', blogs.createNewBlogPost);
+router.post('/blogs', isLogedIn, blogs.createNewBlogPost);
 
 router.get('/test', paginatedResults(User), users.test)
 

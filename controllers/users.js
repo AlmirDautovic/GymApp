@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const session = require('express-session');
 
 module.exports.renderHomePage = (req, res) => {
     res.render('home');
@@ -21,9 +20,7 @@ module.exports.test = async (req, res) => {
     else {
         users = await User.find({});
     }
-    // users = users.slice(startIndex, endIndex)
     users = res.paginatedResults;
-    var myIndex = users.totalPageNumber;
     res.json(users)
 };
 

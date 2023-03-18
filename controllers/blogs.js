@@ -1,4 +1,5 @@
 const Blog = require('../models/blog');
+const User = require('../models/user');
 const path = require('path');
 
 module.exports.renderBlogPage = async (req, res) => {
@@ -14,6 +15,7 @@ module.exports.renderBlogForm = async (req, res) => {
 };
 
 module.exports.createNewBlogPost = async (req, res) => {
+    const user = await User.findById(req.session.user_id);
     var newBlog;
     var blog_image = 'blog_image.jpg';
     if (req.files != null) {
@@ -23,10 +25,12 @@ module.exports.createNewBlogPost = async (req, res) => {
             if (err) return res.status(500).send(err);
         })
         blog_image = blog_image.name
-    }
+    };
     newBlog = new Blog(req.body);
+    console.log(newBlog.blog_author)
     newBlog.blog_image = blog_image;
 
     await newBlog.save();
-    res.redirect('/blogs');
+    console.log(newBlog)
+    res.redirect('/blogs', { user });
 };
