@@ -27,10 +27,11 @@ module.exports.createNewBlogPost = async (req, res) => {
         blog_image = blog_image.name
     };
     newBlog = new Blog(req.body);
-    console.log(newBlog.blog_author)
+    newBlog.blog_author = user.username;
+    newBlog.blog_author_id = req.session.user_id;
+    console.log(newBlog.blog_author_id)
     newBlog.blog_image = blog_image;
 
     await newBlog.save();
-    console.log(newBlog)
-    res.redirect('/blogs', { user });
+    res.redirect('/blogs');
 };

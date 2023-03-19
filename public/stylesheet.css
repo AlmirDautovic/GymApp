@@ -1218,7 +1218,7 @@ textarea:focus {
 
 .blogTextFixer {
     margin-left: 420px;
-    padding: 40px;
+    padding: 0 40px 40px 40px;
 }
 
 .blogDate {
@@ -1260,7 +1260,7 @@ h2 a:hover {
 
 .blogPostBody p {
     margin: 0;
-    padding: 0.85em 0;
+    padding: 0 0 0.85em 0;
     line-height: 1.7;
     font-family: "Libre Franklin", sans-serif;
     font-size: 14px;
