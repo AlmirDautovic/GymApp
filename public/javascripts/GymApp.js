@@ -54,11 +54,16 @@ if (show != null) {
 // Function for dinamically display content on user page, without refreshing after deleting user
 
 function deleteUser(id) {
+    var element = document.querySelector('button[class="page-link active"]');
     var xhr = new XMLHttpRequest();
     xhr.open('DELETE', 'http://localhost:3000/users/delete?id=' + id, true);
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == '200') {
-            createContent();
+            // createContent();
+            pagination(element);
+            // var page = element.value;
+            // var queryString = '?page=' + page;
+            // redirectPage(queryString)
         }
         else {
             console.log('ERROR!', error)
@@ -90,6 +95,8 @@ function getUser(element) {
     deleteUser(element.value);
 }
 
+// delete single user on view user details page
+
 function removeOneUser(id) {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", 'http://localhost:3000/users/delete?id=' + id, true);
@@ -118,10 +125,10 @@ function redirectAfterDelete() {
     xhr.send(null);
 }
 
-function redirectPage() {
+function redirectPage(queryString = "") {
     let baseUrl = window.location.origin;
     // console.log(baseUrl)
-    window.location.replace(baseUrl + '/users'); // because it is impossible to redirect page with ajax req i used this 2 lines
+    window.location.replace(baseUrl + '/users' + queryString); // because it is impossible to redirect page with ajax req i used this 2 lines
     //of code to redirect with client side
 }
 
@@ -134,10 +141,12 @@ function deleteOne(element) {
 function usersOnChange(value) {
     var url = "http://localhost:3000/users/change";
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url + "?status=" + value, true);
+    xhr.open('GET', url + "?status=" + value + "&page=2", true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.onload = function () {
+        // console.log(xhr.response)
         var users = JSON.parse(xhr.responseText);
+        console.log(users.results);
         var h1 = document.getElementById('allusers');
         var ul = document.getElementById('userList');
         if (xhr.readyState == 4 && xhr.status == "200") {
@@ -300,7 +309,6 @@ function addActiveClass(res) {
 
 function pagination(element) {
     let pageNumber = element.value;
-    console.log(pageNumber);
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';

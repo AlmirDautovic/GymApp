@@ -1,7 +1,7 @@
 paginatedResults = function (model) {
     return async (req, res, next) => {
         // const page = req.query.page ? parseInt(req.query.page) : 1;
-        const page = parseInt(req.query.page)
+        const page = parseInt(req.query.page);
         const limit = 5;
 
         const startIndex = (page - 1) * limit;

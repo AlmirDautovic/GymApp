@@ -46,7 +46,7 @@ module.exports.getSelectedUsers = async (req, res) => {
     var users;
     if (status == 'true') {
         users = await User.find({ status });
-    } else if (status == "false") {
+    } else if (status == 'false') {
         users = await User.find({ status: { $ne: true } });
     }
     else {
@@ -103,11 +103,6 @@ module.exports.userLogin = async (req, res) => {
     } else {
         res.redirect('/login')
     }
-}
-
-module.exports.secretTest = (req, res) => {
-    res.render('users/secret')
-
 }
 
 module.exports.logout = (req, res) => {
