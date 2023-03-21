@@ -319,6 +319,15 @@ function pagination(element) {
             userListElement.innerHTML = getHtmlForListOfUsers(users);
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
+            if (userListElement.innerHTML == '') {
+                axios.get('http://localhost:3000/test', { params: { page: pageNumber - 1 } })
+                    .then(res => {
+                        var users = res.data.results;
+                        userListElement.innerHTML = getHtmlForListOfUsers(users);
+                        displayNumbers.innerHTML = createButtons(res);
+                        addActiveClass(res);
+                    })
+            }
         })
         .catch(err => console.log(err))
 }
