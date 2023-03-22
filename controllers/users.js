@@ -84,8 +84,9 @@ module.exports.createNewUser = async (req, res) => {
         });
         newUser.profile_image = profile_image.name
     }
+    // req.session.loggedin = false
     await newUser.save();
-    req.session.user_id = newUser._id;
+
     res.redirect(`/users/${newUser._id}`);
 };
 
@@ -98,7 +99,8 @@ module.exports.userLogin = async (req, res) => {
     const user = await User.findOne({ username });
     const validatedPassword = await bcrypt.compare(password, user.password);
     if (validatedPassword) {
-        req.session.user_id = user._id
+        req.session.loggedin = true
+        req.session.user_id = user._id;
         res.redirect('/users')
     } else {
         res.redirect('/login')
@@ -107,6 +109,7 @@ module.exports.userLogin = async (req, res) => {
 
 module.exports.logout = (req, res) => {
     req.session.user_id = null;
+    req.session.loggedin = false
     // req.session.destroy();
     res.redirect('/login');
 }

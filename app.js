@@ -35,6 +35,11 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 
+// app.use(function (req, res, next) {
+//     res.locals.loggedin = req.session.loggedin;
+//     next();
+// });
+
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));

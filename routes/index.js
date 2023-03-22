@@ -16,6 +16,8 @@ router.post('/login', users.userLogin);
 
 router.post('/logout', users.logout)
 
+router.get('/logout', users.logout)
+
 router.get('/users', isLogedIn, paginatedResults(User), users.displayAllUsers);
 
 router.get('/users/change', paginatedResults(User), users.getSelectedUsers);
