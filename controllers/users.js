@@ -84,7 +84,8 @@ module.exports.createNewUser = async (req, res) => {
         });
         newUser.profile_image = profile_image.name
     }
-    req.session.loggedin = false
+    req.session.loggedin = true
+    req.session.user_id = newUser._id;
     await newUser.save();
 
     res.redirect(`/users/${newUser._id}`);

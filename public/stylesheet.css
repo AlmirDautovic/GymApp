@@ -19,11 +19,15 @@ body.container {
 }
 
 .navbar-nav a {
-    line-height: 95px;
-    height: 95.5px;
+    line-height: 50px;
+    height: 50.5px;
     font-size: 12px;
     font-weight: 600;
     color: rgba(34, 34, 34, 1);
+}
+
+#navbarNavAltMarkup>.navbar-nav:first-child {
+    flex-direction: column;
 }
 
 .navbar-brand img {
