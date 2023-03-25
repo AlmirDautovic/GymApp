@@ -18,11 +18,9 @@ const blogSchema = new Schema({
         type: String,
         regured: true
     },
-    blog_author: {
-        type: String,
-    },
     blog_author_id: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

@@ -4,6 +4,7 @@ const path = require('path');
 
 module.exports.renderBlogPage = async (req, res) => {
     const blogs = await Blog.find({});
+    console.log(blogs)
     for (let blog of blogs) {
         blog.blog_content = blog.blog_content.slice(0, 160);
     }
@@ -16,6 +17,7 @@ module.exports.renderBlogForm = async (req, res) => {
 
 module.exports.createNewBlogPost = async (req, res) => {
     const user = await User.findById(req.session.user_id);
+    // console.log(user.username)
     var newBlog;
     var blog_image = 'blog_image.jpg';
     if (req.files != null) {
@@ -27,11 +29,10 @@ module.exports.createNewBlogPost = async (req, res) => {
         blog_image = blog_image.name
     };
     newBlog = new Blog(req.body);
-    newBlog.blog_author = user.username;
-    newBlog.blog_author_id = req.session.user_id;
-    console.log(newBlog.blog_author_id)
+    // newBlog.blog_author_id = req.session.user_id;
+    // console.log(newBlog.blog_author_id)
+    newBlog.blog_author_id = user
     newBlog.blog_image = blog_image;
-
     await newBlog.save();
     res.redirect('/blogs');
 };
