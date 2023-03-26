@@ -52,6 +52,8 @@ module.exports.getSelectedUsers = async (req, res) => {
     else {
         users = await User.find({});
     }
+    users = res.paginatedResults
+    console.log(users)
     res.json(users)
 };
 

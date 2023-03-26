@@ -139,20 +139,21 @@ function deleteOne(element) {
 // Function for dimanically display content on user page after selecting user to: all, active or inactive
 
 function usersOnChange(value) {
+    console.log(value)
     var url = "http://localhost:3000/users/change";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url + "?status=" + value + "&page=2", true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.onload = function () {
-        // console.log(xhr.response)
+        console.log(xhr.response)
         var users = JSON.parse(xhr.responseText);
-        console.log(users.results);
+        // console.log(users.results);
         var h1 = document.getElementById('allusers');
         var ul = document.getElementById('userList');
         if (xhr.readyState == 4 && xhr.status == "200") {
             ul.innerHTML = '';
             h1.innerText = "List of all users:"
-            ul.innerHTML = getHtmlForListOfUsers(users);
+            ul.innerHTML = getHtmlForListOfUsers(users.results);
         } else {
             console.error(users);
         }
@@ -202,6 +203,7 @@ function getHtmlForListOfUsers(users) {
 function getStatusValue(selectValue) {
     var value = selectValue.value;
     usersOnChange(value);
+    console.log(value)
 }
 
 // gym equipment page
