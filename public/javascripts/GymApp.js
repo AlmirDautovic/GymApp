@@ -139,27 +139,53 @@ function deleteOne(element) {
 // Function for dimanically display content on user page after selecting user to: all, active or inactive
 
 function usersOnChange(value) {
-    console.log(value)
-    var url = "http://localhost:3000/users/change";
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url + "?status=" + value + "&page=2", true);
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-    xhr.onload = function () {
-        console.log(xhr.response)
-        var users = JSON.parse(xhr.responseText);
-        // console.log(users.results);
-        var h1 = document.getElementById('allusers');
-        var ul = document.getElementById('userList');
-        if (xhr.readyState == 4 && xhr.status == "200") {
-            ul.innerHTML = '';
+    // let pageNumber = document.getElementById()
+    // console.log(value)
+
+    // var url = "http://localhost:3000/test";
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('GET', url + "?status=" + value + "&page=1", true);
+    // xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+    // xhr.onload = function () {
+    //     // console.log(xhr.response)
+
+    //     console.log(data.next.page)
+    //     var users = JSON.parse(xhr.responseText);
+    //     // console.log(users);
+    //     var displayNumbers = document.getElementById('pagination');
+    //     displayNumbers.innerHTML = '';
+    //     var h1 = document.getElementById('allusers');
+    //     var ul = document.getElementById('userList');
+    //     if (xhr.readyState == 4 && xhr.status == "200") {
+    //         ul.innerHTML = '';
+    //         h1.innerText = "List of all users:"
+    //         ul.innerHTML = getHtmlForListOfUsers(users.results);
+    //         // displayNumbers.innerHTML = createButtons(xhr.response);
+    //         // addActiveClass(xhr.response);
+    //     } else {
+    //         console.error(users);
+    //     }
+    // }
+    // xhr.send();
+
+    // let status = value;
+    var h1 = document.getElementById('allusers');
+    var userListElement = document.getElementById('userList');
+    var displayNumbers = document.getElementById('pagination');
+    userListElement.innerHTML = '';
+    displayNumbers.innerHTML = '';
+    axios.get('http://localhost:3000/test', { params: { status: value } })
+        .then(res => {
+            console.log(res.data)
             h1.innerText = "List of all users:"
-            ul.innerHTML = getHtmlForListOfUsers(users.results);
-        } else {
-            console.error(users);
-        }
-    }
-    xhr.send();
+            var users = res.data.results;
+            userListElement.innerHTML = getHtmlForListOfUsers(users);
+            displayNumbers.innerHTML = createButtons(res);
+            addActiveClass(res);
+        })
+        .catch(err => console.log(err))
 }
+
 
 //Function for dinamically create content after deleting user on users page, or selecting users by their status on users page
 function getHtmlForListOfUsers(users) {
@@ -311,11 +337,13 @@ function addActiveClass(res) {
 
 function pagination(element) {
     let pageNumber = element.value;
+    let status = document.getElementById('status').value;
+    console.log(status)
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
     displayNumbers.innerHTML = '';
-    axios.get('http://localhost:3000/test', { params: { page: pageNumber } })
+    axios.get('http://localhost:3000/test', { params: { page: pageNumber, status: status } })
         .then(res => {
             var users = res.data.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users);
@@ -324,6 +352,7 @@ function pagination(element) {
             if (userListElement.innerHTML == '') {
                 axios.get('http://localhost:3000/test', { params: { page: pageNumber - 1 } })
                     .then(res => {
+                        console.log(res.data)
                         var users = res.data.results;
                         userListElement.innerHTML = getHtmlForListOfUsers(users);
                         displayNumbers.innerHTML = createButtons(res);
@@ -338,7 +367,7 @@ function createButtons(res) {
     var content = '';
     var previousDisable = '';
     var nextDisable = '';
-    if (res.data.next == undefined) {
+    if (res.data.next == undefined || res.data.currentPage == res.data.totalPageNumber) {
         nextDisable = 'disabled'
     }
     if (res.data.previous == undefined) {

@@ -1,9 +1,10 @@
 paginatedResults = function (model) {
     return async (req, res, next) => {
-        // const page = req.query.page ? parseInt(req.query.page) : 1;
-        const page = parseInt(req.query.page);
+        const page = req.query.page ? parseInt(req.query.page) : 1;
+        // const page = parseInt(req.query.page);
         const limit = 5;
-
+        const status = req.query.status;
+        // console.log(status)
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
 
@@ -24,8 +25,17 @@ paginatedResults = function (model) {
             results.currentPage = page
         }
         try {
-            results.results = await model.find().limit(limit).skip(startIndex).exec();
-            results.totalPageNumber = Math.ceil(await model.countDocuments().exec() / limit)
+            if (status == 'true') {
+                results.results = await model.find({ status }).limit(limit).skip(startIndex).exec();
+                results.totalPageNumber = (Math.ceil(await model.find({ status }).count() / limit));
+            } else if (status == 'false') {
+                results.results = await model.find({ status: { $ne: true } }).limit(limit).skip(startIndex).exec();
+                results.totalPageNumber = (Math.ceil(await model.find({ status: { $ne: true } }).count() / limit));
+            } else {
+                results.results = await model.find().limit(limit).skip(startIndex).exec();
+                results.totalPageNumber = Math.ceil(await model.countDocuments().exec() / limit)
+            }
+
             res.paginatedResults = results
             next()
         } catch (e) {

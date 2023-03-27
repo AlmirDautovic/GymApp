@@ -10,31 +10,31 @@ module.exports.renderContactForm = (req, res) => {
 };
 
 module.exports.test = async (req, res) => {
-    const { status } = req.query;
+    // const { status } = req.query;
     var users;
-    if (status == 'true') {
-        users = await User.find({ status });
-    } else if (status == "false") {
-        users = await User.find({ status: { $ne: true } });
-    }
-    else {
-        users = await User.find({});
-    }
+    // if (status == 'true') {
+    //     users = await User.find({ status });
+    // } else if (status == "false") {
+    //     users = await User.find({ status: { $ne: true } });
+    // }
+    // else {
+    //     users = await User.find({});
+    // }
     users = res.paginatedResults;
     res.json(users)
 };
 
 module.exports.displayAllUsers = async (req, res) => {
-    const { status } = req.query;
+    // const { status } = req.query;
     var users;
-    if (status == 'true') {
-        users = await User.find({ status });
-    } else if (status == "false") {
-        users = await User.find({ status: { $ne: true } });
-    }
-    else {
-        users = await User.find({});
-    }
+    // if (status == 'true') {
+    //     users = await User.find({ status });
+    // } else if (status == "false") {
+    //     users = await User.find({ status: { $ne: true } });
+    // }
+    // else {
+    //     users = await User.find({});
+    // }
     users = res.paginatedResults
 
     var myIndex = users.totalPageNumber;
@@ -44,16 +44,15 @@ module.exports.displayAllUsers = async (req, res) => {
 module.exports.getSelectedUsers = async (req, res) => {
     const { status } = req.query;
     var users;
-    if (status == 'true') {
-        users = await User.find({ status });
-    } else if (status == 'false') {
-        users = await User.find({ status: { $ne: true } });
-    }
-    else {
-        users = await User.find({});
-    }
+    // if (status == 'true') {
+    //     users = await User.find({ status });
+    // } else if (status == 'false') {
+    //     users = await User.find({ status: { $ne: true } });
+    // }
+    // else {
+    //     users = await User.find({});
+    // }
     users = res.paginatedResults
-    console.log(users)
     res.json(users)
 };
 
