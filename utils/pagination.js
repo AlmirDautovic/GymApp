@@ -6,6 +6,7 @@ paginatedResults = function (model) {
         const status = req.query.status;
         // console.log(status)
         const startIndex = (page - 1) * limit;
+        const username = req.query.username;
         const endIndex = page * limit;
 
         const results = {};
@@ -36,6 +37,10 @@ paginatedResults = function (model) {
                 results.totalPageNumber = Math.ceil(await model.countDocuments().exec() / limit)
             }
 
+            if (username) {
+                results.results = await model.find({ username: { '$regex': username, '$options': 'i' } }).limit(limit).skip(startIndex).exec();
+                results.totalPageNumber = (Math.ceil(await model.find({ username: { '$regex': username, '$options': 'i' } }).count() / limit));
+            }
             res.paginatedResults = results
             next()
         } catch (e) {

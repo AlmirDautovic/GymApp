@@ -169,6 +169,7 @@ function usersOnChange(value) {
     // xhr.send();
 
     // let status = value;
+    searchedName = document.getElementById('search_input').value;
     var h1 = document.getElementById('allusers');
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
@@ -182,6 +183,8 @@ function usersOnChange(value) {
             userListElement.innerHTML = getHtmlForListOfUsers(users);
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
+            document.getElementById('search_input').value = searchedName
+            console.log(document.getElementById('search_input').value)
         })
         .catch(err => console.log(err))
 }
@@ -305,16 +308,26 @@ if (document.getElementById("date") != null) {
 
 
 // search user option:
-
+var searchedName;
 function getSearchResults() {
-    var searchedName = document.getElementById('search_input').value;
+    searchedName = document.getElementById('search_input').value;
     var userListElement = document.getElementById('userList');
     userListElement.innerHTML = '';
+    var displayNumbers = document.getElementById('pagination');
+    displayNumbers.innerHTML = '';
     if (searchedName != '') {
         document.getElementById('search_allert').hidden = true;
-        axios.get('http://localhost:3000/users/search', { params: { username: searchedName } })
+        axios.get('http://localhost:3000/test', { params: { username: searchedName } })
             .then(res => {
-                userListElement.innerHTML = getHtmlForListOfUsers(res.data);
+                console.log(res.data.totalPageNumber)
+                let totalPageNumber = res.data.totalPageNumber;
+                let users = res.data.results;
+                userListElement.innerHTML = getHtmlForListOfUsers(users);
+                displayNumbers.innerHTML = createButtons(res);
+                addActiveClass(res);
+                document.getElementById('search_input').value = searchedName
+                console.log(document.getElementById('search_input').value)
+
             })
             .catch(err => console.log(err))
     } else {
@@ -337,26 +350,32 @@ function addActiveClass(res) {
 
 function pagination(element) {
     let pageNumber = element.value;
+    let searchedName = document.getElementById('search_input').value;
     let status = document.getElementById('status').value;
     console.log(status)
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
     displayNumbers.innerHTML = '';
-    axios.get('http://localhost:3000/test', { params: { page: pageNumber, status: status } })
+    axios.get('http://localhost:3000/test', { params: { page: pageNumber, status: status, username: searchedName } })
         .then(res => {
             var users = res.data.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users);
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
+            document.getElementById('search_input').value = searchedName;
+            console.log(document.getElementById('search_input').value);
             if (userListElement.innerHTML == '') {
-                axios.get('http://localhost:3000/test', { params: { page: pageNumber - 1 } })
+                axios.get('http://localhost:3000/test', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
                         console.log(res.data)
                         var users = res.data.results;
+                        console.log(users)
                         userListElement.innerHTML = getHtmlForListOfUsers(users);
                         displayNumbers.innerHTML = createButtons(res);
                         addActiveClass(res);
+                        document.getElementById('search_input').value = searchedName;
+                        console.log(document.getElementById('search_input').value);
                     })
             }
         })
