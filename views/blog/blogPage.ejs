@@ -20,11 +20,13 @@
                             </div>
                             <div class="blogTextFixer">
                                 <div class="blogPostBody">
-                                    <p>
-                                        Created by : <a href="/users/<%=blog.blog_author_id %>">
-                                            <%=blog.blog_author %>
-                                        </a>
-                                    </p>
+                                    <% if(blog.blog_author_id) {%>
+                                        <p>
+                                            Created by : <a href="/users/<%=blog.blog_author_id._id.toString() %>">
+                                                <%=blog.blog_author_id.username %>
+                                            </a>
+                                        </p>
+                                        <% } %>
                                 </div>
                                 <div class="blogDate">
                                     <time>
