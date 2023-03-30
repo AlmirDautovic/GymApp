@@ -9,7 +9,7 @@ module.exports.renderContactForm = (req, res) => {
     res.render('contact');
 };
 
-module.exports.test = async (req, res) => {
+module.exports.pagination = async (req, res) => {
     // const { status } = req.query;
     var users;
     // if (status == 'true') {

@@ -169,13 +169,13 @@ function usersOnChange(value) {
     // xhr.send();
 
     // let status = value;
-    searchedName = document.getElementById('search_input').value;
+    // searchedName = document.getElementById('search_input').value;
     var h1 = document.getElementById('allusers');
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
     displayNumbers.innerHTML = '';
-    axios.get('http://localhost:3000/test', { params: { status: value } })
+    axios.get('http://localhost:3000/pagination', { params: { status: value } })
         .then(res => {
             console.log(res.data)
             h1.innerText = "List of all users:"
@@ -183,8 +183,8 @@ function usersOnChange(value) {
             userListElement.innerHTML = getHtmlForListOfUsers(users);
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
-            document.getElementById('search_input').value = searchedName
-            console.log(document.getElementById('search_input').value)
+            // document.getElementById('search_input').value = searchedName
+            // console.log(document.getElementById('search_input').value)
         })
         .catch(err => console.log(err))
 }
@@ -317,7 +317,7 @@ function getSearchResults() {
     displayNumbers.innerHTML = '';
     if (searchedName != '') {
         document.getElementById('search_allert').hidden = true;
-        axios.get('http://localhost:3000/test', { params: { username: searchedName } })
+        axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
             .then(res => {
                 console.log(res.data.totalPageNumber)
                 let totalPageNumber = res.data.totalPageNumber;
@@ -357,7 +357,7 @@ function pagination(element) {
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
     displayNumbers.innerHTML = '';
-    axios.get('http://localhost:3000/test', { params: { page: pageNumber, status: status, username: searchedName } })
+    axios.get('http://localhost:3000/pagination', { params: { page: pageNumber, status: status, username: searchedName } })
         .then(res => {
             var users = res.data.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users);
@@ -366,7 +366,7 @@ function pagination(element) {
             document.getElementById('search_input').value = searchedName;
             console.log(document.getElementById('search_input').value);
             if (userListElement.innerHTML == '') {
-                axios.get('http://localhost:3000/test', { params: { page: pageNumber - 1, status: status, username: searchedName } })
+                axios.get('http://localhost:3000/pagination', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
                         console.log(res.data)
                         var users = res.data.results;

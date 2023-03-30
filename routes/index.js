@@ -54,7 +54,7 @@ router.get('/blogs/new', isLogedIn, blogs.renderBlogForm);
 
 router.post('/blogs', isLogedIn, blogs.createNewBlogPost);
 
-router.get('/test', paginatedResults(User), users.test)
+router.get('/pagination', paginatedResults(User), users.pagination)
 
 
 module.exports = router;
