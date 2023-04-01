@@ -20,10 +20,14 @@ body.container {
 
 .navbar-nav a {
     line-height: 50px;
-    height: 50.5px;
+    height: 45.5px;
     font-size: 12px;
     font-weight: 600;
     color: rgba(34, 34, 34, 1);
+}
+
+.navbar-nav:last-of-type>a {
+    padding-top: 0px;
 }
 
 #navbarNavAltMarkup>.navbar-nav:first-child {
@@ -576,13 +580,21 @@ li+li {
 }
 
 
-/* register form section */
+/* register form section **************************************/
+
 #planType {
     width: 100%;
     color: #818a91;
     border: none;
     outline: none;
     height: 59px;
+}
+
+input[type="file"] {
+    margin-top: -20px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    padding-left: 20px;
 }
 
 #homeForm {
@@ -622,6 +634,7 @@ option,
     padding: 0;
     margin: 0;
 }
+
 
 #homeForm .row .form-group {
     padding-left: 0px;
