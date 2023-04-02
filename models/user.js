@@ -18,6 +18,16 @@ const userSchema = new Schema({
     profile_image: {
         type: String,
         default: 'np_profile_img.jpg'
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    message: {
+        type: String,
+    },
+    phone: {
+        type: Number
     }
 });
 

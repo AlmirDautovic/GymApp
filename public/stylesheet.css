@@ -580,7 +580,7 @@ li+li {
 }
 
 
-/* register form section **************************************/
+/* register form section */
 
 #planType {
     width: 100%;
@@ -590,7 +590,7 @@ li+li {
     height: 59px;
 }
 
-input[type="file"] {
+input[id="profile_image"] {
     margin-top: -20px;
     padding-top: 15px;
     margin-bottom: 10px;
@@ -623,11 +623,40 @@ input[type="file"] {
 
 #homeForm form input,
 option,
-#textarea,
-.planType {
+#message {
     border-radius: 0px 0px 0px 0px;
     border-color: #dddddd;
     color: #7A7A7A;
+}
+
+.planType p {
+    margin-bottom: 0;
+    color: #818a91;
+    font-family: "Josefin Sans", Sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+label>select {
+    border-radius: 0px 0px 0px 0px;
+    border-color: #dddddd;
+    color: #7A7A7A;
+    width: 30%;
+    border: none;
+}
+
+.col>label[class="form-label form-control planType"] {
+    border-radius: unset;
+    display: flex;
+    justify-content: space-between;
+    min-height: 59px;
+    align-items: center;
+}
+
+.form-control>select:focus-visible {
+    outline-color: #dddddd;
+    outline-width: 0px;
+    outline-style: auto;
 }
 
 #homeForm .col {

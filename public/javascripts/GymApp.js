@@ -1,5 +1,5 @@
-//code for changing to dark or white background on home page:
 
+//code for changing to dark or white background on home page:
 
 var switcher = document.getElementById('switch');
 if (switcher != null) {
