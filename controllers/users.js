@@ -60,13 +60,14 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createNewUser = async (req, res) => {
-    const { password, username, status } = req.body;
+    const { password, username, status, message, email, phone } = req.body;
     const hash = await bcrypt.hash(password, 12)
     var newUser;
     if (req.files == null) {
         newUser = new User({
             "username": req.body.username, "password": hash,
-            "status": req.body.status, "profile_image": "np_profile_img.jpg"
+            "status": req.body.status, "profile_image": "np_profile_img.jpg", "message": req.body.message,
+            "email": req.body.email, "phone": req.body.phone
         });
     } else {
         const { profile_image } = req.files;
@@ -74,7 +75,10 @@ module.exports.createNewUser = async (req, res) => {
         newUser = new User({
             username,
             password: hash,
-            status
+            status,
+            message,
+            email,
+            phone
         });
         newUser.profile_image = profile_image.name
     }
