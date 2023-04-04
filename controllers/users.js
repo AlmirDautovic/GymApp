@@ -96,19 +96,24 @@ module.exports.renderLoginForm = (req, res) => {
 module.exports.userLogin = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    const validatedPassword = await bcrypt.compare(password, user.password);
-    if (validatedPassword) {
-        req.session.loggedin = true
-        req.session.user_id = user._id;
-        res.redirect('/users')
+    if (user && password != null) {
+        const validatedPassword = await bcrypt.compare(password, user.password);
+
+        if (validatedPassword) {
+            req.session.loggedin = true;
+            req.session.user_id = user._id;
+            res.redirect('/users');
+        } else {
+            res.redirect('/login');
+        }
     } else {
-        res.redirect('/login')
+        res.redirect('/login');
     }
 }
 
 module.exports.logout = (req, res) => {
     req.session.user_id = null;
-    req.session.loggedin = false
+    req.session.loggedin = false;
     // req.session.destroy();
     res.redirect('/login');
 }
@@ -140,12 +145,16 @@ module.exports.editUser = async (req, res) => {
 module.exports.deleteUserAjax = async (req, res) => {
     const { id } = req.query;
     const deletedUser = await User.findByIdAndDelete(id);
+    req.session.user_id = null;
+    req.session.loggedin = false;
     res.json({});
 };
 
 module.exports.deleteUser = async (req, res) => {
     const { id } = req.params;
     const deletedUser = await User.findByIdAndDelete(id);
-    res.redirect('/users');
+    req.session.user_id = null;
+    req.session.loggedin = false;
+    res.redirect('/logout');
 };
 

@@ -128,7 +128,7 @@ function redirectAfterDelete() {
 function redirectPage(queryString = "") {
     let baseUrl = window.location.origin;
     // console.log(baseUrl)
-    window.location.replace(baseUrl + '/users' + queryString); // because it is impossible to redirect page with ajax req i used this 2 lines
+    window.location.replace(baseUrl + '/login' + queryString); // because it is impossible to redirect page with ajax req i used this 2 lines
     //of code to redirect with client side
 }
 
@@ -171,13 +171,18 @@ function usersOnChange(value) {
     // let status = value;
     // searchedName = document.getElementById('search_input').value;
     var h1 = document.getElementById('allusers');
+    var alertContent = document.getElementById('searchAlert');
+
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
     displayNumbers.innerHTML = '';
+
     axios.get('http://localhost:3000/pagination', { params: { status: value } })
         .then(res => {
-            console.log(res.data)
+            // searchAllert.innerHTML = ''
+            // searchAllert.className = ''
+            alertContent.innerHTML = '';
             h1.innerText = "List of all users:"
             var users = res.data.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users);
@@ -310,31 +315,74 @@ if (document.getElementById("date") != null) {
 // search user option:
 var searchedName;
 function getSearchResults() {
+    var alertContent = document.getElementById('searchAlert');
     searchedName = document.getElementById('search_input').value;
     var userListElement = document.getElementById('userList');
     userListElement.innerHTML = '';
     var displayNumbers = document.getElementById('pagination');
     displayNumbers.innerHTML = '';
-    if (searchedName != '') {
-        document.getElementById('search_allert').hidden = true;
-        axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
-            .then(res => {
-                console.log(res.data.totalPageNumber)
-                let totalPageNumber = res.data.totalPageNumber;
-                let users = res.data.results;
+    // if (searchedName != '') {
+    //     document.getElementById('search_allert').hidden = true;
+    //     axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
+    //         .then(res => {
+    //             // console.log(res.data.totalPageNumber)
+    //             // let totalPageNumber = res.data.totalPageNumber;
+    //             // console.log(searchedName)
+    //             let users = res.data.results;
+    //             console.log(users.length)
+    //             userListElement.innerHTML = getHtmlForListOfUsers(users);
+    //             displayNumbers.innerHTML = createButtons(res);
+    //             addActiveClass(res);
+    //             document.getElementById('search_input').value = searchedName;
+    //             console.log(document.getElementById('search_input').value);
+    //         })
+    //         .catch(err => console.log(err))
+    // } else {
+    //     document.getElementById('search_allert').removeAttribute('hidden');
+    // }
+    // document.getElementById('search_allert').hidden = true;
+    axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
+        .then(res => {
+            // console.log(res.data.totalPageNumber)
+            // let totalPageNumber = res.data.totalPageNumber;
+            // console.log(searchedName)
+            let users = res.data.results;
+            console.log(users.length)
+            if (users.length > 0 && searchedName != '') {
                 userListElement.innerHTML = getHtmlForListOfUsers(users);
                 displayNumbers.innerHTML = createButtons(res);
                 addActiveClass(res);
-                document.getElementById('search_input').value = searchedName
-                console.log(document.getElementById('search_input').value)
+            } else {
+                alertContent.innerHTML = searchAllert(searchedName, users)
+            }
 
-            })
-            .catch(err => console.log(err))
-    } else {
-        document.getElementById('search_allert').removeAttribute('hidden')
-    }
+            // alertContent.innerHTML = searchAllert(searchedName, users)
+            document.getElementById('search_input').value = searchedName;
+            // console.log(document.getElementById('search_input').value);
+        })
+        .catch(err => console.log(err))
 }
 
+function searchAllert(searchedName, users) {
+    let content = '';
+    let alertText = '';
+    let alertClass = '';
+    if (searchedName == '') {
+        alertText = ' Invalid action! (Searched term must contain more than 2 characters) Please insert valid user name, ex. "John Smith"';
+        alertClass = 'danger';
+    }
+    if (users.length < 1) {
+        alertText = 'There are no matching results for Your searched term! Please check if you wrote it correctly'
+        alertClass = 'info'
+    }
+    content += `
+    <div class="alert alert-${alertClass}" role="alert" id="search_allert">
+    ${alertText}
+    </div>
+    `
+    return content;
+
+}
 
 // Pagination :
 
