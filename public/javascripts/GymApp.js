@@ -321,33 +321,10 @@ function getSearchResults() {
     userListElement.innerHTML = '';
     var displayNumbers = document.getElementById('pagination');
     displayNumbers.innerHTML = '';
-    // if (searchedName != '') {
-    //     document.getElementById('search_allert').hidden = true;
-    //     axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
-    //         .then(res => {
-    //             // console.log(res.data.totalPageNumber)
-    //             // let totalPageNumber = res.data.totalPageNumber;
-    //             // console.log(searchedName)
-    //             let users = res.data.results;
-    //             console.log(users.length)
-    //             userListElement.innerHTML = getHtmlForListOfUsers(users);
-    //             displayNumbers.innerHTML = createButtons(res);
-    //             addActiveClass(res);
-    //             document.getElementById('search_input').value = searchedName;
-    //             console.log(document.getElementById('search_input').value);
-    //         })
-    //         .catch(err => console.log(err))
-    // } else {
-    //     document.getElementById('search_allert').removeAttribute('hidden');
-    // }
-    // document.getElementById('search_allert').hidden = true;
+
     axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
         .then(res => {
-            // console.log(res.data.totalPageNumber)
-            // let totalPageNumber = res.data.totalPageNumber;
-            // console.log(searchedName)
             let users = res.data.results;
-            console.log(users.length)
             if (users.length > 0 && searchedName != '') {
                 userListElement.innerHTML = getHtmlForListOfUsers(users);
                 displayNumbers.innerHTML = createButtons(res);
@@ -355,10 +332,7 @@ function getSearchResults() {
             } else {
                 alertContent.innerHTML = searchAllert(searchedName, users)
             }
-
-            // alertContent.innerHTML = searchAllert(searchedName, users)
             document.getElementById('search_input').value = searchedName;
-            // console.log(document.getElementById('search_input').value);
         })
         .catch(err => console.log(err))
 }
@@ -381,7 +355,6 @@ function searchAllert(searchedName, users) {
     </div>
     `
     return content;
-
 }
 
 // Pagination :
@@ -400,7 +373,6 @@ function pagination(element) {
     let pageNumber = element.value;
     let searchedName = document.getElementById('search_input').value;
     let status = document.getElementById('status').value;
-    console.log(status)
     var userListElement = document.getElementById('userList');
     var displayNumbers = document.getElementById('pagination');
     userListElement.innerHTML = '';
@@ -416,9 +388,7 @@ function pagination(element) {
             if (userListElement.innerHTML == '') {
                 axios.get('http://localhost:3000/pagination', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
-                        console.log(res.data)
                         var users = res.data.results;
-                        console.log(users)
                         userListElement.innerHTML = getHtmlForListOfUsers(users);
                         displayNumbers.innerHTML = createButtons(res);
                         addActiveClass(res);
