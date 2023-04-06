@@ -321,7 +321,7 @@ function getSearchResults() {
     userListElement.innerHTML = '';
     var displayNumbers = document.getElementById('pagination');
     displayNumbers.innerHTML = '';
-
+    alertContent.innerHTML = '';
     axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
         .then(res => {
             let users = res.data.results;
