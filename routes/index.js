@@ -22,7 +22,7 @@ router.get('/users', isLogedIn, paginatedResults(User), users.displayAllUsers);
 
 router.get('/users/change', paginatedResults(User), users.getSelectedUsers);
 
-router.get('/users/new', users.renderNewForm);
+// router.get('/users/new', users.renderNewForm);
 
 router.get('/users/search', users.searchUsers);
 

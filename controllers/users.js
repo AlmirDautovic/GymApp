@@ -55,9 +55,9 @@ module.exports.searchUsers = async (req, res) => {
     res.json(users);
 }
 
-module.exports.renderNewForm = (req, res) => {
-    res.render('users/new');
-};
+// module.exports.renderNewForm = (req, res) => {
+//     res.render('users/new');
+// };
 
 module.exports.createNewUser = async (req, res) => {
     const { password, username, status, message, email, phone } = req.body;
@@ -115,7 +115,7 @@ module.exports.logout = (req, res) => {
     req.session.user_id = null;
     req.session.loggedin = false;
     // req.session.destroy();
-    res.redirect('/login');
+    res.redirect('/');
 }
 
 module.exports.ajaxUsers = async (req, res) => {
