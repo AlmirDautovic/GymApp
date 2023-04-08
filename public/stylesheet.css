@@ -1133,6 +1133,11 @@ textarea:focus {
 #userList,
 #list li {
     list-style-type: none;
+    text-align: left;
+}
+
+#list li {
+    margin-left: 127px;
 }
 
 #orderedList {
@@ -1352,6 +1357,56 @@ p a:hover {
 }
 
 /* pagination */
+
 .pagination li:first-of-type {
     margin-top: 10px;
+}
+
+/* online/offline status */
+.indicator.online {
+    background: #28B62C;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    -webkit-animation: pulse-animation 2s infinite linear;
+}
+
+@-webkit-keyframes pulse-animation {
+    0% {
+        -webkit-transform: scale(1);
+    }
+
+    25% {
+        -webkit-transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.2)
+    }
+
+    75% {
+        -webkit-transform: scale(1);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+    }
+}
+
+.indicator.offline {
+    background: #FF4136;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+}
+
+.userStatus {
+    display: flex;
+    align-items: center;
+}
+
+.userStatus span {
+    margin-right: 10px;
 }

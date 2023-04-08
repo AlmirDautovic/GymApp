@@ -11,31 +11,20 @@
                         <h5 class="card-title">
                             Username: <%=user.username %>
                         </h5>
-                        <ul>
+                        <div class="userStatus mt-2">
+                            <% if(user.status) {%>
+                                <span class="indicator online"></span> Active
+                                <% } else { %>
+                                    <span class="indicator offline"></span> Inactive
+                                    <% } %>
+                        </div>
+                        <ul class="mt-3">
                             <li>Phone Number: <%=user.phone %>
                             </li>
                             <li>E-mail: <%=user.email %>
                             </li>
-                            <li>Status:
-                                <% if(user.status) {%>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                            checked disabled>
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Active
-                                        </label>
-                                    </div>
-                                    <% } else { %>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault" disabled>
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Active
-                                            </label>
-                                        </div>
-                                        <% } %>
-                            </li>
-                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </ul>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     </div>
                 </div>
 
