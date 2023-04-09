@@ -9,7 +9,7 @@ module.exports.renderContactForm = (req, res) => {
     res.render('contact');
 };
 
-module.exports.pagination = async (req, res) => {
+module.exports.displayPaginationForUsers = async (req, res) => {
     // const { status } = req.query;
     var users;
     // if (status == 'true') {
@@ -25,17 +25,8 @@ module.exports.pagination = async (req, res) => {
 };
 
 module.exports.displayAllUsers = async (req, res) => {
-    // const { status } = req.query;
-    var users;
-    // if (status == 'true') {
-    //     users = await User.find({ status });
-    // } else if (status == "false") {
-    //     users = await User.find({ status: { $ne: true } });
-    // }
-    // else {
-    //     users = await User.find({});
-    // }
-    users = res.paginatedResults
+
+    let users = res.paginatedResults
 
     var myIndex = users.totalPageNumber;
     res.render('users/index', { users, myIndex });
@@ -54,10 +45,6 @@ module.exports.searchUsers = async (req, res) => {
     const users = await User.find({ username: { '$regex': username, '$options': 'i' } });
     res.json(users);
 }
-
-// module.exports.renderNewForm = (req, res) => {
-//     res.render('users/new');
-// };
 
 module.exports.createNewUser = async (req, res) => {
     const { password, username, status, message, email, phone } = req.body;
