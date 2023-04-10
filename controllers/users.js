@@ -45,7 +45,7 @@ module.exports.createNewUser = async (req, res) => {
         newUser = new User({
             "username": req.body.username, "password": hash,
             "status": req.body.status, "profile_image": "np_profile_img.jpg", "message": req.body.message,
-            "email": req.body.email, "phone": req.body.phone
+            "email": req.body.email, "phone": req.body.phone, "role": "regular"
         });
     } else {
         const { profile_image } = req.files;
@@ -56,7 +56,8 @@ module.exports.createNewUser = async (req, res) => {
             status,
             message,
             email,
-            phone
+            phone,
+            role: 'regular'
         });
         newUser.profile_image = profile_image.name
     }
@@ -123,8 +124,8 @@ module.exports.editUser = async (req, res) => {
 module.exports.deleteUserAjax = async (req, res) => {
     const { id } = req.query;
     const deletedUser = await User.findByIdAndDelete(id);
-    req.session.user_id = null;
-    req.session.loggedin = false;
+    // req.session.user_id = null;
+    // req.session.loggedin = false;
     res.json({});
 };
 

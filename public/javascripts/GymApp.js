@@ -384,7 +384,6 @@ function pagination(element) {
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
             document.getElementById('search_input').value = searchedName;
-            console.log(document.getElementById('search_input').value);
             if (userListElement.innerHTML == '') {
                 axios.get('http://localhost:3000/pagination', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
