@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 module.exports.renderHomePage = (req, res) => {
     res.render('home');
@@ -10,24 +11,28 @@ module.exports.renderContactForm = (req, res) => {
 };
 
 module.exports.displayPaginationForUsers = async (req, res) => {
-
+    const id = req.session.user_id
+    const loggedUser = await User.findById(id);
+    // console.log(loggedUser.role)
+    let role = loggedUser.role;
+    console.log(role)
     let users = res.paginatedResults;
-    res.json(users)
+    res.status(200).json({ users, role })
 };
 
 module.exports.displayAllUsers = async (req, res) => {
-
     let users = res.paginatedResults
 
     var myIndex = users.totalPageNumber;
     res.render('users/index', { users, myIndex });
+    // console.log(req.session.user_id)
+    // console.log(req.session)
 };
 
 module.exports.getSelectedUsers = async (req, res) => {
     const { status } = req.query;
-    var users;
 
-    users = res.paginatedResults
+    let users = res.paginatedResults
     res.json(users)
 };
 
@@ -123,10 +128,13 @@ module.exports.editUser = async (req, res) => {
 
 module.exports.deleteUserAjax = async (req, res) => {
     const { id } = req.query;
-    const deletedUser = await User.findByIdAndDelete(id);
-    // req.session.user_id = null;
-    // req.session.loggedin = false;
-    res.json({});
+    const loggedUser = await User.findById(req.session.user_id);
+    let role = loggedUser.role;
+    if (role === 'admin') {
+        const deletedUser = await User.findByIdAndDelete(id);
+    }
+
+    res.json({}, role);
 };
 
 module.exports.deleteUser = async (req, res) => {

@@ -196,14 +196,18 @@ function usersOnChange(value) {
 
 
 //Function for dinamically create content after deleting user on users page, or selecting users by their status on users page
-function getHtmlForListOfUsers(users) {
+function getHtmlForListOfUsers(users, role) {
     var content = '';
     for (let user of users) {
         document.getElementById('search_input').value = '';
+        let rolePrivilege = 'hidden';
         let active = '';
         let profile_picture_path = '/public/images/profile/';
         if (user.status) {
             active = 'checked';
+        }
+        if (role === 'admin') {
+            rolePrivilege = '=';
         }
         content +=
             '<li>' +
@@ -220,13 +224,13 @@ function getHtmlForListOfUsers(users) {
             '</div>' +
             '<div class="col-md-2 col-sm-12" style="width:100px;">' +
             '<a role="button" class="btn btn-outline-dark" href="/users/' + user._id +
-            '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .65rem;">' +
+            '" style="--bs-btn-padding-y: .20rem; --bs-btn-padding-x: .4rem; --bs-btn-font-size: .70rem;">' +
             'Show More' +
             '</a>' +
             '</div>' +
             '<div class="col-md-2 col-sm-12">' +
             '<button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)" value="' + user._id + '"' +
-            'name="deleteBtn">Delete user</button>' +
+            'name="deleteBtn"' + rolePrivilege + '>' + 'Delete user</button>' +
             '</div>' +
             '</div>' +
             '</li>';
@@ -363,7 +367,7 @@ let buttons = document.getElementsByClassName('page-link');
 function addActiveClass(res) {
     for (let button of buttons) {
         let page = button.innerHTML;
-        if (page == res.data.currentPage) {
+        if (page == res.data.users.currentPage) {
             button.classList.add('active')
         }
     }
@@ -379,15 +383,17 @@ function pagination(element) {
     displayNumbers.innerHTML = '';
     axios.get('http://localhost:3000/pagination', { params: { page: pageNumber, status: status, username: searchedName } })
         .then(res => {
-            var users = res.data.results;
-            userListElement.innerHTML = getHtmlForListOfUsers(users);
+            console.log(res.data.role)
+            let role = res.data.role;
+            var users = res.data.users.results;
+            userListElement.innerHTML = getHtmlForListOfUsers(users, role);
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
             document.getElementById('search_input').value = searchedName;
             if (userListElement.innerHTML == '') {
                 axios.get('http://localhost:3000/pagination', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
-                        var users = res.data.results;
+                        var users = res.data.users.results;
                         userListElement.innerHTML = getHtmlForListOfUsers(users);
                         displayNumbers.innerHTML = createButtons(res);
                         addActiveClass(res);
@@ -403,19 +409,19 @@ function createButtons(res) {
     var content = '';
     var previousDisable = '';
     var nextDisable = '';
-    if (res.data.next == undefined || res.data.currentPage == res.data.totalPageNumber) {
+    if (res.data.users.next == undefined || res.data.users.currentPage == res.data.users.totalPageNumber) {
         nextDisable = 'disabled'
     }
-    if (res.data.previous == undefined) {
+    if (res.data.users.previous == undefined) {
         previousDisable = 'disabled'
     }
     content +=
         `
     <li class="page-item ${previousDisable}">
-    <button class="page-link" value=${res.data.currentPage - 1} onclick="pagination(this)" ${previousDisable}>Previous</button>
+    <button class="page-link" value=${res.data.users.currentPage - 1} onclick="pagination(this)" ${previousDisable}>Previous</button>
     </li>
     `
-    for (i = 1; i <= res.data.totalPageNumber; i++) {
+    for (i = 1; i <= res.data.users.totalPageNumber; i++) {
         content +=
             `
         <li class="page-item">
@@ -426,7 +432,7 @@ function createButtons(res) {
     content +=
         `
     <li class="page-item ${nextDisable}">
-    <button class="page-link" value=${res.data.currentPage + 1} onclick="pagination(this)" ${nextDisable}>Next</button>
+    <button class="page-link" value=${res.data.users.currentPage + 1} onclick="pagination(this)" ${nextDisable}>Next</button>
     </li>
     `
     return content;
