@@ -13,18 +13,18 @@ module.exports.renderContactForm = (req, res) => {
 module.exports.displayPaginationForUsers = async (req, res) => {
     const id = req.session.user_id
     const loggedUser = await User.findById(id);
-    // console.log(loggedUser.role)
     let role = loggedUser.role;
-    console.log(role)
     let users = res.paginatedResults;
     res.status(200).json({ users, role })
 };
 
 module.exports.displayAllUsers = async (req, res) => {
     let users = res.paginatedResults
-
+    const id = req.session.user_id
+    const loggedUser = await User.findById(id);
+    let role = loggedUser.role;
     var myIndex = users.totalPageNumber;
-    res.render('users/index', { users, myIndex });
+    res.render('users/index', { users, myIndex, role });
     // console.log(req.session.user_id)
     // console.log(req.session)
 };

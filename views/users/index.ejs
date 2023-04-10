@@ -53,11 +53,23 @@
                                                 Show More
                                             </a>
                                         </div>
-
-                                        <div class="col-md-2 col-sm-12">
+                                        <% if(role !=='admin' ) {%>
+                                            <div class="col-md-2 col-sm-12">
+                                                <button type="button" class="btn btn-sm btn-danger"
+                                                    onclick="getUser(this)" value="<%=user._id%>" name="deleteBtn"
+                                                    hidden>Delete user</button>
+                                            </div>
+                                            <% } else {%>
+                                                <div class="col-md-2 col-sm-12">
+                                                    <button type="button" class="btn btn-sm btn-danger"
+                                                        onclick="getUser(this)" value="<%=user._id%>"
+                                                        name="deleteBtn">Delete user</button>
+                                                </div>
+                                                <% } %>
+                                                    <!-- <div class="col-md-2 col-sm-12">
                                             <button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)"
                                                 value="<%=user._id%>" name="deleteBtn">Delete user</button>
-                                        </div>
+                                        </div> -->
                                 </li>
                                 <% } %>
                         </ul>
