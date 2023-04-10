@@ -28,6 +28,11 @@ const userSchema = new Schema({
     },
     phone: {
         type: String
+    },
+    role: {
+        type: String,
+        enum: [admin, regular],
+        default: 'regular'
     }
 });
 
