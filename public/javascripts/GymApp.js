@@ -180,16 +180,14 @@ function usersOnChange(value) {
 
     axios.get('http://localhost:3000/pagination', { params: { status: value } })
         .then(res => {
-            // searchAllert.innerHTML = ''
-            // searchAllert.className = ''
+            let role = res.data.role;
+            var users = res.data.users.results;
             alertContent.innerHTML = '';
             h1.innerText = "List of all users:"
-            var users = res.data.results;
-            userListElement.innerHTML = getHtmlForListOfUsers(users);
+            userListElement.innerHTML = getHtmlForListOfUsers(users, role);
             displayNumbers.innerHTML = createButtons(res);
             addActiveClass(res);
-            // document.getElementById('search_input').value = searchedName
-            // console.log(document.getElementById('search_input').value)
+
         })
         .catch(err => console.log(err))
 }
@@ -328,9 +326,10 @@ function getSearchResults() {
     alertContent.innerHTML = '';
     axios.get('http://localhost:3000/pagination', { params: { username: searchedName } })
         .then(res => {
-            let users = res.data.results;
+            let role = res.data.role;
+            var users = res.data.users.results;
             if (users.length > 0 && searchedName != '') {
-                userListElement.innerHTML = getHtmlForListOfUsers(users);
+                userListElement.innerHTML = getHtmlForListOfUsers(users, role);
                 displayNumbers.innerHTML = createButtons(res);
                 addActiveClass(res);
             } else {
@@ -383,7 +382,7 @@ function pagination(element) {
     displayNumbers.innerHTML = '';
     axios.get('http://localhost:3000/pagination', { params: { page: pageNumber, status: status, username: searchedName } })
         .then(res => {
-            console.log(res.data.role)
+
             let role = res.data.role;
             var users = res.data.users.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users, role);
@@ -394,7 +393,7 @@ function pagination(element) {
                 axios.get('http://localhost:3000/pagination', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
                         var users = res.data.users.results;
-                        userListElement.innerHTML = getHtmlForListOfUsers(users);
+                        userListElement.innerHTML = getHtmlForListOfUsers(users, role);
                         displayNumbers.innerHTML = createButtons(res);
                         addActiveClass(res);
                         document.getElementById('search_input').value = searchedName;

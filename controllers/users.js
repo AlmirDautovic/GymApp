@@ -25,8 +25,6 @@ module.exports.displayAllUsers = async (req, res) => {
     let role = loggedUser.role;
     var myIndex = users.totalPageNumber;
     res.render('users/index', { users, myIndex, role });
-    // console.log(req.session.user_id)
-    // console.log(req.session)
 };
 
 module.exports.getSelectedUsers = async (req, res) => {
@@ -111,7 +109,10 @@ module.exports.ajaxUsers = async (req, res) => {
 module.exports.getSelectedUser = async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
-    res.render('users/show', { user });
+    const loggedUserId = req.session.user_id
+    const loggedUser = await User.findById(loggedUserId);
+    let role = loggedUser.role;
+    res.render('users/show', { user, role });
 };
 
 module.exports.renderEditForm = async (req, res) => {
