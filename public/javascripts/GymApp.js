@@ -1,9 +1,9 @@
 
 //code for changing to dark or white background on home page:
 
-var switcher = document.getElementById('switch');
-if (switcher != null) {
-    switcher.addEventListener('change', function onChange(event) {
+var homeThemeSwitcher = document.getElementById('switch');
+if (homeThemeSwitcher != null) {
+    homeThemeSwitcher.addEventListener('change', function onChange(event) {
         let color = document.body.style.backgroundColor;
         if (color === 'black') {
             document.body.style.backgroundColor = 'white'
@@ -33,15 +33,18 @@ function loadJson(path, succes, error) {
     xhr.open('GET', path, true);
     xhr.send();
 };
-var show = document.getElementById('show');
-if (show != null) {
-    show.addEventListener('click', function () {
+var showOtherUsersButton = document.getElementById('show');
+if (showOtherUsersButton != null) {
+    showOtherUsersButton.addEventListener('click', function () {
         var list = document.getElementById('list');
         list.innerHTML = ''
         var listTitle = document.getElementById('listTitle').innerHTML = "Other registered users:"
         var userId = document.getElementById('userId').value;
         loadJson('http://localhost:3000/users/json?=' + userId, function (users) {
             for (let user of users) {
+                if (user._id == userId) {
+                    continue;
+                }
                 var li = document.createElement('li');
                 li.append(user.username);
                 list.appendChild(li);
@@ -59,11 +62,7 @@ function deleteUser(id) {
     xhr.open('DELETE', 'http://localhost:3000/users/delete?id=' + id, true);
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == '200') {
-            // createContent();
             pagination(element);
-            // var page = element.value;
-            // var queryString = '?page=' + page;
-            // redirectPage(queryString)
         }
         else {
             console.log('ERROR!', error)
@@ -72,7 +71,7 @@ function deleteUser(id) {
     xhr.send();
 };
 
-function createContent() {
+function createUsersPageContent() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:3000/users/json', true);
 
@@ -91,13 +90,13 @@ function createContent() {
     xhr.send();
 }
 
-function getUser(element) {
+function deleteUserOnUsersPage(element) {
     deleteUser(element.value);
 }
 
 // delete single user on view user details page
 
-function removeOneUser(id) {
+function removeSelectedUser(id) {
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", 'http://localhost:3000/users/delete?id=' + id, true);
     xhr.onload = function () {
@@ -127,49 +126,17 @@ function redirectAfterDelete() {
 
 function redirectPage(queryString = "") {
     let baseUrl = window.location.origin;
-    // console.log(baseUrl)
     window.location.replace(baseUrl + '/login' + queryString); // because it is impossible to redirect page with ajax req i used this 2 lines
     //of code to redirect with client side
 }
 
-function deleteOne(element) {
-    removeOneUser(element.value);
+function deleteSpecificUserFromDetailsPage(element) {
+    removeSelectedUser(element.value);
 }
 
 // Function for dimanically display content on user page after selecting user to: all, active or inactive
 
-function usersOnChange(value) {
-    // let pageNumber = document.getElementById()
-    // console.log(value)
-
-    // var url = "http://localhost:3000/test";
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('GET', url + "?status=" + value + "&page=1", true);
-    // xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
-    // xhr.onload = function () {
-    //     // console.log(xhr.response)
-
-    //     console.log(data.next.page)
-    //     var users = JSON.parse(xhr.responseText);
-    //     // console.log(users);
-    //     var displayNumbers = document.getElementById('pagination');
-    //     displayNumbers.innerHTML = '';
-    //     var h1 = document.getElementById('allusers');
-    //     var ul = document.getElementById('userList');
-    //     if (xhr.readyState == 4 && xhr.status == "200") {
-    //         ul.innerHTML = '';
-    //         h1.innerText = "List of all users:"
-    //         ul.innerHTML = getHtmlForListOfUsers(users.results);
-    //         // displayNumbers.innerHTML = createButtons(xhr.response);
-    //         // addActiveClass(xhr.response);
-    //     } else {
-    //         console.error(users);
-    //     }
-    // }
-    // xhr.send();
-
-    // let status = value;
-    // searchedName = document.getElementById('search_input').value;
+function gettingUsersByStatus(value) {
     var h1 = document.getElementById('allusers');
     var alertContent = document.getElementById('searchAlert');
 
@@ -227,7 +194,7 @@ function getHtmlForListOfUsers(users, role) {
             '</a>' +
             '</div>' +
             '<div class="col-md-2 col-sm-12">' +
-            '<button type="button" class="btn btn-sm btn-danger" onclick="getUser(this)" value="' + user._id + '"' +
+            '<button type="button" class="btn btn-sm btn-danger" onclick="deleteUserOnUsersPage(this)" value="' + user._id + '"' +
             'name="deleteBtn"' + rolePrivilege + '>' + 'Delete user</button>' +
             '</div>' +
             '</div>' +
@@ -236,10 +203,9 @@ function getHtmlForListOfUsers(users, role) {
     return content;
 }
 
-function getStatusValue(selectValue) {
+function displayingUsersBasedOnStatusValue(selectValue) {
     var value = selectValue.value;
-    usersOnChange(value);
-    console.log(value)
+    gettingUsersByStatus(value);
 }
 
 // gym equipment page
@@ -272,7 +238,7 @@ function getGymItems() {
         var items = JSON.parse(xhr.responseText);
         var itemList = document.getElementById('orderedList');
         if (xhr.readyState == 4 && xhr.status == '200') {
-            itemList.innerHTML = createListOfItems(items);
+            itemList.innerHTML = createListOfGymItems(items);
         } else {
             console.error(items);
         }
@@ -280,7 +246,7 @@ function getGymItems() {
     xhr.send();
 }
 
-function createListOfItems(items) {
+function createListOfGymItems(items) {
     var content = '';
     for (let item of items) {
         content +=
@@ -293,7 +259,7 @@ function createListOfItems(items) {
     return content;
 }
 
-function displayItems() {
+function displayGymItems() {
     postGymItem();
     document.getElementById('item_name').value = ''
 }

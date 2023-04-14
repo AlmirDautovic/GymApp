@@ -29,7 +29,6 @@ module.exports.displayAllUsers = async (req, res) => {
 
 module.exports.getSelectedUsers = async (req, res) => {
     const { status } = req.query;
-
     let users = res.paginatedResults
     res.json(users)
 };
@@ -48,7 +47,7 @@ module.exports.createNewUser = async (req, res) => {
         newUser = new User({
             "username": req.body.username, "password": hash,
             "status": req.body.status, "profile_image": "np_profile_img.jpg", "message": req.body.message,
-            "email": req.body.email, "phone": req.body.phone, "role": "regular"
+            "email": req.body.email, "phone": req.body.phone
         });
     } else {
         const { profile_image } = req.files;
@@ -60,7 +59,6 @@ module.exports.createNewUser = async (req, res) => {
             message,
             email,
             phone,
-            role: 'regular'
         });
         newUser.profile_image = profile_image.name
     }
@@ -135,7 +133,7 @@ module.exports.deleteUserAjax = async (req, res) => {
         const deletedUser = await User.findByIdAndDelete(id);
     }
 
-    res.json({}, role);
+    res.json({ role });
 };
 
 module.exports.deleteUser = async (req, res) => {
