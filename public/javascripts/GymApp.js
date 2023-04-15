@@ -152,8 +152,8 @@ function gettingUsersByStatus(value) {
             alertContent.innerHTML = '';
             h1.innerText = "List of all users:"
             userListElement.innerHTML = getHtmlForListOfUsers(users, role);
-            displayNumbers.innerHTML = createButtons(res);
-            addActiveClass(res);
+            displayNumbers.innerHTML = createPaginationButtons(res);
+            addActiveClassForButtons(res);
 
         })
         .catch(err => console.log(err))
@@ -282,7 +282,7 @@ if (document.getElementById("date") != null) {
 
 // search user option:
 var searchedName;
-function getSearchResults() {
+function getSearchResultsForUsers() {
     var alertContent = document.getElementById('searchAlert');
     searchedName = document.getElementById('search_input').value;
     var userListElement = document.getElementById('userList');
@@ -296,17 +296,17 @@ function getSearchResults() {
             var users = res.data.users.results;
             if (users.length > 0 && searchedName != '') {
                 userListElement.innerHTML = getHtmlForListOfUsers(users, role);
-                displayNumbers.innerHTML = createButtons(res);
+                displayNumbers.innerHTML = createPaginationButtons(res);
                 addActiveClass(res);
             } else {
-                alertContent.innerHTML = searchAllert(searchedName, users)
+                alertContent.innerHTML = addingAllertsAfterUserSearchsearchAllert(searchedName, users)
             }
             document.getElementById('search_input').value = searchedName;
         })
         .catch(err => console.log(err))
 }
 
-function searchAllert(searchedName, users) {
+function addingAllertsAfterUserSearchsearchAllert(searchedName, users) {
     let content = '';
     let alertText = '';
     let alertClass = '';
@@ -329,7 +329,7 @@ function searchAllert(searchedName, users) {
 // Pagination :
 
 let buttons = document.getElementsByClassName('page-link');
-function addActiveClass(res) {
+function addActiveClassForButtons(res) {
     for (let button of buttons) {
         let page = button.innerHTML;
         if (page == res.data.users.currentPage) {
@@ -338,7 +338,7 @@ function addActiveClass(res) {
     }
 }
 
-function pagination(element) {
+function createUsersListWithPaginationHtml(element) {
     let pageNumber = element.value;
     let searchedName = document.getElementById('search_input').value;
     let status = document.getElementById('status').value;
@@ -352,16 +352,16 @@ function pagination(element) {
             let role = res.data.role;
             var users = res.data.users.results;
             userListElement.innerHTML = getHtmlForListOfUsers(users, role);
-            displayNumbers.innerHTML = createButtons(res);
-            addActiveClass(res);
+            displayNumbers.innerHTML = createPaginationButtons(res);
+            addActiveClassForButtons(res);
             document.getElementById('search_input').value = searchedName;
             if (userListElement.innerHTML == '') {
                 axios.get('http://localhost:3000/pagination', { params: { page: pageNumber - 1, status: status, username: searchedName } })
                     .then(res => {
                         var users = res.data.users.results;
                         userListElement.innerHTML = getHtmlForListOfUsers(users, role);
-                        displayNumbers.innerHTML = createButtons(res);
-                        addActiveClass(res);
+                        displayNumbers.innerHTML = createPaginationButtons(res);
+                        addActiveClassForButtons(res);
                         document.getElementById('search_input').value = searchedName;
                         console.log(document.getElementById('search_input').value);
                     })
@@ -370,7 +370,7 @@ function pagination(element) {
         .catch(err => console.log(err))
 }
 
-function createButtons(res) {
+function createPaginationButtons(res) {
     var content = '';
     var previousDisable = '';
     var nextDisable = '';
@@ -383,21 +383,21 @@ function createButtons(res) {
     content +=
         `
     <li class="page-item ${previousDisable}">
-    <button class="page-link" value=${res.data.users.currentPage - 1} onclick="pagination(this)" ${previousDisable}>Previous</button>
+    <button class="page-link" value=${res.data.users.currentPage - 1} onclick="createUsersListWithPaginationHtml(this)" ${previousDisable}>Previous</button>
     </li>
     `
     for (i = 1; i <= res.data.users.totalPageNumber; i++) {
         content +=
             `
         <li class="page-item">
-        <button class="page-link" value=${i} onclick="pagination(this)">${i}</button>
+        <button class="page-link" value=${i} onclick="createUsersListWithPaginationHtml(this)">${i}</button>
         </li>
         `
     }
     content +=
         `
     <li class="page-item ${nextDisable}">
-    <button class="page-link" value=${res.data.users.currentPage + 1} onclick="pagination(this)" ${nextDisable}>Next</button>
+    <button class="page-link" value=${res.data.users.currentPage + 1} onclick="createUsersListWithPaginationHtml(this)" ${nextDisable}>Next</button>
     </li>
     `
     return content;

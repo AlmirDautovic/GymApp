@@ -9,7 +9,7 @@
                             <input type="text" id="search_input" class="form-control" placeholder="Enter username"
                                 aria-label="Enter username" aria-describedby="searchButton">
                             <button class="btn btn-outline-secondary" type="button" id="searchButton"
-                                onclick="getSearchResults()">Search</button>
+                                onclick="getSearchResultsForUsers()">Search</button>
                         </div>
                         <div class="col-sm col-md mt-3" id="searchAlert">
 
@@ -79,19 +79,19 @@
                                         <% } else { %>
                                             <li class="page-item">
                                                 <button class="page-link" value="<%=users.previous.page%>"
-                                                    onclick="pagination(this)">Previous</button>
+                                                    onclick="createUsersListWithPaginationHtml(this)">Previous</button>
                                             </li>
                                             <% } %>
                                                 <% for(let j=1; j<=myIndex ;j++ ) {%>
                                                     <li class="page-item">
                                                         <% if(j==1) {%>
                                                             <button class="page-link active" value="<%=j%>"
-                                                                onclick="pagination(this)">
+                                                                onclick="createUsersListWithPaginationHtml(this)">
                                                                 <%=j %>
                                                             </button>
                                                             <% } else {%>
                                                                 <button class="page-link" value="<%=j%>"
-                                                                    onclick="pagination(this)">
+                                                                    onclick="createUsersListWithPaginationHtml(this)">
                                                                     <%=j %>
                                                                 </button>
                                                                 <% } %>
@@ -99,7 +99,8 @@
                                                     <% } %>
 
                                                         <li class="page-item">
-                                                            <button class="page-link" onclick="pagination(this)"
+                                                            <button class="page-link"
+                                                                onclick="createUsersListWithPaginationHtml(this)"
                                                                 value="2">Next</button>
                                                         </li>
                                 </ul>
