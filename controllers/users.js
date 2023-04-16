@@ -139,8 +139,6 @@ module.exports.deleteUserAjax = async (req, res) => {
 module.exports.deleteUser = async (req, res) => {
     const { id } = req.params;
     const deletedUser = await User.findByIdAndDelete(id);
-    req.session.user_id = null;
-    req.session.loggedin = false;
-    res.redirect('/logout');
+    res.redirect('/users');
 };
 
