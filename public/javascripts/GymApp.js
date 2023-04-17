@@ -98,7 +98,7 @@ function deleteUserOnUsersPage(element) {
 
 function removeSelectedUser(id) {
     var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", 'http://localhost:3000/users/delete?id=' + id, true);
+    xhr.open("DELETE", 'http://localhost:3000/users/' + id, true);
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == '200') {
             redirectAfterDelete();
@@ -126,8 +126,9 @@ function redirectAfterDelete() {
 
 function redirectPage(queryString = "") {
     let baseUrl = window.location.origin;
-    window.location.replace(baseUrl + '/login' + queryString); // because it is impossible to redirect page with ajax req i used this 2 lines
+    window.location.replace(baseUrl + '/users' + queryString); // because it is impossible to redirect page with ajax req i used this 2 lines
     //of code to redirect with client side
+    console.log(window.location.origin)
 }
 
 function deleteSpecificUserFromDetailsPage(element) {

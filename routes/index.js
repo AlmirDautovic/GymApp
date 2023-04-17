@@ -34,9 +34,9 @@ router.get('/users/:id/edit', users.renderEditForm);
 
 router.put('/users/:id', users.editUser);
 
-router.delete('/users/delete', paginatedResultsForUsers(User), users.deleteUserAjax);
+router.delete('/users/:id', paginatedResultsForUsers(User), users.deleteUserFromAllUserPage);
 
-router.delete('/users/:id', users.deleteUser);
+// router.delete('/users/:id', users.deleteUser);
 
 router.get('/contact', users.renderContactForm);
 

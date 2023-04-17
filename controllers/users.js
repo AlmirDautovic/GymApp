@@ -125,7 +125,7 @@ module.exports.editUser = async (req, res) => {
     res.redirect(`/users/${user._id}`);
 };
 
-module.exports.deleteUserAjax = async (req, res) => {
+module.exports.deleteUserFromAllUserPage = async (req, res) => {
     const { id } = req.query;
     const loggedUser = await User.findById(req.session.user_id);
     let role = loggedUser.role;
