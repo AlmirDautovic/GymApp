@@ -126,7 +126,7 @@ module.exports.editUser = async (req, res) => {
 };
 
 module.exports.deleteUserFromAllUserPage = async (req, res) => {
-    const { id } = req.query;
+    const { id } = req.params;
     const loggedUser = await User.findById(req.session.user_id);
     let role = loggedUser.role;
     if (role === 'admin') {
@@ -136,9 +136,9 @@ module.exports.deleteUserFromAllUserPage = async (req, res) => {
     res.json({ role });
 };
 
-module.exports.deleteUser = async (req, res) => {
-    const { id } = req.params;
-    const deletedUser = await User.findByIdAndDelete(id);
-    res.redirect('/users');
-};
+// module.exports.deleteUser = async (req, res) => {
+//     const { id } = req.params;
+//     const deletedUser = await User.findByIdAndDelete(id);
+//     res.redirect('/users');
+// };
 

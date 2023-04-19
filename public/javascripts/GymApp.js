@@ -59,10 +59,10 @@ if (showOtherUsersButton != null) {
 function deleteUser(id) {
     var element = document.querySelector('button[class="page-link active"]');
     var xhr = new XMLHttpRequest();
-    xhr.open('DELETE', 'http://localhost:3000/users/delete?id=' + id, true);
+    xhr.open('DELETE', 'http://localhost:3000/users/' + id, true);
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == '200') {
-            pagination(element);
+            createUsersListWithPaginationHtml(element);
         }
         else {
             console.log('ERROR!', error)
