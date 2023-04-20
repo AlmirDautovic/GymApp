@@ -132,13 +132,7 @@ module.exports.deleteUserFromAllUserPage = async (req, res) => {
     if (role === 'admin') {
         const deletedUser = await User.findByIdAndDelete(id);
     }
-
     res.json({ role });
 };
 
-// module.exports.deleteUser = async (req, res) => {
-//     const { id } = req.params;
-//     const deletedUser = await User.findByIdAndDelete(id);
-//     res.redirect('/users');
-// };
 

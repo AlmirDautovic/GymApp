@@ -36,8 +36,6 @@ router.put('/users/:id', users.editUser);
 
 router.delete('/users/:id', paginatedResultsForUsers(User), users.deleteUserFromAllUserPage);
 
-// router.delete('/users/:id', users.deleteUser);
-
 router.get('/contact', users.renderContactForm);
 
 router.get('/gymequipment', gymItem.renderGymItemPage);
