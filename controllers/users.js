@@ -94,7 +94,6 @@ module.exports.userLogin = async (req, res) => {
 module.exports.logout = (req, res) => {
     req.session.user_id = null;
     req.session.loggedin = false;
-    // req.session.destroy();
     res.redirect('/');
 }
 
