@@ -44,11 +44,14 @@ module.exports.createNewUser = async (req, res) => {
     const hash = await bcrypt.hash(password, 12)
     var newUser;
     if (req.files == null) {
-        newUser = new User({
-            "username": req.body.username, "password": hash,
-            "status": req.body.status, "profile_image": "np_profile_img.jpg", "message": req.body.message,
-            "email": req.body.email, "phone": req.body.phone
-        });
+        newUser = new User(
+            req.body
+            //     {
+            //     "username": req.body.username, "password": hash,
+            //     "status": req.body.status, "profile_image": "np_profile_img.jpg", "message": req.body.message,
+            //     "email": req.body.email, "phone": req.body.phone
+            // }
+        );
     } else {
         const { profile_image } = req.files;
         profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
