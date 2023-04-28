@@ -28,7 +28,6 @@ module.exports.displayAllUsers = async (req, res) => {
 };
 
 module.exports.getSelectedUsers = async (req, res) => {
-    const { status } = req.query;
     let users = res.paginatedResults
     res.json(users)
 };
@@ -40,29 +39,13 @@ module.exports.searchUsers = async (req, res) => {
 }
 
 module.exports.createNewUser = async (req, res) => {
-    const { password, username, status, message, email, phone } = req.body;
+    const { password } = req.body;
     const hash = await bcrypt.hash(password, 12)
-    var newUser;
-    if (req.files == null) {
-        newUser = new User(
-            req.body
-            //     {
-            //     "username": req.body.username, "password": hash,
-            //     "status": req.body.status, "profile_image": "np_profile_img.jpg", "message": req.body.message,
-            //     "email": req.body.email, "phone": req.body.phone
-            // }
-        );
-    } else {
+    var newUser = new User(req.body);
+    newUser.password = hash;
+    if (req.files !== null) {
         const { profile_image } = req.files;
         profile_image.mv("public" + "/" + "images" + "/" + "profile" + "/" + profile_image.name);
-        newUser = new User({
-            username,
-            password: hash,
-            status,
-            message,
-            email,
-            phone,
-        });
         newUser.profile_image = profile_image.name
     }
     req.session.loggedin = true

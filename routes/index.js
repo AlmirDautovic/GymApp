@@ -51,6 +51,4 @@ router.get('/blogs/new', isLogedIn, blogs.renderBlogForm);
 router.post('/blogs', isLogedIn, blogs.createNewBlogPost);
 
 
-
-
 module.exports = router;

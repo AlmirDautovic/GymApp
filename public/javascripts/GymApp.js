@@ -253,7 +253,6 @@ function addingAllertsAfterUserSearchsearchAllert(searchedName, users) {
 }
 
 
-
 let buttons = document.getElementsByClassName('page-link');
 function addActiveClassForButtons(res) {
     for (let button of buttons) {
