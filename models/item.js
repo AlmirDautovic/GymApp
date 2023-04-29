@@ -6,9 +6,17 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
-    image_url: {
+    item_image: {
         type: String,
-        default: 'no_url'
+        default: 'item_image.jpg'
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    usage: {
+        type: String,
+        required: true
     }
 });
 

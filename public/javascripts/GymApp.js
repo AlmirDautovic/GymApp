@@ -145,23 +145,44 @@ function getHtmlForListOfUsers(users, role) {
 
 
 function postAndDisplayGymItems() {
-    let url = "http://localhost:3000/gymequipment";
-    let item = {};
-    item.item_name = document.getElementById('item_name').value;
-    let json = JSON.stringify(item);
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhr.onload = function () {
-        let items = JSON.parse(xhr.responseText);
-        if (xhr.readyState == 4 && xhr.status == "201") {
-            document.getElementById('item_name').value = ''
-            getGymItems();
-        } else {
-            console.error(items);
-        }
-    }
-    xhr.send(json);
+    // let url = "http://localhost:3000/gymequipment";
+    // let item = {}
+    // item.item_name = document.getElementById('item_name').value;
+    // item.description = document.getElementById('description').value;
+    // item.usage = document.getElementById('usage').value;
+    // item.item_image = document.getElementById('item_image').files[0];
+
+    // console.log(item)
+    // let json = JSON.stringify(item);
+    // console.log(json)
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('POST', url, true);
+    // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    // xhr.onload = function () {
+    //     let items = JSON.parse(xhr.responseText);
+    //     if (xhr.readyState == 4 && xhr.status == "201") {
+    //         console.log(item)
+    //         document.getElementById('item_name').value = ''
+    //         getGymItems();
+    //     } else {
+    //         console.error(items);
+    //     }
+    // }
+    // xhr.send(json);
+
+    const form = document.getElementById('gymItemForm');
+    form.addEventListener('click', function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        console.log(...formData)
+
+        axios.post("http://localhost:3000/gymequipment", formData)
+            .then(res => {
+                getGymItems()
+            })
+            .catch(err => console.log(err))
+    })
 };
 
 function getGymItems() {
@@ -192,7 +213,6 @@ function createListOfGymItems(items) {
     };
     return content;
 }
-
 
 
 if (document.getElementById("date") != null) {

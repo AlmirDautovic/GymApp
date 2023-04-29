@@ -2,17 +2,26 @@
     <div class="row">
         <div id="equipmentItem" class="col-md-3">
             <h1>Create Gym Item</h1>
-            <div class="mb-3 col-md">
-                <label for="item_name" class="form-label">Gym Item</label>
-                <input type="text" class="form-control" id="item_name" name="item_name" required>
-            </div>
-            <div class="mb-3 col-md">
-                <label for="image_url" class="form-label">Image URL</label>
-                <input type="text" class="form-control" id="image_url" name="image_url" value="no_url"
-                    placeholder="no_url">
-            </div>
-            <button class="btn btn-success" onclick="postAndDisplayGymItems(this)">INSERT</button>
-
+            <form id="gymItemForm">
+                <div class="mb-3 col-md">
+                    <label for="item_name" class="form-label">Gym Item</label>
+                    <input type="text" class="form-control" id="item_name" name="item_name" required>
+                </div>
+                <div class="mb-3 col-md">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea cols="2" rows="3" class="form-control" id="description" name="description"
+                        required></textarea>
+                </div>
+                <div class="mb-3 col-md">
+                    <label for="usage" class="form-label">Usage</label>
+                    <textarea cols="2" rows="3" class="form-control" id="usage" name="usage" required></textarea>
+                </div>
+                <div class="mb-3 col-md">
+                    <label for="item_image" class="form-label">Image URL</label>
+                    <input type="file" class="form-control" id="item_image" name="item_image">
+                </div>
+                <button type="submit" class="btn btn-success" onclick="postAndDisplayGymItems(this)">INSERT</button>
+            </form>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-6">
@@ -21,7 +30,7 @@
                 <% for(let item of items) {%>
                     <li>
                         <div class="row align-items-center">
-                            <div class="col-md-2 col-sm text-md">
+                            <div class="col-md-6 col-sm text-md">
                                 <%= item.item_name%>
                             </div>
                         </div>
