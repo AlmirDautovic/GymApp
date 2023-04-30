@@ -175,7 +175,6 @@ function postAndDisplayGymItems() {
     form.addEventListener('click', function (e) {
         e.preventDefault();
         const formData = new FormData(form);
-        console.log(...formData)
 
         axios.post("http://localhost:3000/gymequipment", formData)
             .then(res => {

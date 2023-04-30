@@ -6,10 +6,7 @@ module.exports.renderGymItemPage = async (req, res) => {
 };
 
 module.exports.createItem = async (req, res) => {
-    console.log(req.body)
-    console.log(req.files)
     let item = new Item(req.body);
-
     const { item_image } = req.files;
     item_image.mv("public" + "/" + "images" + "/" + "equipment" + "/" + item_image.name);
     item.item_image = item_image.name;

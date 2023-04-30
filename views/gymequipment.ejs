@@ -20,7 +20,7 @@
                     <label for="item_image" class="form-label">Image URL</label>
                     <input type="file" class="form-control" id="item_image" name="item_image">
                 </div>
-                <button type="submit" class="btn btn-success" onclick="postAndDisplayGymItems(this)">INSERT</button>
+                <button class="btn btn-success" onclick="postAndDisplayGymItems(this)">INSERT</button>
             </form>
         </div>
         <div class="col-md-2"></div>
@@ -32,6 +32,8 @@
                         <div class="row align-items-center">
                             <div class="col-md-6 col-sm text-md">
                                 <%= item.item_name%>
+                                    <img style="height: 200px; width: 200px;"
+                                        src="/public/images/equipment/<%=item.item_image %>" alt="">
                             </div>
                         </div>
                     </li>
