@@ -178,7 +178,11 @@ function postAndDisplayGymItems() {
 
         axios.post("http://localhost:3000/gymequipment", formData)
             .then(res => {
-                getGymItems()
+                getGymItems();
+                document.getElementById('item_name').value = '';
+                document.getElementById('description').value = '';
+                document.getElementById('usage').value = '';
+                document.getElementById('item_image').value = '';
             })
             .catch(err => console.log(err))
     })
@@ -190,9 +194,9 @@ function getGymItems() {
     xhr.open('GET', url, true);
     xhr.onload = function () {
         let items = JSON.parse(xhr.responseText);
-        let itemList = document.getElementById('orderedList');
+        let carouselContent = document.getElementById('carouselContent');
         if (xhr.readyState == 4 && xhr.status == '200') {
-            itemList.innerHTML = createListOfGymItems(items);
+            carouselContent.innerHTML = createListOfGymItems(items);
         } else {
             console.error(items);
         }
@@ -202,13 +206,31 @@ function getGymItems() {
 
 function createListOfGymItems(items) {
     let content = '';
-    for (let item of items) {
+    for (let [i, item] of items.entries()) {
+        let active = '';
+
+        if (i == 0) {
+            active = 'active';
+        }
         content +=
-            '<li>' +
-            '<div class="row align-items-center">' +
-            '<div class="col-md-2 col-sm text-md">' + item.item_name + '</div>' +
-            '</div>' +
-            '</li>'
+            `
+            <div class="carousel-item ${active}" style="max-height: 800px;">
+                                <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <img style="width: 200px; height: 200px;"
+                                    src="/public/images/equipment/${item.item_image}" alt="">
+                                    <h3>
+                                        ${item.item_name}
+                                    </h3>
+                                    <p>
+                                        ${item.description}
+                                    </p>
+                                    <p>
+                                        ${item.usage}
+                                    </p>
+                                </div>
+                            </div>
+            `
     };
     return content;
 }

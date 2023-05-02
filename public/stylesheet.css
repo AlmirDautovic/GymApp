@@ -1410,3 +1410,16 @@ p a:hover {
 .userStatus span {
     margin-right: 10px;
 }
+
+.carousel-caption {
+    top: 1rem;
+    color: #565656;
+}
+
+.carousel-control-prev span {
+    background-color: gray;
+}
+
+.carousel-control-next span {
+    background-color: gray;
+}

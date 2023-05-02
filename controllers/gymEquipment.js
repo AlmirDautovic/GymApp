@@ -2,7 +2,12 @@ const Item = require("../models/item");
 
 module.exports.renderGymItemPage = async (req, res) => {
     const items = await Item.find({});
-    res.render('gymequipment', { items });
+    const length = Math.ceil(await Item.countDocuments().exec())
+    for (let [i, item] of items.entries()) {
+        console.log(item, i)
+    }
+    res.render('gymequipment', { items, length });
+    // res.json({ items, length })
 };
 
 module.exports.createItem = async (req, res) => {
