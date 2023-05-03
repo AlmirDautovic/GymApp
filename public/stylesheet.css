@@ -1423,3 +1423,9 @@ p a:hover {
 .carousel-control-next span {
     background-color: gray;
 }
+
+.carousel-caption img,
+h3,
+p {
+    margin-bottom: 10px;
+}

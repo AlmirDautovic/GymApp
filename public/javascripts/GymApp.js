@@ -214,7 +214,7 @@ function createListOfGymItems(items) {
         }
         content +=
             `
-            <div class="carousel-item ${active}" style="max-height: 800px;">
+            <div class="carousel-item ${active}" style="max-height: 1000px;">
                                 <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                 <img style="width: 200px; height: 200px;"
