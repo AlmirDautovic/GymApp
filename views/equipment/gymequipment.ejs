@@ -38,6 +38,9 @@
                                         <%=item.item_name %>
                                     </h3>
                                     <p>
+                                        <a href="/gymequipment/<%=item._id %>">See more details</a>
+                                    </p>
+                                    <p>
                                         <%=item.description %>
                                     </p>
                                     <p>
@@ -46,7 +49,7 @@
                                 </div>
                             </div>
                             <% } else { %>
-                                <div class="carousel-item" style="max-height: 800px;">
+                                <div class="carousel-item" style="max-height: 1000px;">
                                     <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto"
                                         alt="...">
                                     <div class="carousel-caption d-none d-md-block">
@@ -55,6 +58,9 @@
                                         <h3>
                                             <%=item.item_name %>
                                         </h3>
+                                        <p>
+                                            <a href="/gymequipment/<%=item._id %>">See more details</a>
+                                        </p>
                                         <p>
                                             <%=item.description %>
                                         </p>

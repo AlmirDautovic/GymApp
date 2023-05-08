@@ -14,7 +14,6 @@ if (homeThemeSwitcher != null) {
 };
 
 
-
 function loadJson(path, succes, error) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {

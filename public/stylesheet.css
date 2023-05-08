@@ -1412,7 +1412,7 @@ p a:hover {
 }
 
 .carousel-caption {
-    top: 1rem;
+    top: 1.5rem;
     color: #565656;
 }
 
@@ -1427,5 +1427,5 @@ p a:hover {
 .carousel-caption img,
 h3,
 p {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }

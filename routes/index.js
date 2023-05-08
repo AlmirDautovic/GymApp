@@ -40,6 +40,8 @@ router.get('/contact', users.renderContactForm);
 
 router.get('/gymequipment', gymItem.renderGymItemPage);
 
+router.get('/gymequipment/:id', gymItem.itemDetailsPage);
+
 router.post('/gymequipment', gymItem.createItem);
 
 router.get('/gymitem', gymItem.displayItem);
