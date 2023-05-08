@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const session = require('express-session');
 
 module.exports.renderHomePage = (req, res) => {
     res.render('home');
@@ -115,7 +114,7 @@ module.exports.deleteUserFromAllUserPage = async (req, res) => {
     const loggedUser = await User.findById(req.session.user_id);
     let role = loggedUser.role;
     if (role === 'admin') {
-        const deletedUser = await User.findByIdAndDelete(id);
+        await User.findByIdAndDelete(id);
     }
     res.json({ role });
 };

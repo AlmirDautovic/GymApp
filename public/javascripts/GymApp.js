@@ -83,7 +83,6 @@ function redirectPage(queryString = "") {
 }
 
 
-
 function displayingUsersBasedOnStatusValue(element) {
     let status = element.value;
     let h1 = document.getElementById('allusers');
@@ -120,7 +119,8 @@ function getHtmlForListOfUsers(users, role) {
             '<div class="col-md-1 col-sm">' +
             '<img src="' + profile_picture_path + user.profile_image + '" style="height: 50px; width:50px"" class="img-fluid"' + '>' +
             '</div>' +
-            '<div class="col-md-2 col-sm text-md">' + user.username + '</div>' +
+            '<div class="col-md-2 col-sm text-md">' + user.username +
+            '</div>' +
             '<div class="col-md-1 col-sm-12">' +
             '<div class="form-check">' +
             '<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled="" ' + active + '>' +
@@ -145,32 +145,6 @@ function getHtmlForListOfUsers(users, role) {
 
 
 function postAndDisplayGymItems() {
-    // let url = "http://localhost:3000/gymequipment";
-    // let item = {}
-    // item.item_name = document.getElementById('item_name').value;
-    // item.description = document.getElementById('description').value;
-    // item.usage = document.getElementById('usage').value;
-    // item.item_image = document.getElementById('item_image').files[0];
-
-    // console.log(item)
-    // let json = JSON.stringify(item);
-    // console.log(json)
-    // let xhr = new XMLHttpRequest();
-    // xhr.open('POST', url, true);
-    // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-    // xhr.onload = function () {
-    //     let items = JSON.parse(xhr.responseText);
-    //     if (xhr.readyState == 4 && xhr.status == "201") {
-    //         console.log(item)
-    //         document.getElementById('item_name').value = ''
-    //         getGymItems();
-    //     } else {
-    //         console.error(items);
-    //     }
-    // }
-    // xhr.send(json);
-
     const form = document.getElementById('gymItemForm');
     form.addEventListener('click', function (e) {
         e.preventDefault();
@@ -215,21 +189,14 @@ function createListOfGymItems(items) {
         content +=
             `
             <div class="carousel-item ${active}" style="max-height: 1000px;">
-                                <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <img style="width: 200px; height: 200px;"
-                                    src="/public/images/equipment/${item.item_image}" alt="">
-                                    <h3>
-                                        ${item.item_name}
-                                    </h3>
-                                    <p>
-                                        ${item.description}
-                                    </p>
-                                    <p>
-                                        ${item.usage}
-                                    </p>
-                                </div>
-                            </div>
+                <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <img style="width: 200px; height: 200px;"src="/public/images/equipment/${item.item_image}" alt="">
+                    <h3>${item.item_name}</h3>
+                    <p>${item.description}</p>
+                    <p>${item.usage}</p>
+                </div>
+            </div>
             `
     };
     return content;
@@ -285,9 +252,10 @@ function addingAllertsAfterUserSearchsearchAllert(searchedName, users) {
         alertText = 'There are no matching results for Your searched term! Please check if you wrote it correctly'
         alertClass = 'info'
     }
-    content += `
+    content +=
+        `
     <div class="alert alert-${alertClass}" role="alert" id="search_allert">
-    ${alertText}
+        ${alertText}
     </div>
     `
     return content;
@@ -352,23 +320,23 @@ function createPaginationButtons(res) {
     }
     content +=
         `
-    <li class="page-item ${previousDisable}">
-    <button class="page-link" value=${res.data.users.currentPage - 1} onclick="createUsersListWithPaginationHtml(this)" ${previousDisable}>Previous</button>
-    </li>
+        <li class="page-item ${previousDisable}">
+            <button class="page-link" value=${res.data.users.currentPage - 1} onclick="createUsersListWithPaginationHtml(this)" ${previousDisable}>Previous</button>
+        </li>
     `
     for (i = 1; i <= res.data.users.totalPageNumber; i++) {
         content +=
             `
-        <li class="page-item">
-        <button class="page-link" value=${i} onclick="createUsersListWithPaginationHtml(this)">${i}</button>
-        </li>
+            <li class="page-item">
+                <button class="page-link" value=${i} onclick="createUsersListWithPaginationHtml(this)">${i}</button>
+            </li>
         `
     }
     content +=
         `
-    <li class="page-item ${nextDisable}">
-    <button class="page-link" value=${res.data.users.currentPage + 1} onclick="createUsersListWithPaginationHtml(this)" ${nextDisable}>Next</button>
-    </li>
+        <li class="page-item ${nextDisable}">
+            <button class="page-link" value=${res.data.users.currentPage + 1} onclick="createUsersListWithPaginationHtml(this)" ${nextDisable}>Next</button>
+        </li>
     `
     return content;
 }
