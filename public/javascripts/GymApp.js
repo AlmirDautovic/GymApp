@@ -192,8 +192,8 @@ function createListOfGymItems(items) {
                 <div class="carousel-caption d-none d-md-block">
                     <img style="width: 200px; height: 200px;"src="/public/images/equipment/${item.item_image}" alt="">
                     <h3>${item.item_name}</h3>
-                    <p>${item.description}</p>
-                    <p>${item.usage}</p>
+                    <p><a href="/gymequipment/${item.item._id}">See more details</a></p>
+                    
                 </div>
             </div>
             `
