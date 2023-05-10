@@ -190,10 +190,10 @@ function createListOfGymItems(items) {
             <div class="carousel-item ${active}" style="max-height: 1000px;">
                 <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <img style="width: 200px; height: 200px;"src="/public/images/equipment/${item.item_image}" alt="">
-                    <h3>${item.item_name}</h3>
-                    <p><a href="/gymequipment/${item.item._id}">See more details</a></p>
-                    
+                        <img style="width: 200px; height: 200px;"src="/public/images/equipment/${item.item_image}" alt="">
+                        <h3>${item.item_name}</h3>
+                        <p><a href="/gymequipment/${item.item._id}">See more details</a></p>
+                        
                 </div>
             </div>
             `
@@ -253,10 +253,10 @@ function addingAllertsAfterUserSearchsearchAllert(searchedName, users) {
     }
     content +=
         `
-    <div class="alert alert-${alertClass}" role="alert" id="search_allert">
-        ${alertText}
-    </div>
-    `
+        <div class="alert alert-${alertClass}" role="alert" id="search_allert">
+            ${alertText}
+        </div>
+        `
     return content;
 }
 
@@ -322,21 +322,21 @@ function createPaginationButtons(res) {
         <li class="page-item ${previousDisable}">
             <button class="page-link" value=${res.data.users.currentPage - 1} onclick="createUsersListWithPaginationHtml(this)" ${previousDisable}>Previous</button>
         </li>
-    `
+        `
     for (i = 1; i <= res.data.users.totalPageNumber; i++) {
         content +=
             `
             <li class="page-item">
                 <button class="page-link" value=${i} onclick="createUsersListWithPaginationHtml(this)">${i}</button>
             </li>
-        `
+            `
     }
     content +=
         `
         <li class="page-item ${nextDisable}">
             <button class="page-link" value=${res.data.users.currentPage + 1} onclick="createUsersListWithPaginationHtml(this)" ${nextDisable}>Next</button>
         </li>
-    `
+        `
     return content;
 }
 

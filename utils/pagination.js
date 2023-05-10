@@ -2,7 +2,7 @@ paginatedResultsForUsers = function (model) {
     return async (req, res, next) => {
         const page = req.query.page ? parseInt(req.query.page) : 1;
         const status = req.query.status;
-        const searchedUsername = req.query.username; //
+        const searchedUsername = req.query.username;
 
         const limit = 5;
         const startIndex = (page - 1) * limit;
