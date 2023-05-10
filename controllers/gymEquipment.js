@@ -8,10 +8,11 @@ module.exports.renderGymItemPage = async (req, res) => {
 
 module.exports.createItem = async (req, res) => {
     let item = new Item(req.body);
-    const { item_image } = req.files;
-    item_image.mv("public" + "/" + "images" + "/" + "equipment" + "/" + item_image.name);
-    item.item_image = item_image.name;
-
+    if (req.files !== null) {
+        const { item_image } = req.files;
+        item_image.mv("public" + "/" + "images" + "/" + "equipment" + "/" + item_image.name);
+        item.item_image = item_image.name;
+    }
     await item.save();
     res.status(201).send(item);
 };

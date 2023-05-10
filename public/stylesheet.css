@@ -1449,8 +1449,8 @@ p {
 .card img {
     width: 100%;
     max-width: 792px;
-    margin: 0 auto;
     height: 500px;
+    margin: 40px auto;
 }
 
 #equipmentCard .card {

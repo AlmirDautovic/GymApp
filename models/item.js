@@ -8,7 +8,7 @@ const itemSchema = new Schema({
     },
     item_image: {
         type: String,
-        default: 'item_image.jpg'
+        default: 'no_image.jpg'
     },
     description: {
         type: String,
