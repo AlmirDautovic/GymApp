@@ -18,8 +18,8 @@ module.exports.displayPaginationForUsers = async (req, res) => {
 };
 
 module.exports.displayAllUsers = async (req, res) => {
-    let users = res.paginatedResults
-    const id = req.session.user_id
+    let users = res.paginatedResults;
+    const id = req.session.user_id;
     const loggedUser = await User.findById(id);
     let role = loggedUser.role;
     var myIndex = users.totalPageNumber;
@@ -63,16 +63,14 @@ module.exports.userLogin = async (req, res) => {
     const user = await User.findOne({ username });
     if (user && password != null) {
         const validatedPassword = await bcrypt.compare(password, user.password);
-
+        const redirectUrl = req.session.returnTo || '/';
         if (validatedPassword) {
             req.session.loggedin = true;
             req.session.user_id = user._id;
-            res.redirect('/users');
+            res.redirect(redirectUrl);
         } else {
             res.redirect('/login');
         }
-    } else {
-        res.redirect('/login');
     }
 }
 
