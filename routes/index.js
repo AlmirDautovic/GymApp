@@ -38,7 +38,7 @@ router.delete('/users/:id', paginatedResultsForUsers(User), users.deleteUserFrom
 
 router.get('/contact', users.renderContactForm);
 
-router.get('/gymequipment', gymItem.renderGymItemPage);
+router.get('/gymequipment', isLogedIn, gymItem.renderGymItemPage);
 
 router.get('/gymequipment/:id', gymItem.itemDetailsPage);
 
