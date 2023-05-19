@@ -7,6 +7,7 @@ In this project I used HTML, CSS, JS,Node.js and Mongo DB.
 ```
 Frontend:
 
+
 ```
 ```
 On frontend side I used  HTML/CSS to apply basic UI design, adding templates for header and footer to every page.
@@ -15,6 +16,7 @@ JavaScript is used mainly to send asynchronus requests (GET,POST, PUT, DELETE) t
 ```
 ```
 Backend:
+
 
 ```
 ```
@@ -25,6 +27,7 @@ Additionall control is provided with implementation of roles, such as Admin role
 
 ```
 Database:
+
 
 ```
 ```
