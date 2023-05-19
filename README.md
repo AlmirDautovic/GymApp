@@ -12,6 +12,7 @@ JavaScript is used mainly to send asynchronus requests (GET,POST, PUT, DELETE) t
 
 ```
 
+
 Backend:
 ```
 On server side I used Node.js to handle request and send fitting responds. I added cookies and session menagement, pagination,that is good option for dealing with large amount of information from database. Implemented Login/logout options to provides basic authentication and control acces to certain endpoints.
@@ -19,6 +20,7 @@ Additionall control is provided with implementation of roles, such as Admin role
 ```
 
 Database:
+
 
 ```
 I used MongoDB to create models, store, delete, update and fetch requested data. Models are used separatelly and also in relations with another using population methods depending action and fequest from user side.
