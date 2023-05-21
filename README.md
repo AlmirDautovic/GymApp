@@ -18,5 +18,5 @@ Additionall control is provided with implementation of roles, such as Admin role
 
 Database:
 
-I used MongoDB to create models, store, delete, update and fetch requested data. Models are used separatelly and also in relations with another using population methods depending action and fequest from user side.
+I used MongoDB to create models, store, delete, update and fetch requested data. Models are used separatelly and also in relations with another using population methods depending of action and request from user side.
 

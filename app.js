@@ -37,6 +37,7 @@ app.use(session(sessionConfig));
 
 app.use(function (req, res, next) {
     res.locals.loggedin = req.session.loggedin;
+    res.locals.role = req.session.role;
     next();
 });
 
