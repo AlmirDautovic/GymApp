@@ -5,10 +5,6 @@ module.exports.renderHomePage = (req, res) => {
     res.render('home');
 };
 
-module.exports.renderContactForm = (req, res) => {
-    res.render('contact');
-};
-
 module.exports.displayPaginationForUsers = async (req, res) => {
     const id = req.session.user_id
     const loggedUser = await User.findById(id);

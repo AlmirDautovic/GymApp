@@ -3,6 +3,7 @@ const router = express.Router();
 const users = require('../controllers/users');
 const gymItem = require('../controllers/gymEquipment');
 const blogs = require('../controllers/blogs');
+const consultation = require('../controllers/consultation');
 const paginatedResultsForUsers = require('../utils/pagination')
 const isLogedIn = require('../utils/requireLogin');
 const User = require('../models/user')
@@ -36,7 +37,9 @@ router.put('/users/:id', users.editUser);
 
 router.delete('/users/:id', paginatedResultsForUsers(User), users.deleteUserFromAllUserPage);
 
-router.get('/contact', users.renderContactForm);
+router.get('/contact', consultation.renderContactForm);
+
+router.post('/contact', consultation.createConsultation);
 
 router.get('/gymequipment', isLogedIn, gymItem.renderGymItemPage);
 
