@@ -64,7 +64,11 @@ module.exports.userLogin = async (req, res) => {
         if (validatedPassword) {
             req.session.loggedin = true;
             req.session.user_id = user._id;
-            req.session.role = user.role;
+            if (user.role === 'admin') {
+                req.session.role = true;
+            } else {
+                req.session.role = false;
+            }
             res.redirect(redirectUrl);
         } else {
             res.redirect('/login');
@@ -75,6 +79,7 @@ module.exports.userLogin = async (req, res) => {
 module.exports.logout = (req, res) => {
     req.session.user_id = null;
     req.session.loggedin = false;
+    req.session.role = false;
     res.redirect('/');
 }
 

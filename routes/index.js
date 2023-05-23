@@ -41,6 +41,8 @@ router.get('/contact', consultation.renderContactForm);
 
 router.post('/contact', consultation.createConsultation);
 
+router.get('/consultation', consultation.renderConsultationDetails);
+
 router.get('/gymequipment', isLogedIn, gymItem.renderGymItemPage);
 
 router.get('/gymequipment/:id', gymItem.itemDetailsPage);
