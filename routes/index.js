@@ -6,6 +6,7 @@ const blogs = require('../controllers/blogs');
 const consultation = require('../controllers/consultation');
 const paginatedResultsForUsers = require('../utils/pagination')
 const isLogedIn = require('../utils/requireLogin');
+const isAdmin = require('../utils/requireAdmin');
 const User = require('../models/user')
 
 
@@ -41,7 +42,7 @@ router.get('/contact', consultation.renderContactForm);
 
 router.post('/contact', consultation.createConsultation);
 
-router.get('/consultation', consultation.renderConsultationDetails);
+router.get('/consultation', isAdmin, consultation.renderConsultationDetails);
 
 router.get('/gymequipment', isLogedIn, gymItem.renderGymItemPage);
 
