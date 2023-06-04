@@ -1,7 +1,7 @@
 const Consultation = require('../models/consultation');
 
 module.exports.renderContactForm = (req, res) => {
-    res.render('contact');
+    res.render('consultation/contact');
 };
 
 module.exports.createConsultation = async (req, res) => {
