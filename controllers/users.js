@@ -37,7 +37,6 @@ module.exports.createNewUser = async (req, res) => {
     const { password } = req.body;
     const hash = await bcrypt.hash(password, 12)
     var newUser = new User(req.body);
-    console.log(req.body)
     newUser.password = hash;
     if (req.files !== null) {
         const { profile_image } = req.files;
