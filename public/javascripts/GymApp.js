@@ -340,4 +340,20 @@ function createPaginationButtons(res) {
     return content;
 }
 
+function userApproval(element) {
+    let id = Number(element.value);
+    let table = document.getElementById('consultationTable');
+    let row = table.rows.length;
+    let cell = table.rows[id].cells.length;
+    let nameId = id * cell + 1;
+    let emailId = id * cell + 3;
+    let username = document.querySelectorAll(`#consultationTable td`)[nameId].innerText;
+    let email = document.querySelectorAll('#consultationTable td')[emailId].innerText;
+    let password = Math.random().toString(36).substring(2, 7);;
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
 
+
+}

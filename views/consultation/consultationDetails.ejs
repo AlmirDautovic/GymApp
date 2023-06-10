@@ -1,58 +1,61 @@
 <% layout('layouts/boilerplate') %>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Height</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Excersize/Week</th>
-                <th scope="col">Excersize Duration</th>
-                <th scope="col">Goals</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let [i,consultation ] of consultations.entries()) {%>
+    <% layout('layouts/boilerplate') %>
+        <table class="table table-striped" id="">
+            <thead>
                 <tr>
-                    <th scope="row">
-                        <%=++i %>
-                    </th>
-                    <td>
-                        <%=consultation.name %>
-                    </td>
-                    <td>
-                        <%=consultation.lastName %>
-                    </td>
-                    <td>
-                        <%=consultation.email %>
-                    </td>
-                    <td>
-                        <%=consultation.phone %>
-                    </td>
-                    <td>
-                        <%=consultation.height %>
-                    </td>
-                    <td>
-                        <%=consultation.weight %>
-                    </td>
-                    <td>
-                        <%=consultation.birth_date %>
-                    </td>
-                    <td>
-                        <%=consultation.trainings_per_week %>
-                    </td>
-                    <td>
-                        <%=consultation.training_duration %>
-                    </td>
-                    <td>
-                        <%=consultation.fitness_goals %>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Height</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Date of Birth</th>
+                    <th scope="col">Excersize/Week</th>
+                    <th scope="col">Excersize Duration</th>
+                    <th scope="col">Consultation Status</th>
                 </tr>
-                <% } %>
+            </thead>
 
-        </tbody>
-    </table>
+            <tbody id="consultationTable">
+                <% for(let [i,consultation ] of consultations.entries()) {%>
+                    <tr id="<%=++i %>">
+                        <td scope="row">
+                            <%=i %>
+                        </td>
+
+                        <td id="consultationUsername">
+                            <%=consultation.name %>
+                        </td>
+                        <td>
+                            <%=consultation.lastName %>
+                        </td>
+                        <td id="consultationEmail">
+                            <%=consultation.email %>
+                        </td>
+                        <td>
+                            <%=consultation.phone %>
+                        </td>
+                        <td>
+                            <%=consultation.height %>
+                        </td>
+                        <td>
+                            <%=consultation.weight %>
+                        </td>
+                        <td>
+                            <%=consultation.birth_date %>
+                        </td>
+                        <td>
+                            <%=consultation.trainings_per_week %>
+                        </td>
+                        <td>
+                            <%=consultation.training_duration %>
+                        </td>
+                        <td>
+                            <button id="<%=i %>" value="<%=--i %>" class="btn btn-small btn-info"
+                                onclick="userApproval(this)">PENDING</button>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
