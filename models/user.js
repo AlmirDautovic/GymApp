@@ -13,7 +13,7 @@ const userSchema = new Schema({
     status: {
         type: Boolean,
         enum: [true, false],
-        required: true
+        default: true
     },
     profile_image: {
         type: String,

@@ -355,5 +355,11 @@ function userApproval(element) {
     formData.append("email", email);
     formData.append("password", password);
 
+    axios.post('/users/index', formData)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+
 
 }
