@@ -51,9 +51,9 @@ const consultationSchema = new Schema({
     information_source: {
         type: String
     },
-    user_approval: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+    userId: {
+        type: String,
+        default: "null"
     }
 });
 

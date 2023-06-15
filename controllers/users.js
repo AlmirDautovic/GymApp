@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Consultation = require('../models/consultation');
 const bcrypt = require('bcrypt');
 
 module.exports.renderHomePage = (req, res) => {
@@ -34,7 +35,7 @@ module.exports.searchUsers = async (req, res) => {
 }
 
 module.exports.createNewUser = async (req, res) => {
-    const { password } = req.body;
+    const { username, email, password } = req.body;
     const hash = await bcrypt.hash(password, 12)
     var newUser = new User(req.body);
     newUser.password = hash;
@@ -45,9 +46,18 @@ module.exports.createNewUser = async (req, res) => {
     }
     req.session.loggedin = true
     req.session.user_id = newUser._id;
-    await newUser.save();
+    req.session.role = newUser.role;
+    const consultation = await Consultation.find({ $and: [{ name: { $eq: username } }, { email: { $eq: email } }] });
+    consultation.userId = req.session.user_id.valueOf();
+    console.log(consultation);
+    console.log(newUser.role)
+    console.log(newUser);
+    console.log(`id je : ${newUser._id}`)
+    console.log(req.session.user_id.valueOf())
+    // await newUser.save();
 
-    res.redirect(`/users/${newUser._id}`);
+    // res.redirect(`/users/${newUser._id}`);
+    res.redirect('/')
 };
 
 module.exports.renderLoginForm = (req, res) => {
