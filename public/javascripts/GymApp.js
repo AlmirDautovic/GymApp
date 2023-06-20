@@ -76,11 +76,10 @@ function removeSelectedUser(element) {
     xhr.send(null);
 }
 
-function redirectPage(queryString = "") {
+function redirectPage(queryString = "/users") {
     let baseUrl = window.location.origin;
-    window.location.replace(baseUrl + '/users' + queryString);
+    window.location.replace(baseUrl + queryString);
 }
-
 
 function displayingUsersBasedOnStatusValue(element) {
     let status = element.value;
@@ -357,9 +356,9 @@ function userApproval(element) {
 
     axios.post('/users/index', formData)
         .then(res => {
-            console.log(res)
+            if (res.status === 200) {
+                redirectPage("/consultation");
+            }
         })
-        .catch(err => console.log(err))
-
-
+        .catch(err => console.log(err));
 }

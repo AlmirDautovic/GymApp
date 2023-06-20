@@ -47,17 +47,20 @@ module.exports.createNewUser = async (req, res) => {
     req.session.loggedin = true
     req.session.user_id = newUser._id;
     req.session.role = newUser.role;
-    const consultation = await Consultation.find({ $and: [{ name: { $eq: username } }, { email: { $eq: email } }] });
-    consultation.userId = req.session.user_id.valueOf();
-    console.log(consultation);
-    console.log(newUser.role)
-    console.log(newUser);
-    console.log(`id je : ${newUser._id}`)
-    console.log(req.session.user_id.valueOf())
-    // await newUser.save();
+    let consultation = await Consultation.findOne({ $and: [{ name: { $eq: username } }, { email: { $eq: email } }] });
+    let consultationId = req.session.user_id.valueOf();
+    consultation.userId = consultationId;
+    // console.log(consultation);
+    // console.log(consultation.userId)
+    // console.log(newUser.role)
+    // console.log(newUser);
+    // console.log(`id je : ${newUser._id}`)
+    // console.log(req.session.user_id.valueOf());
+    await consultation.save();
+    await newUser.save();
 
-    // res.redirect(`/users/${newUser._id}`);
-    res.redirect('/')
+    res.redirect(`/users/${newUser._id}`);
+
 };
 
 module.exports.renderLoginForm = (req, res) => {
