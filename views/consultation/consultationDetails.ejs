@@ -52,7 +52,7 @@
                             <%=consultation.training_duration %>
                         </td>
                         <td>
-                            <% if(consultation.userId===" " ) {%>
+                            <% if(consultation.userId==="" ) {%>
                                 <button id="<%=i %>" value="<%=--i %>" class="btn btn-small btn-info"
                                     onclick="userApproval(this)">Aprove User</button>
                                 <% } else { %>

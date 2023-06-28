@@ -53,7 +53,7 @@ const consultationSchema = new Schema({
     },
     userId: {
         type: String,
-        default: " "
+        default: ""
     }
 });
 

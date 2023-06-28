@@ -348,11 +348,9 @@ function userApproval(element) {
     let emailId = id * cell + 3;
     let username = document.querySelectorAll(`#consultationTable td`)[nameId].innerText;
     let email = document.querySelectorAll('#consultationTable td')[emailId].innerText;
-    let password = Math.random().toString(36).substring(2, 7);;
-    let formData = new FormData();
+
     formData.append("username", username);
     formData.append("email", email);
-    formData.append("password", password);
 
     axios.post('/users/index', formData)
         .then(res => {

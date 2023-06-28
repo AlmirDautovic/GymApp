@@ -47,21 +47,25 @@ module.exports.createNewUser = async (req, res) => {
     req.session.loggedin = true
     req.session.user_id = newUser._id;
     req.session.role = newUser.role;
+
+    await newUser.save();
+    res.redirect(`/users/${newUser._id}`);
+};
+
+module.exports.createUserFromConsultation = async (req, res) => {
+    const { username, email } = req.body;
+    let newUser = new User(req.body);
+    let password = Math.random().toString(36).substring(2, 7);
+    const hash = await bcrypt.hash(password, 12);
+    newUser.password = hash;
+
     let consultation = await Consultation.findOne({ $and: [{ name: { $eq: username } }, { email: { $eq: email } }] });
-    let consultationId = req.session.user_id.valueOf();
-    consultation.userId = consultationId;
-    // console.log(consultation);
-    // console.log(consultation.userId)
-    // console.log(newUser.role)
-    // console.log(newUser);
-    // console.log(`id je : ${newUser._id}`)
-    // console.log(req.session.user_id.valueOf());
+    consultation.userId = newUser._id.valueOf();
+
     await consultation.save();
     await newUser.save();
-
-    res.redirect(`/users/${newUser._id}`);
-
-};
+    res.redirect(`/consultation`);
+}
 
 module.exports.renderLoginForm = (req, res) => {
     res.render('users/login');

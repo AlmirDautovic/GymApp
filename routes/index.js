@@ -28,6 +28,8 @@ router.get('/users/search', users.searchUsers);
 
 router.post('/users/index', users.createNewUser);
 
+router.post('/users/consultation', users.createUserFromConsultation);
+
 router.get('/users/json', users.ajaxUsers);
 
 router.get('/users/:id', paginatedResultsForUsers(User), users.getSelectedUser);
