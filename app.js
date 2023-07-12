@@ -7,12 +7,20 @@ const fileUpload = require('express-fileupload');
 var routes = require('./routes/index');
 const methodOverride = require('method-override');
 const app = express();
+const MySqlDB = require('./mySqlConnection');
 
 mongoose.connect('mongodb://127.0.0.1/GymApp', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database connected")
+});
+
+MySqlDB.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('MySql Connected')
 });
 
 

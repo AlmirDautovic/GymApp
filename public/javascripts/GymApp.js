@@ -153,7 +153,7 @@ function postAndDisplayGymItems() {
                 getGymItems();
                 document.getElementById('item_name').value = '';
                 document.getElementById('description').value = '';
-                document.getElementById('usage').value = '';
+                document.getElementById('purpose').value = '';
                 document.getElementById('item_image').value = '';
             })
             .catch(err => console.log(err))
