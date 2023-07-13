@@ -48,12 +48,29 @@ module.exports.createItem = async (req, res) => {
 };
 
 module.exports.displayItem = async (req, res) => {
-    const items = await Item.find({});
-    res.json(items);
+    // const items = await Item.find({});
+    // res.json(items);
+    let sql = 'SELECT * FROM gymequipment';
+    db.query(sql, (err, items) => {
+        if (err) {
+            throw err;
+        }
+        res.json(items);
+    })
 };
 
 module.exports.itemDetailsPage = async (req, res) => {
-    const { id } = req.params;
-    const item = await Item.findById({ _id: id });
-    res.render('equipment/itemDetails', { item });
-}
+    // const { id } = req.params;
+    // const item = await Item.findById({ _id: id });
+    // res.render('equipment/itemDetails', { item });
+    let id = req.params.id;
+    let sql = `SELECT * FROM gymequipment WHERE id = ${id}`;
+    db.query(sql, (err, item) => {
+        if (err) {
+            throw err;
+        } else {
+            res.render('equipment/itemDetails', { item });
+
+        }
+    })
+};
