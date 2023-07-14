@@ -25,54 +25,51 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-6">
-            <div id="carouselExampleCaptions" class="carousel slide mx-auto">
-                <div id="carouselContent" class="carousel-inner" style="max-height: 1000px;">
-                    <% for(let [i, item] of items.entries()) {%>
-                        <% if (i===0) { %>
-                            <div class="carousel-item active" style="max-height: 1000px;">
+            <div id="carouselContent" class="carousel-inner" style="max-height: 1000px;">
+                <% for(let [i, item] of items.entries()) {%>
+                    <% if (i===0) { %>
+                        <div class="carousel-item active" style="max-height: 1000px;">
+                            <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <img style="width: 200px; height: 200px;"
+                                    src="/public/images/equipment/<%=item.item_image %>" alt="">
+                                <h3>
+                                    <%=item.item_name %>
+                                </h3>
+                                <p>
+                                    <a href="/gymequipment/<%=item.ID%>">See more details</a>
+                                </p>
+                            </div>
+                        </div>
+                        <% } else { %>
+                            <div class="carousel-item" style="max-height: 1000px;">
                                 <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <img style="width: 200px; height: 200px;"
+                                    <img style="width: 70%; height: 200px;"
                                         src="/public/images/equipment/<%=item.item_image %>" alt="">
                                     <h3>
                                         <%=item.item_name %>
                                     </h3>
                                     <p>
-                                        <a href="/gymequipment/<%=item._id %>">See more details</a>
+                                        <a href="/gymequipment/<%=item.ID %>">See more details</a>
                                     </p>
                                 </div>
                             </div>
-                            <% } else { %>
-                                <div class="carousel-item" style="max-height: 1000px;">
-                                    <img src="/public/images/caruselBackgroundWhite.jpg" class=" w-100 mx-auto"
-                                        alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <img style="width: 70%; height: 200px;"
-                                            src="/public/images/equipment/<%=item.item_image %>" alt="">
-                                        <h3>
-                                            <%=item.item_name %>
-                                        </h3>
-                                        <p>
-                                            <a href="/gymequipment/<%=item._id %>">See more details</a>
-                                        </p>
-                                    </div>
-                                </div>
+                            <% } %>
                                 <% } %>
-
-                                    <% } %>
-                </div>
-
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    </div>
     </div>
     </div>
